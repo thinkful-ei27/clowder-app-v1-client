@@ -1,0 +1,17 @@
+.header-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  flex-direction: row;
+  flex: 1;
+  padding-bottom: .5em;
+}
+
+
+
+.nav-item {
+  color: black;
+  text-decoration: underline;
+}

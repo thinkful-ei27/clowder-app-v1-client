@@ -1,5 +1,17 @@
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 1em;
   font-family: sans-serif;
+  border: 2px solid grey;
+  border-radius: 1em;
+
 }
+
+#root {
+  display: flex;
+}
+
+.app {
+  flex: 1;
+}
+
