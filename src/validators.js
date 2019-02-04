@@ -15,3 +15,14 @@ export const matches = field => (value, allValues) =>
   field in allValues && value.trim() === allValues[field].trim()
     ? undefined
     : 'Does not match';
+
+export const viewingCode = length => value => {
+  if (value.length && length.min && value.length < length.min) {
+    return `Must be at least ${length.min} characters long`;
+  }
+  if (value.length && length.max && value.length > length.max) {
+    return `Cannont be more than ${length.max} characters long`;
+  }
+};
+
+// VALIDATE DATES

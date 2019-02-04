@@ -18,16 +18,16 @@ export class HeaderBar extends React.Component {
     let userSettings;
     if (this.props.loggedIn) {
       logOutLink = (
-        <a class="nav-item" onClick={() => this.logOut()}>log out</a>
+        <a className="nav-item" onClick={() => this.logOut()}>log out</a>
       );
       userSettings = (
-        <Link class="nav-item" to="/edit-user-settings">{this.props.currentUser.username}</Link>
+        <Link className="nav-item" to="/edit-user-settings">{this.props.currentUser.username}</Link>
       );
     }
     return (
-      <div class="header-bar" className="header-bar">
+      <div className="header-bar" className="header-bar">
         {userSettings}
-        <Link class="nav-item" to="/dashboard">Clowder</Link>
+        <Link className="nav-item" to="/dashboard">Clowder</Link>
         {logOutLink}
       </div>
     );

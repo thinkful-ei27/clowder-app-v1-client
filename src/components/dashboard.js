@@ -13,9 +13,9 @@ export class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        <Link class="dash-item" to='/upcoming-events' >Upcoming Events</Link>
-        <Link class="dash-item" to='/past-events' >Past Event</Link>
-        <Link class="dash-item" to='/create-event-form' >Create New Event</Link>
+        <Link className="dash-item" to='/upcoming-events' >Upcoming Events</Link>
+        <Link className="dash-item" to='/past-events' >Past Event</Link>
+        <Link className="dash-item" to='/create-event' >Create New Event</Link>
       </div>
     );
   }

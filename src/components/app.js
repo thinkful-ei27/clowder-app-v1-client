@@ -7,6 +7,7 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import { refreshAuthToken } from '../actions/auth';
 import './css/app.css';
+import { CreateEventForm } from './create-event-form';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -41,9 +42,10 @@ export class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <HeaderBar class="headerbar" />
-        <Route class="landingpage" exact path="/" component={LandingPage} />
-        <Route class="dashboard" exact path="/dashboard" component={Dashboard} />
+        <HeaderBar className="headerbar" />
+        <Route className="landingpage" exact path="/" component={LandingPage} />
+        <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
+        <Route className="create-event-form" exact path="/create-event" component={CreateEventForm} />
       </div>
     );
   }
