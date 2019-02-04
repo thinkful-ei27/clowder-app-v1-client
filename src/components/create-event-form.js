@@ -5,20 +5,22 @@ import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('password');
 
-export class CreateEvent extends React.Component {
-  onSubmit(values) {
-    const { username, password, fullName, email } = values;
-    const user = { username, password, fullName, email };
-    // CHANGE THESE TO POSTING AN EVENT AND RETURNING IT AND MOUNT THOSE ACTIONS ABOVE
-    return this.props
-      .dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(username, password)));
-  }
+export class CreateEventForm extends React.Component {
+
+  // CHANGE THESE TO POSTING AN EVENT AND RETURNING IT AND MOUNT THOSE ACTIONS ABOVE
+
+  // onSubmit(values) {
+  //   const { username, password, fullName, email } = values;
+  //   const user = { username, password, fullName, email };
+  //   return this.props
+  //     .dispatch(registerUser(user))
+  //     .then(() => this.props.dispatch(login(username, password)));
+  // }
 
   render() {
     return (
       <div className="create-event-home">
-        <h2>Create an Event</h2>
+        <h3>Create an Event</h3>
         <form
           className="create-event-form"
           onSubmit={this.props.handleSubmit(values =>
@@ -45,4 +47,4 @@ export default reduxForm({
   form: 'registration',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('registration', Object.keys(errors)[0]))
-})(RegistrationForm);
+})(CreateEventForm);

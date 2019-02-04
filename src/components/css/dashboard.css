@@ -1,0 +1,10 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-item {
+  margin: .25em;
+  flex: 1;
+  
+}

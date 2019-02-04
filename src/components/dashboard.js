@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchProtectedData } from '../actions/protected-data';
-import UpcomingEvents from './upcoming-events';
-import PastEvents from './past-events';
-import CreateEvent from './create-event-form';
+import './css/dashboard.css';
+import { Link } from 'react-router-dom';
 
 export class Dashboard extends React.Component {
   componentDidMount() {
@@ -14,9 +13,9 @@ export class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        <UpcomingEvents />
-        <PastEvents />
-        <CreateEvent />
+        <Link class="dash-item" to='/upcoming-events' >Upcoming Events</Link>
+        <Link class="dash-item" to='/past-events' >Past Event</Link>
+        <Link class="dash-item" to='/create-event-form' >Create New Event</Link>
       </div>
     );
   }
