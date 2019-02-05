@@ -1,0 +1,29 @@
+.create-event-home {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h3 {
+  flex: 1 0 100%;
+}
+
+form {
+  flex: 1;
+
+}
+
+input, textarea {
+  border: 1px black solid;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+textarea {
+  height: 10em;
+}
+
+
+
+
+

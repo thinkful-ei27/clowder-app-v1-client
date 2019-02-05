@@ -1,13 +1,12 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
-import DatePicker from 'react-date-picker';
-import TimePicker from 'react-time-picker';
 import { Link, Redirect } from 'react-router-dom';
-import Input from './input';
-import { createEvent } from '../actions/events';
-import { required, nonEmpty, isTrimmed, viewingCode } from '../validators';
-const viewingCodeLength = viewingCode({ min: 8, max: 72 });
-
+import Input from '../input';
+import Textarea from '../textarea';
+import { createEvent } from '../../actions/events';
+import '../css/form.css';
+// import { required, nonEmpty, isTrimmed, viewingCode } from '../validators';
+// const viewingCodeLength = viewingCode({ min: 8, max: 72 });
 
 export class CreateEventForm extends React.Component {
 
@@ -39,12 +38,12 @@ export class CreateEventForm extends React.Component {
           />
 
           <label htmlFor="eventDate">Date</label>
-          <DatePicker
+          <Field component={Input}
             name="eventDate"
           />
 
           <label htmlFor="eventTime">Time</label>
-          <TimePicker
+          <Field component={Input}
             name="eventTime"
           />
 
@@ -54,8 +53,8 @@ export class CreateEventForm extends React.Component {
             name="viewingCode"
           />
 
-          <label htmlFor="description">Description</label>
-          <Field component={Input}
+          <label htmlFor="description">Description (optional)</label>
+          <Field component={Textarea}
             type="text"
             name="description" />
 

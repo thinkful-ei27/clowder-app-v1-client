@@ -6,16 +6,13 @@ import './css/dashboard.css';
 import { Link } from 'react-router-dom';
 
 export class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchProtectedData());
-  }
 
   render() {
     return (
       <div className="dashboard">
         <Link className="dash-item" to='/upcoming-events' >Upcoming Events</Link>
         <Link className="dash-item" to='/past-events' >Past Event</Link>
-        <Link className="dash-item" to='/create-event' >Create New Event</Link>
+        <Link className="dash-item" to='/events/create-event' >Create New Event</Link>
       </div>
     );
   }

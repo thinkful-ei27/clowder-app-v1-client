@@ -3,11 +3,7 @@ import {
 } from '../actions/events';
 
 const initialState = {
-  eventName: '',
-  date: '',
-  viewingCode: null,
-  location: '',
-  description: ''
+  events: []
 };
 
 export default function eventReducer(state = initialState, action) {
