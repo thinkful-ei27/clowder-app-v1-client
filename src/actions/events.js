@@ -13,7 +13,6 @@ export const createEvent = event => (dispatch, getState) => {
   return fetch(`${API_BASE_URL}/events`, {
     method: 'POST',
     headers: {
-      'content-type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
     body: JSON.stringify(event)

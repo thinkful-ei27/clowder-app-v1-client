@@ -17,8 +17,10 @@ export class CreateEventForm extends React.Component {
     const { eventName, date, viewingCode, location, description } = values;
     const event = { eventName, date, viewingCode, location, description };
     return this.props
+      // TODO return eventID in createEvent
       .dispatch(createEvent(event))
-      .then(() => Redirect('/dashboard'));
+      .then((eventId) => this.props.history.push(`/events/${eventId}`));
+
   }
 
   render() {
@@ -34,23 +36,23 @@ export class CreateEventForm extends React.Component {
           <Field component={Input}
             type="text"
             name="eventName"
-            validate={[required, nonEmpty, isTrimmed]} />
+          />
 
           <label htmlFor="eventDate">Date</label>
           <DatePicker
             name="eventDate"
-            validate={[required]} />
+          />
 
           <label htmlFor="eventTime">Time</label>
           <TimePicker
             name="eventTime"
-            validate={[required]} />
+          />
 
           <label htmlFor="viewingCode">Viewing Code (optional)</label>
           <Field component={Input}
             type="text"
             name="viewingCode"
-            validate={[isTrimmed, viewingCodeLength]} />
+          />
 
           <label htmlFor="description">Description</label>
           <Field component={Input}
