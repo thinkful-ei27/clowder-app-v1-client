@@ -18,8 +18,7 @@ export class CreateEventForm extends React.Component {
     return this.props
       // TODO return eventID in createEvent
       .dispatch(createEvent(event))
-      .then((eventId) => this.props.history.push(`/events/${eventId}`));
-
+    // .then((eventId) => this.props.history.push(`/events/${eventId}`));
   }
 
   render() {
@@ -57,13 +56,14 @@ export class CreateEventForm extends React.Component {
           <Field component={Textarea}
             type="text"
             name="description" />
-
-          <button
-            type="submit"
-            disabled={this.props.pristine || this.props.submitting}>
-            Create
-          </button>
-          <Link to="/dashboard">Cancel</Link>
+          <div className="buttons">
+            <button
+              type="submit"
+              disabled={this.props.pristine || this.props.submitting}>
+              Create
+            </button>
+            <Link className="link" to="/dashboard">Cancel</Link>
+          </div>
         </form>
       </div>
     );
@@ -72,6 +72,6 @@ export class CreateEventForm extends React.Component {
 
 export default reduxForm({
   form: 'create-event',
-  onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('create-event', Object.keys(errors)[0]))
+  // onSubmitFail: (errors, dispatch) =>
+  //   dispatch(focus('create-event', Object.keys(errors)[0]))
 })(CreateEventForm);

@@ -23,6 +23,17 @@ textarea {
   height: 10em;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+button, .link {
+  color: black;
+  font-size: 1.25em;
+  text-decoration: underline;
+}
 
 
 
