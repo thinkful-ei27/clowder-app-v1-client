@@ -8,6 +8,7 @@ import Dashboard from './dashboard';
 import { refreshAuthToken } from '../actions/auth';
 import './css/app.css';
 import { CreateEvent } from './events/create-event';
+import UpcomingEvents from './events/upcoming';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -46,6 +47,7 @@ export class App extends React.Component {
         <Route className="landingpage" exact path="/" component={LandingPage} />
         <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
         <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />
+        <Route className="upcoming-events" exact path="/events/upcoming" component={UpcomingEvents} />
       </div>
     );
   }

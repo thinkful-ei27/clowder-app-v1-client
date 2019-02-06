@@ -33,3 +33,34 @@ export const createEvent = event => (dispatch, getState) => {
       }
     });
 };
+
+export const FETCH_EVENTS = 'FETCH_EVENTS';
+export const fetchEvents = events => ({
+  type: FETCH_EVENTS,
+  events
+});
+
+
+export const fetchUpcomingEvents = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/events/upcoming`, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then((events) => dispatch(fetchEvents(events)))
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+};

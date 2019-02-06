@@ -1,21 +1,27 @@
 import {
-  CREATE_EVENT,
+  CREATE_EVENT, FETCH_EVENTS,
 } from '../actions/events';
 
 const initialState = {
-  upcomingEvents: [],
+  upcoming: [],
+  past: []
 };
 
 export default function eventReducer(state = initialState, action) {
-  let event;
+  let event, events;
   if (action.type === CREATE_EVENT) {
-    console.log(action);
     event = action.event;
-
-    console.log(event);
     return Object.assign({}, state, {
-      upcomingEvents: [...state.upcomingEvents, event]
+      upcoming: [...state.upcoming, event]
     });
   }
+
+  if (action.type === FETCH_EVENTS) {
+    events = action.events;
+    return Object.assign({}, state, {
+      upcoming: events
+    });
+  }
+
   return state;
 }
