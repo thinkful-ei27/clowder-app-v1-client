@@ -9,17 +9,19 @@ export const createEventSuccess = event => ({
 });
 
 export const createEvent = event => (dispatch, getState) => {
+
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events`, {
     method: 'POST',
     headers: {
+      'content-type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
     body: JSON.stringify(event)
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ event }) => dispatch(createEventSuccess(event)))
+    .then((event) => dispatch(createEventSuccess(event)))
     .catch(err => {
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {

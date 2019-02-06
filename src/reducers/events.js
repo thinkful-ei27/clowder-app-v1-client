@@ -7,15 +7,12 @@ const initialState = {
 };
 
 export default function eventReducer(state = initialState, action) {
-  const event = {
-    eventName: action.eventName,
-    date: action.date,
-    time: action.time,
-    location: action.location,
-    description: action.description,
-    viewingCode: action.viewingCode
-  };
+  let event;
   if (action.type === CREATE_EVENT) {
+    console.log(action);
+    event = action.event;
+
+    console.log(event);
     return Object.assign({}, state, {
       upcomingEvents: [...state.upcomingEvents, event]
     });

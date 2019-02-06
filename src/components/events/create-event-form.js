@@ -13,12 +13,12 @@ export class CreateEventForm extends React.Component {
   // CHANGE THESE TO POSTING AN EVENT AND RETURNING IT AND MOUNT THOSE ACTIONS ABOVE
 
   onSubmit(values) {
-    const { eventName, date, viewingCode, location, description } = values;
-    const event = { eventName, date, viewingCode, location, description };
+    const { eventName, date, time, viewingCode, location, description } = values;
+    const event = { eventName, date, time, viewingCode, location, description };
     return this.props
       // TODO return eventID in createEvent
       .dispatch(createEvent(event))
-    // .then((eventId) => this.props.history.push(`/events/${eventId}`));
+    //.then((eventId) => this.props.history.push(`/events/${eventId}`));
   }
 
   render() {
@@ -28,34 +28,53 @@ export class CreateEventForm extends React.Component {
         <form
           className="create-event-form"
           onSubmit={this.props.handleSubmit(values =>
-            this.onSubmit(values)
-          )}>
+            this.onSubmit(values))}>
           <label htmlFor="eventName">Event Name</label>
           <Field component={Input}
             type="text"
             name="eventName"
+            className="eventName"
+            id="eventName"
           />
 
           <label htmlFor="eventDate">Date</label>
           <Field component={Input}
-            name="eventDate"
+            type="text"
+            name="date"
+            className="date"
+            id="date"
           />
 
-          <label htmlFor="eventTime">Time</label>
+          <label htmlFor="time">Time</label>
           <Field component={Input}
-            name="eventTime"
+            type="text"
+            name="time"
+            className="time"
+            id="time"
+          />
+
+          <label htmlFor="location">Location</label>
+          <Field component={Input}
+            type="text"
+            name="location"
+            className="location"
+            id="location"
           />
 
           <label htmlFor="viewingCode">Viewing Code (optional)</label>
           <Field component={Input}
             type="text"
             name="viewingCode"
+            className="viewingCode"
+            id="viewingCode"
           />
 
           <label htmlFor="description">Description (optional)</label>
           <Field component={Textarea}
             type="text"
-            name="description" />
+            name="description"
+            className="description"
+            id="description" />
           <div className="buttons">
             <button
               type="submit"
