@@ -1,13 +1,14 @@
 import {
-  CREATE_EVENT, FETCH_EVENTS,
+  CREATE_EVENT, FETCH_EVENTS, FETCH_EVENT
 } from '../actions/events';
 
 const initialState = {
   upcoming: [],
   past: [],
-  formInitialValues: {
+  currentEvent: ''
+  // formInitialValues: {
 
-  }
+  // }
 };
 
 export default function eventReducer(state = initialState, action) {
@@ -23,6 +24,13 @@ export default function eventReducer(state = initialState, action) {
     events = action.events;
     return Object.assign({}, state, {
       upcoming: events
+    });
+  }
+
+  if (action.type === FETCH_EVENT) {
+    event = action.event;
+    return Object.assign({}, state, {
+      currentEvent: event
     });
   }
 

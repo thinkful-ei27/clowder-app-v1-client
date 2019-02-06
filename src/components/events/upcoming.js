@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchUpcomingEvents, fetchEvents } from '../../actions/events';
+import { fetchUpcomingEvents, fetchEvents, fetchEvent, fetchSingleEvent } from '../../actions/events';
 import '../css/event-lists.css';
+import { Link } from 'react-router-dom';
 
 
 export class UpcomingEvents extends React.Component {
@@ -12,11 +13,16 @@ export class UpcomingEvents extends React.Component {
   }
 
   EventsList(props) {
-    console.log(props.upcoming);
     const events = this.props.upcoming.map((event, index) => (
       <li key={index}>
-        {event.eventName}: {event.date} {event.time}
-      </li>
+        <Link
+          className="li-event"
+          to={{ pathname: `/events/upcoming/${event.id}` }}
+          onClick={() => this.props.dispatch(fetchSingleEvent(event.id))}
+        >
+          {event.eventName}: {event.date} {event.time}
+        </Link>
+      </li >
     ));
 
     return (
