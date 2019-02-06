@@ -12,7 +12,6 @@ const store = createStore(
   combineReducers({
     form: formReducer,
     auth: authReducer,
-
     event: eventReducer
   }),
   composeEnhancers(applyMiddleware(thunk))

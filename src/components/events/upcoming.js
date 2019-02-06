@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
 import { fetchUpcomingEvents, fetchEvents } from '../../actions/events';
-
+import '../css/event-lists.css';
 
 
 export class UpcomingEvents extends React.Component {
@@ -12,10 +12,10 @@ export class UpcomingEvents extends React.Component {
   }
 
   EventsList(props) {
-    console.log(props.upcoming[0]);
+    console.log(props.upcoming);
     const events = this.props.upcoming.map((event, index) => (
       <li key={index}>
-        {event.eventName}
+        {event.eventName}: {event.date} {event.time}
       </li>
     ));
 
@@ -41,6 +41,5 @@ const mapStateToProps = state => {
     upcoming: state.event.upcoming
   };
 };
-
 
 export default requiresLogin()(connect(mapStateToProps)(UpcomingEvents));

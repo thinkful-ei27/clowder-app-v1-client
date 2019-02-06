@@ -29,12 +29,16 @@ textarea {
   align-items: center; 
 }
 
-button, .link {
+.link {
   color: black;
   font-size: 1.25em;
   text-decoration: underline;
 }
 
+button {
+  font-size: 1.25em;
+  text-decoration: underline;
+}
 
 
 

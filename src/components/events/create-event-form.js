@@ -1,24 +1,23 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Input from '../input';
 import Textarea from '../textarea';
 import { createEvent } from '../../actions/events';
 import '../css/form.css';
-// import { required, nonEmpty, isTrimmed, viewingCode } from '../validators';
-// const viewingCodeLength = viewingCode({ min: 8, max: 72 });
+import { required, nonEmpty, isTrimmed, length, } from '../../validators';
+const viewingCodeLength = length({ min: 8, max: 72 });
+
 
 export class CreateEventForm extends React.Component {
-
-  // CHANGE THESE TO POSTING AN EVENT AND RETURNING IT AND MOUNT THOSE ACTIONS ABOVE
 
   onSubmit(values) {
     const { eventName, date, time, viewingCode, location, description } = values;
     const event = { eventName, date, time, viewingCode, location, description };
     return this.props
-      // TODO return eventID in createEvent
       .dispatch(createEvent(event))
-    //.then((eventId) => this.props.history.push(`/events/${eventId}`));
+      // TODO return eventID in createEvent and go there
+      .then(() => this.props.history.push('/events/upcoming'));
   }
 
   render() {
@@ -33,48 +32,41 @@ export class CreateEventForm extends React.Component {
           <Field component={Input}
             type="text"
             name="eventName"
-            className="eventName"
-            id="eventName"
+            validate={[required, nonEmpty, isTrimmed]}
           />
 
           <label htmlFor="eventDate">Date</label>
           <Field component={Input}
             type="text"
             name="date"
-            className="date"
-            id="date"
           />
 
           <label htmlFor="time">Time</label>
           <Field component={Input}
             type="text"
             name="time"
-            className="time"
-            id="time"
           />
 
           <label htmlFor="location">Location</label>
           <Field component={Input}
             type="text"
             name="location"
-            className="location"
-            id="location"
+            validate={[required, nonEmpty, isTrimmed]}
           />
 
-          <label htmlFor="viewingCode">Viewing Code (optional)</label>
+          <label htmlFor="viewingCode">Viewing Code optional</label>
           <Field component={Input}
+            defaultValue=''
             type="text"
             name="viewingCode"
-            className="viewingCode"
-            id="viewingCode"
+            validate={[viewingCodeLength, isTrimmed]}
           />
 
           <label htmlFor="description">Description (optional)</label>
           <Field component={Textarea}
             type="text"
-            name="description"
-            className="description"
-            id="description" />
+            name="description" />
+
           <div className="buttons">
             <button
               type="submit"
@@ -89,8 +81,9 @@ export class CreateEventForm extends React.Component {
   }
 }
 
-export default reduxForm({
+export default withRouter(reduxForm({
+
   form: 'create-event',
-  // onSubmitFail: (errors, dispatch) =>
-  //   dispatch(focus('create-event', Object.keys(errors)[0]))
-})(CreateEventForm);
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('create-event', Object.keys(errors)[0]))
+})(CreateEventForm));

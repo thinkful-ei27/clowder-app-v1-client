@@ -1,14 +1,23 @@
 export const required = value => (value ? undefined : 'Required');
 export const nonEmpty = value =>
   value.trim() !== '' ? undefined : 'Cannot be empty';
-export const isTrimmed = value =>
+export const isTrimmed = value => {
+  if (typeof (value) === 'undefined') {
+    return;
+  }
   value.trim() === value ? undefined : 'Cannot start or end with whitespace';
+};
 export const length = length => value => {
+  if (typeof (value) === 'undefined') {
+    return;
+  }
+  console.log(value)
   if (length.min && value.length < length.min) {
     return `Must be at least ${length.min} characters long`;
   }
+  console.log(value)
   if (length.max && value.length > length.max) {
-    return `Cannont be more than ${length.max} characters long`;
+    return `Must be at most ${length.max} characters long`;
   }
 };
 export const matches = field => (value, allValues) =>
@@ -16,13 +25,4 @@ export const matches = field => (value, allValues) =>
     ? undefined
     : 'Does not match';
 
-export const viewingCode = length => value => {
-  if (value.length && length.min && value.length < length.min) {
-    return `Must be at least ${length.min} characters long`;
-  }
-  if (value.length && length.max && value.length > length.max) {
-    return `Cannont be more than ${length.max} characters long`;
-  }
-};
-
-// VALIDATE DATES
+// TODO VALIDATE DATES

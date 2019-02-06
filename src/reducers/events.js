@@ -4,7 +4,10 @@ import {
 
 const initialState = {
   upcoming: [],
-  past: []
+  past: [],
+  formInitialValues: {
+
+  }
 };
 
 export default function eventReducer(state = initialState, action) {
