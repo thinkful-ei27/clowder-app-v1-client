@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Redirect } from 'react-router-dom';
 
 import { refreshAuthToken } from '../actions/auth';
 import './css/app.css';
@@ -47,6 +47,7 @@ export class App extends React.Component {
     return (
       <div className="app">
         <HeaderBar className="headerbar" />
+        {/*<Redirect from="/events/" to="/dashboard" />*/}
         <Route className="landingpage" exact path="/" component={LandingPage} />
         <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
         <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />

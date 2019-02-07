@@ -14,10 +14,18 @@ export class CreateEventForm extends React.Component {
   onSubmit(values) {
     const { eventName, date, time, viewingCode, location, description } = values;
     const event = { eventName, date, time, viewingCode, location, description };
-    return this.props
-      .dispatch(createEvent(event))
-      // TODO return eventID in createEvent and go there
-      .then(() => this.props.history.push('/events/upcoming'));
+    const eventDate = new Date(event.date);
+    console.log(eventDate);
+    if (eventDate > new Date()) {
+      return this.props
+        .dispatch(createEvent(event))
+        // TODO return eventID in createEvent and go there
+        .then(() => this.props.history.push('/events/upcoming'));
+    } else if (eventDate < new Date()) {
+      return this.props
+        .dispatch(createEvent(event))
+        .then(() => this.props.history.push('/events/past'));
+    }
   }
 
   render() {

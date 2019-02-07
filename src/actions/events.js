@@ -164,3 +164,9 @@ export const fetchSinglePastEvent = id => (dispatch, getState) => {
       }
     });
 };
+
+export const DELETE_SINGLE_PAST_EVENT = 'DELETE_SINGLE_PAST_EVENT';
+export const removePastEvent = event => ({
+  type: DELETE_SINGLE_PAST_EVENT,
+  event
+});
