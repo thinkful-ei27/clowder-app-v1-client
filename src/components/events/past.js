@@ -1,16 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchPastEvents, fetchEventsPast, fetchSingleEvent } from '../../actions/events';
+import { fetchAllPastEvents, storeSinglePastEvent } from '../../actions/events';
 import '../css/event-lists.css';
 import { Link } from 'react-router-dom';
 
 
 export class PastEvents extends React.Component {
-
   componentDidMount() {
-    this.props.dispatch(fetchPastEvents())
-      .then(fetchEventsPast());
+    this.props.dispatch(fetchAllPastEvents());
   }
 
   EventsList(props) {
@@ -18,8 +16,8 @@ export class PastEvents extends React.Component {
       <li key={index}>
         <Link
           className="li-event"
-          to={{ pathname: `/events/${event.id}` }}
-          onClick={() => this.props.dispatch(fetchSingleEvent(event.id))}
+          to={{ pathname: `/events/past/${event.id}` }}
+          onClick={() => this.props.dispatch(storeSinglePastEvent(event.id))}
         >
           {event.eventName}: {event.date} {event.time}
         </Link>

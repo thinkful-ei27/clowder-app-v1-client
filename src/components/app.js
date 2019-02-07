@@ -9,7 +9,8 @@ import { refreshAuthToken } from '../actions/auth';
 import './css/app.css';
 import { CreateEvent } from './events/create-event';
 import UpcomingEvents from './events/upcoming';
-import CurrentEvent from './events/current-event';
+import PastEvents from './events/past';
+import CurrentEvent from './events/current';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -49,7 +50,9 @@ export class App extends React.Component {
         <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
         <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />
         <Route className="upcoming-events" exact path="/events/upcoming" component={UpcomingEvents} />
-        <Route className="current-event" path="/events/upcoming/:id" component={CurrentEvent} />
+        <Route className="past-events" exact path="/events/past" component={PastEvents} />
+        <Route className="current-event" exact path="/events/upcoming/:id" component={CurrentEvent} />
+        <Route className="current-event" exact path="/events/past/:id" component={CurrentEvent} />
       </div>
     );
   }
