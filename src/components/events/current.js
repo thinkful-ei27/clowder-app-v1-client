@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchSingleUpcomingEvent, fetchSinglePastEvent } from '../../actions/events';
+import { fetchSingleUpcomingEvent, fetchSinglePastEvent, deleteSinglePastEvent, deleteSingleUpcomingEvent } from '../../actions/events';
 
 
 export class CurrentEvent extends React.Component {
@@ -9,11 +9,22 @@ export class CurrentEvent extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     const { fromWhere } = this.props.location.state;
-    console.log('hello', fromWhere)
     if (fromWhere === 'upcoming') {
       this.props.dispatch(fetchSingleUpcomingEvent(id));
     } else if (fromWhere === 'past') {
       this.props.dispatch(fetchSinglePastEvent(id));
+    }
+  }
+
+  onClickDelete() {
+    const { id } = this.props.match.params;
+    const { fromWhere } = this.props.location.state;
+    if (fromWhere === 'upcoming') {
+      return this.props.dispatch(deleteSingleUpcomingEvent(id))
+        .then(() => this.props.history.push('/events/upcoming'));
+    } else if (fromWhere === 'past') {
+      return this.props.dispatch(deleteSinglePastEvent(id))
+        .then(() => this.props.history.push('/events/past'));
     }
   }
 
@@ -34,7 +45,7 @@ export class CurrentEvent extends React.Component {
           </div>
           <button
             type='button'
-
+            onClick={id => this.onClickDelete(id)}
           >Delete Event
           </button>
         </div>

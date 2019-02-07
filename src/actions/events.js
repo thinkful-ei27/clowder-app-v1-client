@@ -170,3 +170,57 @@ export const removePastEvent = event => ({
   type: DELETE_SINGLE_PAST_EVENT,
   event
 });
+
+export const deleteSinglePastEvent = id => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/events/past/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(() => dispatch(removePastEvent()))
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+};
+
+export const DELETE_SINGLE_UPCOMING_EVENT = 'DELETE_SINGLE_UPCOMING_EVENT';
+export const removeUpcomingEvent = event => ({
+  type: DELETE_SINGLE_UPCOMING_EVENT,
+  event
+});
+
+export const deleteSingleUpcomingEvent = id => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/events/upcoming/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(() => dispatch(removeUpcomingEvent()))
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+};
