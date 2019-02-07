@@ -1,20 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchEvent, fetchSingleEvent } from '../../actions/events';
+import { fetchSingleUpcomingEvent } from '../../actions/events';
 
 
 export class CurrentEvent extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.dispatch(fetchSingleEvent(id))
-      .then(fetchEvent);
+    this.props.dispatch(fetchSingleUpcomingEvent(id));
   }
 
   EventDetails(props) {
     const event = props.currentEvent;
-    console.log(event)
     return (
       <div className='single-event-home'>
         <h3>{event.eventName}</h3>

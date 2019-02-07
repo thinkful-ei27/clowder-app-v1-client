@@ -2,6 +2,7 @@ import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 import { SubmissionError } from 'redux-form';
 
+// Create An Event
 export const CREATE_EVENT = 'CREATE_EVENT';
 export const createEventSuccess = event => ({
   type: CREATE_EVENT,
@@ -34,14 +35,16 @@ export const createEvent = event => (dispatch, getState) => {
     });
 };
 
-export const FETCH_EVENTS = 'FETCH_EVENTS';
-export const fetchEvents = events => ({
-  type: FETCH_EVENTS,
+
+// FETCH All upcoming Events
+export const FETCH_UPCOMING_EVENTS = 'FETCH_UPCOMING_EVENTS';
+export const storeAllUpcomingEvents = events => ({
+  type: FETCH_UPCOMING_EVENTS,
   events
 });
 
 
-export const fetchUpcomingEvents = () => (dispatch, getState) => {
+export const fetchAllUpcomingEvents = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/upcoming`, {
     method: 'GET',
@@ -52,7 +55,7 @@ export const fetchUpcomingEvents = () => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then((events) => dispatch(fetchEvents(events)))
+    .then((events) => dispatch(storeAllUpcomingEvents(events)))
     .catch(err => {
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {
@@ -65,14 +68,16 @@ export const fetchUpcomingEvents = () => (dispatch, getState) => {
     });
 };
 
-export const FETCH_EVENT = 'FETCH_EVENT';
-export const fetchEvent = event => ({
-  type: FETCH_EVENT,
+
+// FETCH Single Upcoming Events
+export const FETCH_SINGLE_UPCOMING_EVENT = 'FETCH_SINGLE_UPCOMING_EVENT';
+export const storeSingleUpcomingEvent = event => ({
+  type: FETCH_SINGLE_UPCOMING_EVENT,
   event
 });
 
 
-export const fetchSingleEvent = (id) => (dispatch, getState) => {
+export const fetchSingleUpcomingEvent = id => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/upcoming/${id}`, {
     method: 'GET',
@@ -83,7 +88,7 @@ export const fetchSingleEvent = (id) => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then((event) => dispatch(fetchEvent(event)))
+    .then((event) => dispatch(storeSingleUpcomingEvent(event)))
     .catch(err => {
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {

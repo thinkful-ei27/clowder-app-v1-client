@@ -1,11 +1,11 @@
 import {
-  CREATE_EVENT, FETCH_EVENTS, FETCH_EVENT
+  CREATE_EVENT, FETCH_UPCOMING_EVENTS, FETCH_SINGLE_UPCOMING_EVENT
 } from '../actions/events';
 
 const initialState = {
   upcoming: [],
   past: [],
-  currentEvent: ''
+  currentEvent: null
   // formInitialValues: {
 
   // }
@@ -20,14 +20,15 @@ export default function eventReducer(state = initialState, action) {
     });
   }
 
-  if (action.type === FETCH_EVENTS) {
+  if (action.type === FETCH_UPCOMING_EVENTS) {
     events = action.events;
     return Object.assign({}, state, {
-      upcoming: events
+      upcoming: events,
+      currentEvent: null
     });
   }
 
-  if (action.type === FETCH_EVENT) {
+  if (action.type === FETCH_SINGLE_UPCOMING_EVENT) {
     event = action.event;
     return Object.assign({}, state, {
       currentEvent: event
