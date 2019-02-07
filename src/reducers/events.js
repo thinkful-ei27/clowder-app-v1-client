@@ -34,6 +34,7 @@ export default function eventReducer(state = initialState, action) {
 
   if (action.type === FETCH_SINGLE_UPCOMING_EVENT) {
     event = action.event;
+    console.log(event)
     return Object.assign({}, state, {
       currentEvent: event
     });
@@ -49,6 +50,7 @@ export default function eventReducer(state = initialState, action) {
 
   if (action.type === FETCH_SINGLE_PAST_EVENT) {
     event = action.event;
+    console.log(event)
     return Object.assign({}, state, {
       currentEvent: event
     });

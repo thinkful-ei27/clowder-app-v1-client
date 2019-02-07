@@ -1,27 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchSingleUpcomingEvent } from '../../actions/events';
+import { fetchSingleUpcomingEvent, fetchSinglePastEvent } from '../../actions/events';
 
 
 export class CurrentEvent extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.dispatch(fetchSingleUpcomingEvent(id));
+    const { fromWhere } = this.props.location.state;
+    console.log('hello', fromWhere)
+    if (fromWhere === 'upcoming') {
+      this.props.dispatch(fetchSingleUpcomingEvent(id));
+    } else if (fromWhere === 'past') {
+      this.props.dispatch(fetchSinglePastEvent(id));
+    }
   }
 
   EventDetails(props) {
     const event = props.currentEvent;
-    return (
-      <div className='single-event-home'>
-        <h3>{event.eventName}</h3>
-        <h4>Date:</h4> {event.date}
-        <h4>Time:</h4> {event.time}
-        <h4>Location:</h4> {event.location}
-        <h4>Description:</h4> {event.description}
-      </div>
-    );
+    if (!event) {
+      return <div>loading</div>;
+    } if (event) {
+
+      return (
+        <div className='single-event-home'>
+          <div className='event-info'>
+            <h3>{event.eventName}</h3>
+            <h4>Date:</h4> {event.date}
+            <h4>Time:</h4> {event.time}
+            <h4>Location:</h4> {event.location}
+            <h4>Description:</h4> {event.description}
+          </div>
+          <button
+            type='button'
+
+          >Delete Event
+          </button>
+        </div>
+      );
+    }
   }
 
   render() {

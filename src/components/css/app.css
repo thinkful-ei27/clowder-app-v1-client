@@ -3,7 +3,12 @@
   flex-wrap: wrap;
 }
 
-.header-bar, .dashboard, .landingpage  {
+.header-bar, 
+.dashboard, 
+.landingpage, 
+.single-event-home, 
+.upcoming-events, 
+.past-events {
   flex: 1 0 100%;
   margin: .25em;
 }

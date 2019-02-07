@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchAllUpcomingEvents, storeSingleUpcomingEvent } from '../../actions/events';
+import { fetchAllUpcomingEvents, fetchSingleUpcomingEvent } from '../../actions/events';
 import '../css/event-lists.css';
 import { Link } from 'react-router-dom';
 
@@ -16,8 +16,11 @@ export class UpcomingEvents extends React.Component {
       <li key={index}>
         <Link
           className="li-event"
-          to={{ pathname: `/events/upcoming/${event.id}` }}
-          onClick={() => this.props.dispatch(storeSingleUpcomingEvent(event.id))}
+          to={{
+            pathname: `/events/upcoming/${event.id}`,
+            state: { fromWhere: 'upcoming' }
+          }}
+        // onClick={() => this.props.dispatch(fetchSingleUpcomingEvent(event.id))}
         >
           {event.eventName}: {event.date} {event.time}
         </Link>

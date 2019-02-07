@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 
+import { refreshAuthToken } from '../actions/auth';
+import './css/app.css';
+
+import CreateEvent from './events/create-event';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
-import { refreshAuthToken } from '../actions/auth';
-import './css/app.css';
-import { CreateEvent } from './events/create-event';
 import UpcomingEvents from './events/upcoming';
 import PastEvents from './events/past';
 import CurrentEvent from './events/current';
@@ -51,8 +52,8 @@ export class App extends React.Component {
         <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />
         <Route className="upcoming-events" exact path="/events/upcoming" component={UpcomingEvents} />
         <Route className="past-events" exact path="/events/past" component={PastEvents} />
-        <Route className="current-event" exact path="/events/upcoming/:id" component={CurrentEvent} />
-        <Route className="current-event" exact path="/events/past/:id" component={CurrentEvent} />
+        <Route className="current-upcoming-event" exact path="/events/upcoming/:id" component={CurrentEvent} />
+        <Route className="current-past-event" exact path="/events/past/:id" component={CurrentEvent} />
       </div>
     );
   }

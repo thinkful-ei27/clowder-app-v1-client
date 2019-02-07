@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchAllPastEvents, storeSinglePastEvent } from '../../actions/events';
+import { fetchAllPastEvents, fetchSinglePastEvent } from '../../actions/events';
 import '../css/event-lists.css';
 import { Link } from 'react-router-dom';
 
@@ -16,8 +16,11 @@ export class PastEvents extends React.Component {
       <li key={index}>
         <Link
           className="li-event"
-          to={{ pathname: `/events/past/${event.id}` }}
-          onClick={() => this.props.dispatch(storeSinglePastEvent(event.id))}
+          to={{
+            pathname: `/events/past/${event.id}`,
+            state: { fromWhere: 'past' }
+          }}
+        // onClick={() => this.props.dispatch(fetchSinglePastEvent(event.id))}
         >
           {event.eventName}: {event.date} {event.time}
         </Link>

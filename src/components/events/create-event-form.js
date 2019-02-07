@@ -37,14 +37,14 @@ export class CreateEventForm extends React.Component {
 
           <label htmlFor="date">Date</label>
           <Field component={Input}
-            type="text"
+            type="date"
             name="date"
             validate={[date]}
           />
 
           <label htmlFor="time">Time</label>
           <Field component={Input}
-            type="text"
+            type="time"
             name="time"
           />
 
