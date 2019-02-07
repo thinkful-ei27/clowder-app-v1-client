@@ -2,18 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
 import { fetchEvent, fetchSingleEvent } from '../../actions/events';
-import '../css/event-lists.css';
+
 
 export class CurrentEvent extends React.Component {
+
   componentDidMount() {
-    this.props.dispatch(fetchSingleEvent())
+    const { id } = this.props.match.params;
+    this.props.dispatch(fetchSingleEvent(id))
       .then(fetchEvent);
   }
 
   EventDetails(props) {
-    const event = this.props.currentEvent;
+    const event = props.currentEvent;
+    console.log(event)
     return (
-      <p>{event}</p>
+      <div className='single-event-home'>
+        <h3>{event.eventName}</h3>
+        <h4>Date:</h4> {event.date}
+        <h4>Time:</h4> {event.time}
+        <h4>Location:</h4> {event.location}
+        <h4>Description:</h4> {event.description}
+      </div>
     );
   }
 

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 export class UpcomingEvents extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchUpcomingEvents())
-      .then(fetchEvents);
+      .then(fetchEvents());
   }
 
   EventsList(props) {
