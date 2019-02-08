@@ -5,7 +5,7 @@ import Input from '../input';
 import Textarea from '../textarea';
 import { createEvent } from '../../actions/events';
 import '../css/form.css';
-import { required, nonEmpty, isTrimmed, length, date } from '../../validators';
+import { required, nonEmpty, isTrimmed, length, date, time } from '../../validators';
 const viewingCodeLength = length({ min: 8, max: 72 });
 
 
@@ -54,6 +54,7 @@ export class CreateEventForm extends React.Component {
           <Field component={Input}
             type="time"
             name="time"
+            validate={[required, nonEmpty, time]}
           />
 
           <label htmlFor="location">Location</label>

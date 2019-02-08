@@ -25,7 +25,12 @@ export const matches = field => (value, allValues) =>
     : 'Does not match';
 export const date = value => {
   if (!/\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])*/.test(value)) {
-    return 'please enter a correct date!';
+    return 'please format your date correctly, e.g. 02/03/1989';
+  }
+};
+export const time = value => {
+  if (!/\d([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]*/.test(value)) {
+    return 'please format your time correctly, e.g. 07:21AM';
   }
 };
 

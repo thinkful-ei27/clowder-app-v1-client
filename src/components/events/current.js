@@ -15,7 +15,6 @@ export class CurrentEvent extends React.Component {
       this.props.dispatch(fetchSinglePastEvent(id));
     }
   }
-
   onClickDelete() {
     const { id } = this.props.match.params;
     const { fromWhere } = this.props.location.state;
@@ -27,19 +26,31 @@ export class CurrentEvent extends React.Component {
         .then(() => this.props.history.push('/events/past'));
     }
   }
+  formatTime(time) {
+    // Check correct time format and split into components
+    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+    if (time.length > 1) { // If time format correct
+      time = time.slice(1);  // Remove full string match value
+      time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+      time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(''); // return adjusted time or original string
+  }
 
   EventDetails(props) {
     const event = props.currentEvent;
     if (!event) {
       return <div>loading</div>;
     } if (event) {
-
+      const date = new Date(event.date);
+      const prettyDate = date.toDateString();
       return (
         <div className='single-event-home'>
           <div className='event-info'>
             <h3>{event.eventName}</h3>
-            <h4>Date:</h4> {event.date}
-            <h4>Time:</h4> {event.time}
+            <h4>Date:</h4> {prettyDate}
+            <h4>Time:</h4> {this.formatTime(event.time)}
             <h4>Location:</h4> {event.location}
             <h4>Description:</h4> {event.description}
           </div>
@@ -59,6 +70,8 @@ export class CurrentEvent extends React.Component {
     );
   }
 }
+
+
 
 const mapStateToProps = state => {
 
