@@ -7,7 +7,8 @@ import {
   DELETE_SINGLE_PAST_EVENT,
   DELETE_SINGLE_UPCOMING_EVENT,
   EDIT_SINGLE_PAST_EVENT,
-  EDIT_SINGLE_UPCOMING_EVENT
+  EDIT_SINGLE_UPCOMING_EVENT,
+  TOGGLE_EDITING
 } from '../actions/events';
 
 const initialState = {
@@ -95,6 +96,12 @@ export default function eventReducer(state = initialState, action) {
     return Object.assign({}, state, {
       currentEvent: event,
       isEditing: false
+    });
+  }
+
+  if (action.type === TOGGLE_EDITING) {
+    return Object.assign({}, state, {
+      isEditing: !state.isEditing
     });
   }
 

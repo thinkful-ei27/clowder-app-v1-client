@@ -1,38 +1,52 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import requiresLogin from '../requires-login';
 import Input from '../input';
 import Textarea from '../textarea';
-import { createEvent } from '../../actions/events';
+import { updateSingleUpcomingEvent, updateSinglePastEvent, toggleEditing } from '../../actions/events';
 import '../css/form.css';
 import { required, nonEmpty, isTrimmed, length, date, time } from '../../validators';
 const viewingCodeLength = length({ min: 8, max: 72 });
 
 
-export class CreateEventForm extends React.Component {
+export class EditEventForm extends React.Component {
+
+  // onComponentWillMount() {
+  //   this.props.initialize({
+  //     eventName: this.props.currentEvent.eventName,
+  //     date: this.props.currentEvent.date,
+  //     time: this.props.currentEvent.time,
+  //     viewingCode: this.props.currentEvent.viewingCode,
+  //     location: this.props.currentEvent.location,
+  //     description: this.props.currentEvent.description
+  //   }
+  //   );
+  // }
 
   onSubmit(values) {
     const { eventName, date, time, viewingCode, location, description } = values;
     const event = { eventName, date, time, viewingCode, location, description };
     const eventDate = new Date(event.date);
+    const { id } = this.props.params;
     if (eventDate > new Date()) {
       return this.props
-        .dispatch(createEvent(event))
-        // TODO return eventID in createEvent and go there
-        .then(() => this.props.history.push('/events/upcoming'));
+        .dispatch(updateSingleUpcomingEvent(id, event))
+        .then(() => this.props.toggleEditing());
     } else if (eventDate < new Date()) {
       return this.props
-        .dispatch(createEvent(event))
-        .then(() => this.props.history.push('/events/past'));
+        .dispatch(updateSinglePastEvent(id, event))
+        .then(() => this.props.toggleEditing());
     }
   }
 
   render() {
     return (
-      <div className="create-event-home">
-        <h3>Create an Event</h3>
+      <div className="edit-event-home">
+        <h3>edit an Event</h3>
         <form
-          className="create-event-form"
+          className="edit-event-form"
           onSubmit={this.props.handleSubmit(values =>
             this.onSubmit(values))}>
           <label htmlFor="eventName">Event Name</label>
@@ -80,7 +94,7 @@ export class CreateEventForm extends React.Component {
             <button
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
-              Create
+              edit
             </button>
             <Link className="link" to="/dashboard">Cancel</Link>
           </div>
@@ -90,9 +104,26 @@ export class CreateEventForm extends React.Component {
   }
 }
 
-export default withRouter(reduxForm({
 
-  form: 'create-event',
+const mapStateToProps = state => {
+  let idx = state.event.currentEvent,
+    event = idx !== null ? state.event.currentEvent[idx] : null;
+
+  return {
+    username: state.auth.currentUser.username,
+    name: state.auth.currentUser.fullName,
+    currentEvent: state.event.currentEvent,
+    isEditing: state.event.isEditing,
+    event,
+    initalValues: event
+  };
+};
+
+const connectedReduxFrom = reduxForm({
+  form: 'edit-event',
+  enableReinitialize: true,
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('create-event', Object.keys(errors)[0]))
-})(CreateEventForm));
+    dispatch(focus('edit-event', Object.keys(errors)[0]))
+})(EditEventForm);
+
+export default requiresLogin()(connect(mapStateToProps)(withRouter(connectedReduxFrom)));

@@ -7,8 +7,10 @@ import {
   deleteSinglePastEvent,
   deleteSingleUpcomingEvent,
   updateSingleUpcomingEvent,
-  updateSinglePastEvent
+  updateSinglePastEvent,
+  toggleEditing
 } from '../../actions/events';
+import EditEventForm from './edit-event-form';
 
 
 export class CurrentEvent extends React.Component {
@@ -48,7 +50,9 @@ export class CurrentEvent extends React.Component {
     }
     return time.join(''); // return adjusted time or original string
   }
-  editEventInfo() {
+  // THIS IS THE SUBMIT CALLBACK ONSUBMIT FOR THE SUBMIT EDIT EVENT
+  // (id, event) => this.editEventInfo(id, event)
+  editEventInfoSubmit() {
     const { id } = this.props.match.params;
     const { fromWhere } = this.props.location.state;
     const event = {};
@@ -60,6 +64,9 @@ export class CurrentEvent extends React.Component {
         .then(() => this.props.history.push('/events/past/' /* CHANGE THIS TO REFRESH?*/));
     }
   }
+  toggleEditing() {
+    return this.props.dispatch(toggleEditing());
+  }
 
   EventDetails(props) {
     const event = props.currentEvent;
@@ -68,27 +75,33 @@ export class CurrentEvent extends React.Component {
     } if (event) {
       const date = new Date(event.date);
       const prettyDate = date.toDateString();
-      return (
-        <div className='single-event-home'>
-          <div className='event-info'>
-            <h3>{event.eventName}</h3>
-            <h4>Date:</h4> {prettyDate}
-            <h4>Time:</h4> {this.formatTime(event.time)}
-            <h4>Location:</h4> {event.location}
-            <h4>Description:</h4> {event.description}
+      if (!this.props.isEditing) {
+        return (
+          <div className='single-event-home'>
+            <div className='event-info'>
+              <h3>{event.eventName}</h3>
+              <h4>Date:</h4> {prettyDate}
+              <h4>Time:</h4> {this.formatTime(event.time)}
+              <h4>Location:</h4> {event.location}
+              <h4>Description:</h4> {event.description}
+            </div>
+            <button
+              type='button'
+              onClick={id => this.onClickDelete(id)}
+            >Delete Event
+            </button>
+            <button
+              type='button'
+              onClick={() => this.toggleEditing()}
+            >Edit Event
+            </button>
           </div>
-          <button
-            type='button'
-            onClick={id => this.onClickDelete(id)}
-          >Delete Event
-          </button>
-          <button
-            type='button'
-            onClick={(id, event) => this.editEventInfo(id, event)}
-          >Edit Event
-          </button>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <EditEventForm />
+        );
+      }
     }
   }
 
@@ -106,7 +119,8 @@ const mapStateToProps = state => {
   return {
     username: state.auth.currentUser.username,
     name: state.auth.currentUser.fullName,
-    currentEvent: state.event.currentEvent
+    currentEvent: state.event.currentEvent,
+    isEditing: state.event.isEditing
   };
 };
 

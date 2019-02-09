@@ -276,3 +276,8 @@ export const updateSinglePastEvent = (id, event) => (dispatch, getState) => {
       }
     });
 };
+
+export const TOGGLE_EDITING = 'TOGGLE_EDITING';
+export const toggleEditing = () => ({
+  type: TOGGLE_EDITING,
+});
