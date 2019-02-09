@@ -8,7 +8,6 @@ export const createEventSuccess = event => ({
   type: CREATE_EVENT,
   event
 });
-
 export const createEvent = event => (dispatch, getState) => {
 
   const authToken = getState().auth.authToken;
@@ -41,8 +40,6 @@ export const storeAllUpcomingEvents = events => ({
   type: FETCH_UPCOMING_EVENTS,
   events
 });
-
-
 export const fetchAllUpcomingEvents = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/upcoming`, {
@@ -67,15 +64,12 @@ export const fetchAllUpcomingEvents = () => (dispatch, getState) => {
     });
 };
 
-
 // FETCH Single Upcoming Events
 export const FETCH_SINGLE_UPCOMING_EVENT = 'FETCH_SINGLE_UPCOMING_EVENT';
 export const storeSingleUpcomingEvent = event => ({
   type: FETCH_SINGLE_UPCOMING_EVENT,
   event
 });
-
-
 export const fetchSingleUpcomingEvent = id => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/upcoming/${id}`, {
@@ -106,8 +100,6 @@ export const storeAllPastEvents = events => ({
   type: FETCH_PAST_EVENTS,
   events
 });
-
-
 export const fetchAllPastEvents = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/past`, {
@@ -132,15 +124,12 @@ export const fetchAllPastEvents = () => (dispatch, getState) => {
     });
 };
 
-
 // FETCH Single Past Events
 export const FETCH_SINGLE_PAST_EVENT = 'FETCH_SINGLE_PAST_EVENT';
 export const storeSinglePastEvent = event => ({
   type: FETCH_SINGLE_PAST_EVENT,
   event
 });
-
-
 export const fetchSinglePastEvent = id => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/past/${id}`, {
@@ -165,12 +154,42 @@ export const fetchSinglePastEvent = id => (dispatch, getState) => {
     });
 };
 
+// DELETE Single UPCOMING Event
+export const DELETE_SINGLE_UPCOMING_EVENT = 'DELETE_SINGLE_UPCOMING_EVENT';
+export const removeUpcomingEvent = event => ({
+  type: DELETE_SINGLE_UPCOMING_EVENT,
+  event
+});
+export const deleteSingleUpcomingEvent = id => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/events/upcoming/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(() => dispatch(removeUpcomingEvent()))
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+};
+
+// DELETE Single PAST Event
 export const DELETE_SINGLE_PAST_EVENT = 'DELETE_SINGLE_PAST_EVENT';
 export const removePastEvent = event => ({
   type: DELETE_SINGLE_PAST_EVENT,
   event
 });
-
 export const deleteSinglePastEvent = id => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/past/${id}`, {
@@ -195,24 +214,57 @@ export const deleteSinglePastEvent = id => (dispatch, getState) => {
     });
 };
 
-export const DELETE_SINGLE_UPCOMING_EVENT = 'DELETE_SINGLE_UPCOMING_EVENT';
-export const removeUpcomingEvent = event => ({
-  type: DELETE_SINGLE_UPCOMING_EVENT,
+// EDIT Upcoming Event
+export const EDIT_SINGLE_UPCOMING_EVENT = 'EDIT_SINGLE_UPCOMING_EVENT';
+export const changeUpcomingEvent = event => ({
+  type: EDIT_SINGLE_UPCOMING_EVENT,
   event
 });
-
-export const deleteSingleUpcomingEvent = id => (dispatch, getState) => {
+export const updateSingleUpcomingEvent = (id, event) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/upcoming/${id}`, {
-    method: 'DELETE',
+    method: 'PUT',
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer ${authToken}`
-    }
+    },
+    body: JSON.stringify(event)
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(() => dispatch(removeUpcomingEvent()))
+    .then((event) => dispatch(changeUpcomingEvent(event)))
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+};
+
+// EDIT Past Event
+export const EDIT_SINGLE_PAST_EVENT = 'EDIT_SINGLE_PAST_EVENT';
+export const changePastEvent = event => ({
+  type: EDIT_SINGLE_PAST_EVENT,
+  event
+});
+export const updateSinglePastEvent = (id, event) => (dispatch, getState) => {
+  console.log(API_BASE_URL)
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/events/past/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(event)
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then((event) => dispatch(changePastEvent(event)))
     .catch(err => {
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {

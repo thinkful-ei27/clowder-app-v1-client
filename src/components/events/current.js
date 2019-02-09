@@ -1,10 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../requires-login';
-import { fetchSingleUpcomingEvent, fetchSinglePastEvent, deleteSinglePastEvent, deleteSingleUpcomingEvent } from '../../actions/events';
+import {
+  fetchSingleUpcomingEvent,
+  fetchSinglePastEvent,
+  deleteSinglePastEvent,
+  deleteSingleUpcomingEvent,
+  updateSingleUpcomingEvent,
+  updateSinglePastEvent
+} from '../../actions/events';
 
 
 export class CurrentEvent extends React.Component {
+
+
+  // TODO CHANGE FROMWHERE TO CHECK CURRENT URL????????????????????
+
 
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -37,6 +48,18 @@ export class CurrentEvent extends React.Component {
     }
     return time.join(''); // return adjusted time or original string
   }
+  editEventInfo() {
+    const { id } = this.props.match.params;
+    const { fromWhere } = this.props.location.state;
+    const event = {};
+    if (fromWhere === 'upcoming') {
+      return this.props.dispatch(updateSingleUpcomingEvent(id, event))
+        .then(() => this.props.history.push('/events/upcoming' /* CHANGE THIS TO REFRESH?*/));
+    } else if (fromWhere === 'past') {
+      return this.props.dispatch(updateSinglePastEvent(id, event))
+        .then(() => this.props.history.push('/events/past/' /* CHANGE THIS TO REFRESH?*/));
+    }
+  }
 
   EventDetails(props) {
     const event = props.currentEvent;
@@ -58,6 +81,11 @@ export class CurrentEvent extends React.Component {
             type='button'
             onClick={id => this.onClickDelete(id)}
           >Delete Event
+          </button>
+          <button
+            type='button'
+            onClick={(id, event) => this.editEventInfo(id, event)}
+          >Edit Event
           </button>
         </div>
       );

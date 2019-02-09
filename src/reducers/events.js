@@ -5,7 +5,9 @@ import {
   FETCH_PAST_EVENTS,
   FETCH_SINGLE_PAST_EVENT,
   DELETE_SINGLE_PAST_EVENT,
-  DELETE_SINGLE_UPCOMING_EVENT
+  DELETE_SINGLE_UPCOMING_EVENT,
+  EDIT_SINGLE_PAST_EVENT,
+  EDIT_SINGLE_UPCOMING_EVENT
 } from '../actions/events';
 
 const initialState = {
@@ -77,6 +79,22 @@ export default function eventReducer(state = initialState, action) {
     return Object.assign({}, state, {
       currentEvent: null,
       past: state.event.past.filter(item => item.id !== event.id)
+    });
+  }
+
+  if (action.type === EDIT_SINGLE_UPCOMING_EVENT) {
+    event = action.event;
+    return Object.assign({}, state, {
+      currentEvent: event,
+      isEditing: false
+    });
+  }
+
+  if (action.type === EDIT_SINGLE_PAST_EVENT) {
+    event = action.event;
+    return Object.assign({}, state, {
+      currentEvent: event,
+      isEditing: false
     });
   }
 
