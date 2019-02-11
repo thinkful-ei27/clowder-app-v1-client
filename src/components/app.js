@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter, Redirect } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import { refreshAuthToken } from '../actions/auth';
 import './css/app.css';
@@ -12,6 +12,7 @@ import Dashboard from './dashboard';
 import UpcomingEvents from './events/upcoming';
 import PastEvents from './events/past';
 import CurrentEvent from './events/current';
+import Invite from './events/invite';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -55,6 +56,7 @@ export class App extends React.Component {
         <Route className="past-events" exact path="/events/past" component={PastEvents} />
         <Route className="current-upcoming-event" exact path="/events/upcoming/:id" component={CurrentEvent} />
         <Route className="current-past-event" exact path="/events/past/:id" component={CurrentEvent} />
+        <Route className="invite" exact path="/invites/:id" component={Invite} />
       </div>
     );
   }

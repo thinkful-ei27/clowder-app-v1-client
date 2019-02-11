@@ -9,7 +9,7 @@ export const createEventSuccess = event => ({
   event
 });
 export const createEvent = event => (dispatch, getState) => {
-
+  console.log(event);
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events`, {
     method: 'POST',
@@ -21,7 +21,9 @@ export const createEvent = event => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then((event) => dispatch(createEventSuccess(event)))
+    .then((event) => {
+      dispatch(createEventSuccess(event));
+    })
     .catch(err => {
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {
@@ -33,6 +35,35 @@ export const createEvent = event => (dispatch, getState) => {
       }
     });
 };
+
+// FETCH Invite
+export const FETCH_INVITE = 'FETCH_INVITE';
+export const storeInvite = event => ({
+  type: FETCH_INVITE,
+  event
+});
+export const fetchSingleInvite = id => (dispatch) => {
+  return fetch(`${API_BASE_URL}/invites/${id}`, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then((event) => dispatch(storeInvite(event)))
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+};
+
 
 // FETCH All upcoming Events
 export const FETCH_UPCOMING_EVENTS = 'FETCH_UPCOMING_EVENTS';
@@ -221,6 +252,7 @@ export const changeUpcomingEvent = event => ({
   event
 });
 export const updateSingleUpcomingEvent = (id, event) => (dispatch, getState) => {
+  console.log('hello?')
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/upcoming/${id}`, {
     method: 'PUT',
@@ -234,6 +266,7 @@ export const updateSingleUpcomingEvent = (id, event) => (dispatch, getState) => 
     .then(res => res.json())
     .then((event) => dispatch(changeUpcomingEvent(event)))
     .catch(err => {
+      console.log(err)
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {
         return Promise.reject(

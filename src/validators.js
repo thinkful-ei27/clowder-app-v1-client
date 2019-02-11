@@ -5,7 +5,7 @@ export const isTrimmed = value => {
   if (typeof (value) === 'undefined') {
     return;
   }
-  value.trim() === value ? undefined : 'Cannot start or end with whitespace';
+  return value.trim() === value ? undefined : 'Cannot start or end with whitespace';
 };
 export const length = length => value => {
   if (typeof (value) === 'undefined') {

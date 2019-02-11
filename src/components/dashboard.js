@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { fetchProtectedData } from '../actions/protected-data';
 import './css/dashboard.css';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +18,7 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { currentUser } = state.auth;
+  // const { authToken } = state.auth;
   return {
     username: state.auth.currentUser.username,
     name: state.auth.currentUser.fullName,

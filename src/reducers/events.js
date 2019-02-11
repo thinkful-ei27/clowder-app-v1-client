@@ -8,7 +8,8 @@ import {
   DELETE_SINGLE_UPCOMING_EVENT,
   EDIT_SINGLE_PAST_EVENT,
   EDIT_SINGLE_UPCOMING_EVENT,
-  TOGGLE_EDITING
+  TOGGLE_EDITING,
+  FETCH_INVITE
 } from '../actions/events';
 
 const initialState = {
@@ -37,11 +38,19 @@ export default function eventReducer(state = initialState, action) {
     }
   }
 
+  if (action.type === FETCH_INVITE) {
+    event = action.event;
+    return Object.assign({}, state, {
+      currentEvent: event
+    });
+  }
+
   if (action.type === FETCH_UPCOMING_EVENTS) {
     events = action.events;
     return Object.assign({}, state, {
       upcoming: events,
-      currentEvent: null
+      currentEvent: null,
+      isEditing: false
     });
   }
 
@@ -56,7 +65,8 @@ export default function eventReducer(state = initialState, action) {
     events = action.events;
     return Object.assign({}, state, {
       past: events,
-      currentEvent: null
+      currentEvent: null,
+      isEditing: false
     });
   }
 

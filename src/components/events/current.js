@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import requiresLogin from '../requires-login';
 import {
   fetchSingleUpcomingEvent,
@@ -11,7 +12,6 @@ import {
   toggleEditing
 } from '../../actions/events';
 import EditEventForm from './edit-event-form';
-
 
 export class CurrentEvent extends React.Component {
 
@@ -84,6 +84,7 @@ export class CurrentEvent extends React.Component {
               <h4>Time:</h4> {this.formatTime(event.time)}
               <h4>Location:</h4> {event.location}
               <h4>Description:</h4> {event.description}
+              <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
             </div>
             <button
               type='button'
@@ -120,7 +121,8 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     name: state.auth.currentUser.fullName,
     currentEvent: state.event.currentEvent,
-    isEditing: state.event.isEditing
+    isEditing: state.event.isEditing,
+
   };
 };
 

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import { Link } from 'react-router-dom';
-import { stat } from 'fs';
 import './css/header-bar.css';
 
 export class HeaderBar extends React.Component {
@@ -25,7 +24,7 @@ export class HeaderBar extends React.Component {
       );
     }
     return (
-      <div className="header-bar" className="header-bar">
+      <div className="header-bar">
         {userSettings}
         <Link className="nav-item" to="/dashboard">Clowder</Link>
         {logOutLink}

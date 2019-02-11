@@ -5,15 +5,15 @@ import Input from '../input';
 import Textarea from '../textarea';
 import { createEvent } from '../../actions/events';
 import '../css/form.css';
-import { required, nonEmpty, isTrimmed, length, date, time } from '../../validators';
-const viewingCodeLength = length({ min: 8, max: 72 });
-
+import { required, nonEmpty, isTrimmed, date, time } from '../../validators'; // ++ length
+// const viewingCodeLength = length({ min: 8, max: 72 });
 
 export class CreateEventForm extends React.Component {
 
   onSubmit(values) {
-    const { eventName, date, time, viewingCode, location, description } = values;
-    const event = { eventName, date, time, viewingCode, location, description };
+    //TODO Add viewingCode security for shareable links
+    const { eventName, date, time, location, description } = values; // ++ viwingCode
+    const event = { eventName, date, time, location, description }; // ++ viwingCode
     const eventDate = new Date(event.date);
     if (eventDate > new Date()) {
       return this.props
@@ -63,13 +63,13 @@ export class CreateEventForm extends React.Component {
             validate={[required, nonEmpty, isTrimmed]}
           />
 
-          <label htmlFor="viewingCode">Viewing Code optional</label>
+          {/*<label htmlFor="viewingCode">Viewing Code optional</label>
           <Field component={Input}
             defaultValue=''
             type="text"
             name="viewingCode"
             validate={[viewingCodeLength, isTrimmed]}
-          />
+          />*/}
 
           <label htmlFor="description">Description (optional)</label>
           <Field component={Textarea}
