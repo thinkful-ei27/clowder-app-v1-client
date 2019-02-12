@@ -9,7 +9,6 @@ export const createEventSuccess = event => ({
   event
 });
 export const createEvent = event => (dispatch, getState) => {
-  console.log(event);
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events`, {
     method: 'POST',
@@ -252,7 +251,6 @@ export const changeUpcomingEvent = event => ({
   event
 });
 export const updateSingleUpcomingEvent = (id, event) => (dispatch, getState) => {
-  console.log('hello?')
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/upcoming/${id}`, {
     method: 'PUT',
@@ -266,7 +264,6 @@ export const updateSingleUpcomingEvent = (id, event) => (dispatch, getState) => 
     .then(res => res.json())
     .then((event) => dispatch(changeUpcomingEvent(event)))
     .catch(err => {
-      console.log(err)
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {
         return Promise.reject(

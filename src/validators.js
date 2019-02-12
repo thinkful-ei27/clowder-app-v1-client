@@ -25,7 +25,6 @@ export const matches = field => (value, allValues) =>
     : 'Does not match';
 
 export const matchesDirty = field => (value, allValues) => {
-  console.log('field: ', field, 'value: ', value, 'allValues: ', allValues)
   if (typeof (value) === 'undefined') {
     return;
   }

@@ -52,7 +52,7 @@ export class App extends React.Component {
         {/*<Redirect from="/events/" to="/dashboard" />*/}
         <Route className="landingpage" exact path="/" component={LandingPage} />
         <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
-        <Route className="editUser" exact path="/edit-user-settings" component={EditUserSettings} />
+        <Route className="editUser" exact path="/edit-user-settings/:id" component={EditUserSettings} />
         <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />
         <Route className="upcoming-events" exact path="/events/upcoming" component={UpcomingEvents} />
         <Route className="past-events" exact path="/events/past" component={PastEvents} />

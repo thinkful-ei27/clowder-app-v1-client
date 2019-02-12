@@ -15,10 +15,8 @@ import {
 const initialState = {
   upcoming: [],
   past: [],
-  currentEvent: null
-  // formInitialValues: {
-
-  // }
+  currentEvent: null,
+  isEditing: false
 };
 
 export default function eventReducer(state = initialState, action) {

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Field, reduxForm, focus } from 'redux-form';
-import { registerUser } from '../../actions/users';
+import { Field, reduxForm, focus, reset } from 'redux-form';
+import { editUser, wasSubmitted, toggleEditing } from '../../actions/users';
 import { login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Input from '../input';
 import '../css/form.css';
 import { required, nonEmpty, matchesDirty, length, isTrimmed } from '../../validators';
@@ -13,28 +14,33 @@ const matchesDirtyPassword = matchesDirty('password');
 
 export class EditUserSettingsForm extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { isSubmitted: false };
-  }
+  componentDidMount() {
 
+  }
 
   onSubmit(values) {
     const { username, password, fullName } = values;
     const user = { username, password, fullName };
-    return this.props
-      .dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(username, password)))
-      .then(() => this.setState({
-        isSubmitted: true
-      }));
+    if (!user.password) {
+      delete user.password;
+    }
+    if (user.username === this.props.initialValues.username) {
+      delete user.username;
+    }
+    const { id } = this.props.match.params;
+    if (user.password) {
+      return this.props
+        .dispatch(editUser(id, user))
+        .then(() => this.props.dispatch(login(username, password)))
+        .then(() => this.props.dispatch(toggleEditing()));
+    } else {
+      return this.props
+        .dispatch(editUser(id, user))
+        .then(() => this.props.dispatch(toggleEditing()));
+    }
   }
 
   render() {
-
-    if (this.props.loggedIn && this.state.isSubmitted) {
-      return <Redirect to="/dashboard" />;
-    }
 
     return (
       <div className="registration-home">
@@ -76,7 +82,11 @@ export class EditUserSettingsForm extends React.Component {
             disabled={this.props.pristine || this.props.submitting}>
             Save Changes
           </button>
-          <Link to="/dashboard">Cancel</Link>
+          <button
+            type='button'
+            onClick={() => this.props.dispatch(toggleEditing())}
+          >Cancel
+          </button>
         </form>
       </div>
     );
@@ -87,12 +97,14 @@ const mapStateToProps = state => {
   return {
     initialValues: state.auth.currentUser,
     loggedIn: state.auth.currentUser !== null,
+    wasSubmitted: state.auth.wasSubmitted,
   };
 };
 
-export default connect(mapStateToProps)(reduxForm({
+export default connect(mapStateToProps)(withRouter(reduxForm({
   form: 'registration',
+  enableReinitialize: true,
   onSubmitFail: (errors, dispatch) => {
     dispatch(focus('registration', Object.keys(errors)[0]));
   }
-})(EditUserSettingsForm));
+})(EditUserSettingsForm)));

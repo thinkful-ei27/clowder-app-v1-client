@@ -20,7 +20,7 @@ export class HeaderBar extends React.Component {
         <a className="nav-item" onClick={() => this.logOut()}>log out</a>
       );
       userSettings = (
-        <Link className="nav-item" to="/edit-user-settings">{this.props.currentUser.username}</Link>
+        <Link className="nav-item" to={`/edit-user-settings/${this.props.currentUser.userId}`}>{this.props.currentUser.username}</Link>
       );
     }
     return (
