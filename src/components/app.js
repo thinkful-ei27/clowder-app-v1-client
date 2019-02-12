@@ -7,8 +7,9 @@ import './css/app.css';
 
 import CreateEvent from './events/create-event';
 import HeaderBar from './header-bar';
-import LandingPage from './landing-page';
+import LandingPage from './users/landing-page';
 import Dashboard from './dashboard';
+import EditUserSettings from './users/edit-user-settings';
 import UpcomingEvents from './events/upcoming';
 import PastEvents from './events/past';
 import CurrentEvent from './events/current';
@@ -51,6 +52,7 @@ export class App extends React.Component {
         {/*<Redirect from="/events/" to="/dashboard" />*/}
         <Route className="landingpage" exact path="/" component={LandingPage} />
         <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
+        <Route className="editUser" exact path="/edit-user-settings" component={EditUserSettings} />
         <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />
         <Route className="upcoming-events" exact path="/events/upcoming" component={UpcomingEvents} />
         <Route className="past-events" exact path="/events/past" component={PastEvents} />

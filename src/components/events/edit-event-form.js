@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import requiresLogin from '../requires-login';
 import Input from '../input';
 import Textarea from '../textarea';

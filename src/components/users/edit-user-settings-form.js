@@ -1,32 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm, focus } from 'redux-form';
-import { registerUser } from '../actions/users';
-import { login } from '../actions/auth';
-import Input from './input';
-import './css/form.css';
-import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
+import { registerUser } from '../../actions/users';
+import { login } from '../../actions/auth';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import Input from '../input';
+import '../css/form.css';
+import { required, nonEmpty, matchesDirty, length, isTrimmed } from '../../validators';
 const passwordLength = length({ min: 8, max: 72 });
-const matchesPassword = matches('password');
+const matchesDirtyPassword = matchesDirty('password');
 
 export class EditUserSettingsForm extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isSubmitted: false };
+  }
+
+
   onSubmit(values) {
-    const { username, password, fullName, email } = values;
-    const user = { username, password, fullName, email };
+    const { username, password, fullName } = values;
+    const user = { username, password, fullName };
     return this.props
       .dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(username, password)));
+      .then(() => this.props.dispatch(login(username, password)))
+      .then(() => this.setState({
+        isSubmitted: true
+      }));
   }
 
   render() {
+
+    if (this.props.loggedIn && this.state.isSubmitted) {
+      return <Redirect to="/dashboard" />;
+    }
+
     return (
       <div className="registration-home">
         <h3>Change Your Settings</h3>
         <form
           className="registration-form"
           onSubmit={this.props.handleSubmit(values =>
-            this.onSubmit(values)
-          )}>
+            this.onSubmit(values))}>
           <label htmlFor="fullName">Full Name</label>
           <Field component={Input}
             type="text"
@@ -44,19 +60,21 @@ export class EditUserSettingsForm extends React.Component {
             component={Input}
             type="password"
             name="password"
-            validate={[required, passwordLength, isTrimmed]}
+            autocomplete="new-password"
+            validate={[passwordLength, isTrimmed]}
           />
           <label htmlFor="passwordConfirm">Confirm New password</label>
           <Field
             component={Input}
             type="password"
             name="passwordConfirm"
-            validate={[required, nonEmpty, matchesPassword]}
+            autocomplete="off"
+            validate={[matchesDirtyPassword, isTrimmed]}
           />
           <button
             type="submit"
             disabled={this.props.pristine || this.props.submitting}>
-            Save
+            Save Changes
           </button>
           <Link to="/dashboard">Cancel</Link>
         </form>
@@ -65,8 +83,16 @@ export class EditUserSettingsForm extends React.Component {
   }
 }
 
-export default reduxForm({
+const mapStateToProps = state => {
+  return {
+    initialValues: state.auth.currentUser,
+    loggedIn: state.auth.currentUser !== null,
+  };
+};
+
+export default connect(mapStateToProps)(reduxForm({
   form: 'registration',
-  onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('registration', Object.keys(errors)[0]))
-})(EditUserSettingsForm);
+  onSubmitFail: (errors, dispatch) => {
+    dispatch(focus('registration', Object.keys(errors)[0]));
+  }
+})(EditUserSettingsForm));

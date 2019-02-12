@@ -26,7 +26,7 @@ export class HeaderBar extends React.Component {
     return (
       <div className="header-bar">
         {userSettings}
-        <Link className="nav-item" to="/dashboard">Clowder</Link>
+        <Link className="nav-item" to="/dashboard">Home</Link>
         {logOutLink}
       </div>
     );

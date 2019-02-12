@@ -1,17 +1,17 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
-import { registerUser } from '../actions/users';
-import { login } from '../actions/auth';
-import Input from './input';
-import './css/form.css';
-import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
+import { registerUser } from '../../actions/users';
+import { login } from '../../actions/auth';
+import Input from '../input';
+import '../css/form.css';
+import { required, nonEmpty, matches, length, isTrimmed } from '../../validators';
 const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
   onSubmit(values) {
-    const { username, password, fullName, email } = values;
-    const user = { username, password, fullName, email };
+    const { username, password, fullName } = values;
+    const user = { username, password, fullName };
     return this.props
       .dispatch(registerUser(user))
       .then(() => this.props.dispatch(login(username, password)));
@@ -30,12 +30,14 @@ export class RegistrationForm extends React.Component {
           <Field component={Input}
             type="text"
             name="fullName"
+            autocomplete="name"
             validate={[required, nonEmpty, isTrimmed]} />
           <label htmlFor="username">Username</label>
           <Field
             component={Input}
             type="text"
             name="username"
+            autocomplete="username"
             validate={[required, nonEmpty, isTrimmed]}
           />
           <label htmlFor="password">Password</label>
@@ -43,6 +45,7 @@ export class RegistrationForm extends React.Component {
             component={Input}
             type="password"
             name="password"
+            autocomplete="new-password"
             validate={[required, passwordLength, isTrimmed]}
           />
           <label htmlFor="passwordConfirm">Confirm password</label>
@@ -50,6 +53,7 @@ export class RegistrationForm extends React.Component {
             component={Input}
             type="password"
             name="passwordConfirm"
+            autocomplete="off"
             validate={[required, nonEmpty, matchesPassword]}
           />
           <button

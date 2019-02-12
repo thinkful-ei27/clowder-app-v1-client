@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import RegisterForm from './registration-form';
-import LoginForm from './users/login-form';
+import LoginForm from './login-form';
 
 export function LandingPage(props) {
   // If we are logged in redirect straight to the user's dashboard
