@@ -4,6 +4,7 @@ import {
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_ERROR,
+  TOGGLE_ONBOARD
 } from '../actions/auth';
 
 import {
@@ -16,7 +17,8 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: null,
-  isEditing: false
+  isEditing: false,
+  displayOnboard: true
 };
 
 export default function reducer(state = initialState, action) {
@@ -59,6 +61,12 @@ export default function reducer(state = initialState, action) {
   if (action.type === TOGGLE_EDITING) {
     return Object.assign({}, state, {
       isEditing: !state.isEditing
+    });
+  }
+
+  if (action.type === TOGGLE_ONBOARD) {
+    return Object.assign({}, state, {
+      displayOnboard: !state.displayOnboard
     });
   }
   return state;

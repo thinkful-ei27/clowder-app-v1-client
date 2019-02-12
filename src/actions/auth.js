@@ -100,3 +100,8 @@ export const refreshAuthToken = () => (dispatch, getState) => {
       clearAuthToken(authToken);
     });
 };
+
+export const TOGGLE_ONBOARD = 'TOGGLE_ONBOARD';
+export const toggleOnboard = () => ({
+  type: TOGGLE_ONBOARD,
+});

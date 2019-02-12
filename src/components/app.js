@@ -7,13 +7,14 @@ import './css/app.css';
 
 import CreateEvent from './events/create-event';
 import HeaderBar from './header-bar';
-import LandingPage from './users/landing-page';
+import LogIn from './users/login';
 import Dashboard from './dashboard';
 import EditUserSettings from './users/edit-user-settings';
 import UpcomingEvents from './events/upcoming';
 import PastEvents from './events/past';
 import CurrentEvent from './events/current';
 import Invite from './events/invite';
+import LandingPage from './landing-page';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -49,8 +50,8 @@ export class App extends React.Component {
     return (
       <div className="app">
         <HeaderBar className="headerbar" />
-        {/*<Redirect from="/events/" to="/dashboard" />*/}
-        <Route className="landingpage" exact path="/" component={LandingPage} />
+        <Route className="landing-page" exact path="/" component={LandingPage} />
+        <Route className="login" exact path="/login" component={LogIn} />
         <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
         <Route className="editUser" exact path="/edit-user-settings/:id" component={EditUserSettings} />
         <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />
