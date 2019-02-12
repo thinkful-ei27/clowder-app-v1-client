@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import EditUserSettingsForm from './edit-user-settings-form';
 import { HeaderBar } from '../header-bar';
+import requiresLogin from '../requires-login';
 
 export function EditUserSettings(props) {
   // If we are logged in (which happens automatically when registration
@@ -22,4 +23,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(EditUserSettings);
+export default requiresLogin()(connect(mapStateToProps)(EditUserSettings));
