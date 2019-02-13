@@ -1,5 +1,6 @@
 ul {
   list-style: none;
+  padding-inline-start: 1em;
 }
 
 li {

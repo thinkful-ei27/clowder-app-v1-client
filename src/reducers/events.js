@@ -9,7 +9,8 @@ import {
   EDIT_SINGLE_PAST_EVENT,
   EDIT_SINGLE_UPCOMING_EVENT,
   TOGGLE_EDITING,
-  FETCH_INVITE
+  FETCH_INVITE,
+  CLEAR_EVENTS
 } from '../actions/events';
 
 const initialState = {
@@ -24,12 +25,24 @@ export default function eventReducer(state = initialState, action) {
   if (action.type === CREATE_EVENT) {
     event = action.event;
     if (event.date > new Date()) {
-      return Object.assign({}, state, {
-        upcoming: [...state.event.upcoming, event]
+      return state.upcoming.slice().sort((a, b) => {
+        let dateA = a.date;
+        let dateB = b.date;
+        if (dateA < dateB) {
+          return -1;
+        } if (dateA > dateB) {
+          return 1;
+        } return 0;
       });
     } else if (event.date < new Date()) {
-      return Object.assign({}, state, {
-        past: [...state.event.past, event]
+      return state.upcoming.slice().sort((a, b) => {
+        let dateA = a.date;
+        let dateB = b.date;
+        if (dateA < dateB) {
+          return -1;
+        } if (dateA > dateB) {
+          return 1;
+        } return 0;
       });
     } else {
       return Object.assign({}, state, {});
@@ -110,6 +123,15 @@ export default function eventReducer(state = initialState, action) {
   if (action.type === TOGGLE_EDITING) {
     return Object.assign({}, state, {
       isEditing: !state.isEditing
+    });
+  }
+
+  if (action.type === CLEAR_EVENTS) {
+    return Object.assign({}, state, {
+      currentEvent: null,
+      isEditing: false,
+      past: [],
+      upcoming: []
     });
   }
 

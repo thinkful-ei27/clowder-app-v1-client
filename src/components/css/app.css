@@ -2,12 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  
 }
 
 .main {
   margin: 0 .5em 0 .5em;
   color: #08302F;
+  padding-bottom: 20px;
 }
 
 .navbar, 

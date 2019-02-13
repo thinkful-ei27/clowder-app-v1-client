@@ -8,6 +8,16 @@ import { setAuthToken, refreshAuthToken } from './actions/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+// const appReducer = combineReducers({
+//   form: formReducer,
+//   auth: authReducer,
+//   event: eventReducer
+// });
+
+// const rootReducer = (state, action) => {
+//   return appReducer(state, action);
+// };
+
 const store = createStore(
   combineReducers({
     form: formReducer,

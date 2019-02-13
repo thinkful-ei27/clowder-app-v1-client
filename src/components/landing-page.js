@@ -30,8 +30,8 @@ export class LandingPage extends React.Component {
             Simplify your plans with Clowder.
             <br /><br />
             Signup by clicking below to give it a try!
-          </p>
-          <Link to="/login" >Signup or Login</Link>
+          </p><br />
+          <Link to="/login" >Signup</Link>
         </div>
       );
     }

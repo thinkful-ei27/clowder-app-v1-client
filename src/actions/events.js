@@ -310,3 +310,8 @@ export const TOGGLE_EDITING = 'TOGGLE_EDITING';
 export const toggleEditing = () => ({
   type: TOGGLE_EDITING,
 });
+
+export const CLEAR_EVENTS = 'CLEAR_EVENTS';
+export const clearEvents = () => ({
+  type: CLEAR_EVENTS,
+});

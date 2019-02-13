@@ -31,11 +31,13 @@ export class CurrentEvent extends React.Component {
                 onClick={() => this.toggleEditing()}
               >Edit User Info
               </button>
-              <button>
-                <Link to='/onboarding' >
+
+              <Link to='/onboarding' >
+                <button>
                   Show Instructions
-                </Link>
-              </button>
+                </button>
+              </Link>
+
             </div>
           </div>
         );
