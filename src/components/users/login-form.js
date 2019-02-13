@@ -7,7 +7,7 @@ import './../css/form.css';
 
 export class LoginForm extends React.Component {
   onSubmit(values) {
-    return this.props.dispatch(login(values.username, values.password));
+    return this.props.dispatch(login(values['login-username'], values['login-password']));
   }
 
   render() {
@@ -27,21 +27,21 @@ export class LoginForm extends React.Component {
             this.onSubmit(values)
           )}>
           {error}
-          <label htmlFor="username">Username</label>
+          <label htmlFor="login-username">Username</label>
           <Field
             component={Input}
             type="text"
-            name="username"
-            id="username"
+            name="login-username"
+            id="login-username"
             autocomplete="username"
             validate={[required, nonEmpty]}
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="login-password">Password</label>
           <Field
             component={Input}
             type="password"
-            name="password"
-            id="password"
+            name="login-password"
+            id="login-password"
             autocomplete="current-password"
             validate={[required, nonEmpty]}
           />

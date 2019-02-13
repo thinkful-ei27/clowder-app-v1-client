@@ -53,7 +53,7 @@ export class RegistrationForm extends React.Component {
             component={Input}
             type="password"
             name="passwordConfirm"
-            autocomplete="off"
+            autocomplete="new-password"
             validate={[required, nonEmpty, matchesPassword]}
           />
           <button
