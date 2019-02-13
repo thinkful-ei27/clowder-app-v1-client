@@ -28,7 +28,6 @@ export class CreateEventForm extends React.Component {
         .then(() => this.props.history.push('/events/past'));
     }
   }
-
   render() {
     return (
       <div className="create-event-home">
@@ -83,8 +82,8 @@ export class CreateEventForm extends React.Component {
               disabled={this.props.pristine || this.props.submitting}>
               Create
             </button>
-            <button>
-              <Link className="link" to="/dashboard">Cancel</Link>
+            <button type="button" onClick={() => this.props.history.push('/dashboard')}>
+              Cancel
             </button>
           </div>
         </form>

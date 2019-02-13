@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import EditUserSettingsForm from './edit-user-settings-form';
 import { toggleEditing } from '../../actions/users';
 import requiresLogin from '../requires-login';
@@ -22,21 +21,19 @@ export class CurrentEvent extends React.Component {
         return (
           <div className='user-info-home'>
             <div className='user-info'>
-              <h2>Name</h2> <p>{user.fullName}</p>
-              <h2>Username</h2> <p>{user.username}</p>
+              <h2 tabIndex='0' >Name</h2> <p tabIndex='0'>{user.fullName}</p>
+              <h2 tabIndex='0'>Username</h2> <p tabIndex='0'>{user.username}</p>
             </div>
             <div className='buttons'>
-              <button
+              <button tabIndex='0'
                 type='button'
                 onClick={() => this.toggleEditing()}
               >Edit User Info
               </button>
 
-              <Link to='/onboarding' >
-                <button>
-                  Show Instructions
-                </button>
-              </Link>
+              <button type="button" onClick={() => this.props.history.push('/onboarding')}>
+                Show Instructions
+              </button>
 
             </div>
           </div>

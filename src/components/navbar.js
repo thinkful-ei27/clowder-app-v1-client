@@ -19,7 +19,7 @@ export class NavBar extends React.Component {
     let userSettings;
     if (this.props.loggedIn) {
       logOutLink = (
-        <a className="nav-item" onClick={() => this.logOut()}>Log Out</a>
+        <button type="button" className="nav-item" onClick={() => this.logOut()}>Log Out</button>
       );
       userSettings = (
         <Link className="nav-item" to={`/edit-user-settings/${this.props.currentUser.userId}`}>{this.props.currentUser.username}</Link>
