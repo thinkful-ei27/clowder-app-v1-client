@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import requiresLogin from '../requires-login';
+import requiresLogin from '../utils/requires-login';
 import {
   fetchSingleUpcomingEvent,
   fetchSinglePastEvent,
@@ -12,7 +12,7 @@ import {
   toggleEditing
 } from '../../actions/events';
 import EditEventForm from './edit-event-form';
-import '../css/event-info.css';
+import '../../css/event-info.css';
 import moment from 'moment';
 
 export class CurrentEvent extends React.Component {

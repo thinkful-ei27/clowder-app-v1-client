@@ -2,11 +2,12 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
-import Input from '../input';
-import Textarea from '../textarea';
+import Input from '../utils/input';
+import Textarea from '../utils/textarea';
 import { createEvent } from '../../actions/events';
-import { required, nonEmpty, isTrimmed, date, time } from '../../validators'; // ++ length
-import '../css/form.css';
+import requiresLogin from '../utils/requires-login';
+import { required, nonEmpty, isTrimmed, date, time } from '../utils/validators'; // ++ length
+import '../../css/form.css';
 // const viewingCodeLength = length({ min: 8, max: 72 });
 
 export class CreateEventForm extends React.Component {
@@ -92,9 +93,9 @@ export class CreateEventForm extends React.Component {
   }
 }
 
-export default withRouter(reduxForm({
+export default requiresLogin()(withRouter(reduxForm({
 
   form: 'create-event',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('create-event', Object.keys(errors)[0]))
-})(CreateEventForm));
+})(CreateEventForm)));

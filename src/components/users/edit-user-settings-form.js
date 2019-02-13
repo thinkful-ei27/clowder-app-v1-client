@@ -4,10 +4,10 @@ import { editUser, toggleEditing } from '../../actions/users';
 import { login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import requiresLogin from '../requires-login';
-import Input from '../input';
-import '../css/form.css';
-import { required, nonEmpty, matchesDirty, length, isTrimmed } from '../../validators';
+import requiresLogin from '../utils/requires-login';
+import Input from '../utils/input';
+import '../../css/form.css';
+import { required, nonEmpty, matchesDirty, length, isTrimmed } from '../utils/validators';
 const passwordLength = length({ min: 8, max: 72 });
 const matchesDirtyPassword = matchesDirty('password');
 

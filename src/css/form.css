@@ -19,14 +19,6 @@ textarea {
   min-height: 10em;
 }
 
-/* button {
-  font-size: 1.25em;
-  text-decoration: underline;
-  color: #08302F;
-  background-color: #F8EEE7;
-  border: none;
-} */
-
 .buttons {
   display: flex;
   align-items: center;
@@ -37,8 +29,6 @@ textarea {
   text-decoration: underline;
 }
 
-
-
 .single-event-home,
 .registration-home,
 .create-event-home,
@@ -47,14 +37,23 @@ textarea {
   flex-wrap: wrap;  
 }
 
-button {
+/* button {
   font-size: 1.25em;
   text-decoration: underline;
   color: #08302F;
   background-color: #F8EEE7;
+  border: none;
+} */
+
+button {
+  font-size: 1.25em;
+  text-decoration: underline;
+  color: #F8EEE7;
+  background-color: #7F4145;
   transition: all 0.5s;
   position: relative;
 }
+
 button::before {
   content: '';
   position: absolute;

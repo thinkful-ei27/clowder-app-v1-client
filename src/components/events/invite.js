@@ -5,7 +5,7 @@ import {
   fetchSingleInvite
 } from '../../actions/events';
 import { Link } from 'react-router-dom';
-import '../css/event-info.css';
+import '../../css/event-info.css';
 
 export class Invite extends React.Component {
 
