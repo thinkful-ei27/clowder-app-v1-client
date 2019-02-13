@@ -2,13 +2,13 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import requiresLogin from '../requires-login';
-import Input from '../input';
-import Textarea from '../textarea';
+import requiresLogin from '../utils/requires-login';
+import Input from '../utils/input';
+import Textarea from '../utils/textarea';
 import moment from 'moment';
 import { updateSingleUpcomingEvent, updateSinglePastEvent, toggleEditing } from '../../actions/events';
-import { required, nonEmpty, isTrimmed, date, time } from '../../validators'; // ++ length
-import '../css/form.css';
+import { required, nonEmpty, isTrimmed, date, time } from '../utils/validators'; // ++ length
+import '../../css/form.css';
 // const viewingCodeLength = length({ min: 8, max: 72 });
 
 function onSubmit(values, dispatch, formProps) {

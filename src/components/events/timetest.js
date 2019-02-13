@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from '../requires-login';
+import requiresLogin from '../utils/requires-login';
 import '../css/event-info.css';
 import moment from 'moment';
 

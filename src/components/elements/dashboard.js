@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
-import './css/dashboard.css';
+import requiresLogin from '../utils/requires-login';
+import '../../css/dashboard.css';
 import { Link, Redirect } from 'react-router-dom';
 
 export class Dashboard extends React.Component {

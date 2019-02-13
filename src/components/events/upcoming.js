@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from '../requires-login';
+import requiresLogin from '../utils/requires-login';
 import { fetchAllUpcomingEvents } from '../../actions/events';
-import '../css/event-lists.css';
+import '../../css/event-lists.css';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 

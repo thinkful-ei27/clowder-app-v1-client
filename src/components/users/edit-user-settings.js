@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import EditUserSettingsForm from './edit-user-settings-form';
 import { toggleEditing } from '../../actions/users';
-import requiresLogin from '../requires-login';
-import '../css/event-info.css';
+import requiresLogin from '../utils/requires-login';
+import '../../css/event-info.css';
 
 export class CurrentEvent extends React.Component {
 

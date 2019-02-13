@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearAuth } from '../actions/auth';
-import { clearAuthToken } from '../local-storage';
-import './css/header.css';
+import { clearAuth } from '../../actions/auth';
+import { clearAuthToken } from '../../actions/local-storage';
+import '../../css/header.css';
 
 export class Header extends React.Component {
   logOut() {

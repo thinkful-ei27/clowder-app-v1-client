@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import requiresLogin from './requires-login';
+import requiresLogin from '../utils/requires-login';
 
 export class Onboarding extends React.Component {
   // If we are logged in redirect straight to the user's dashboard

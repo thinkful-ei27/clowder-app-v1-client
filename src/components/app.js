@@ -3,19 +3,18 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import { refreshAuthToken } from '../actions/auth';
 import CreateEvent from './events/create-event';
-import NavBar from './navbar';
+import NavBar from './elements/navbar';
 import LogIn from './users/login';
-import Dashboard from './dashboard';
+import Dashboard from './elements/dashboard';
 import EditUserSettings from './users/edit-user-settings';
 import UpcomingEvents from './events/upcoming';
 import PastEvents from './events/past';
 import CurrentEvent from './events/current';
 import Invite from './events/invite';
-import LandingPage from './landing-page';
-import Onboarding from './onboarding';
-import Header from './header';
-import './css/app.css';
-import { TimeTest } from './events/timetest';
+import LandingPage from './elements/landing-page';
+import Onboarding from './elements/onboarding';
+import Header from './elements/header';
+import '../css/app.css';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -50,7 +49,6 @@ export class App extends React.Component {
         <Header className="header" />
         <NavBar className="navbar" />
         <div className="main">
-          <Route className="timetest" exact path="/timetest" component={TimeTest} />
           <Route className="landing-page" exact path="/" component={LandingPage} />
           <Route className="login" exact path="/login" component={LogIn} />
           <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
