@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import {
   fetchSingleInvite
 } from '../../actions/events';
 import { Link } from 'react-router-dom';
+import '../css/event-info.css';
 
 export class Invite extends React.Component {
 
@@ -28,16 +30,16 @@ export class Invite extends React.Component {
     if (!event) {
       return <div>loading</div>;
     } if (event) {
-      const date = new Date(event.date);
-      const prettyDate = date.toDateString();
+      const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
+      const prettyTime = moment(event.dateAndTime).format('hh:mm a');
       return (
         <div className='single-event-home'>
           <div className='event-info'>
             <h3>{event.eventName}</h3>
-            <h4>Date:</h4> {prettyDate}
-            <h4>Time:</h4> {this.formatTime(event.time)}
-            <h4>Location:</h4> {event.location}
-            <h4>Description:</h4> {event.description}
+            <h4>Date:</h4> <p>{prettyDate}</p>
+            <h4>Time:</h4> <p>{prettyTime}</p>
+            <h4>Location:</h4> <p>{event.location}</p>
+            <h4>Description:</h4> <p>{event.description}</p>
           </div>
           <Link to={'/dashboard'}>Make a Clowder Account!</Link>
         </div>
