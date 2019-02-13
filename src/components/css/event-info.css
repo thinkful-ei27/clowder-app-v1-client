@@ -1,0 +1,17 @@
+h4, p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+}
+
+p, Link {
+  margin: .08em 1em .5em 0;
+}
+
+.buttons, Link {
+  display: flex;
+  margin: 1em 0 0 0; 
+  justify-content: space-around;
+  font-size: 1em;
+  
+}

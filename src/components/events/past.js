@@ -39,15 +39,18 @@ export class PastEvents extends React.Component {
             state: { fromWhere: 'past' }
           }}
         >
-          {event.eventName} on {this.formatDate(event.date)} at {this.formatTime(event.time)}
+          » {event.eventName} on {this.formatDate(event.date)} at {this.formatTime(event.time)}
         </Link>
       </li >
     ));
 
     return (
-      <ul className="past-events" id="past-events">
-        {events}
-      </ul>
+      <div className="past-events-home">
+        <h3>Past Events</h3>
+        <ul className="past-events" id="past-events">
+          {events}
+        </ul>
+      </div>
     );
   }
 

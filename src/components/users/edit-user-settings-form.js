@@ -42,7 +42,7 @@ export class EditUserSettingsForm extends React.Component {
 
     return (
       <div className="registration-home">
-        <h3>Change Your Settings</h3>
+
         <form
           className="registration-form"
           onSubmit={this.props.handleSubmit(values =>
@@ -75,16 +75,18 @@ export class EditUserSettingsForm extends React.Component {
             autocomplete="off"
             validate={[matchesDirtyPassword, isTrimmed]}
           />
-          <button
-            type="submit"
-            disabled={this.props.pristine || this.props.submitting}>
-            Save Changes
-          </button>
-          <button
-            type='button'
-            onClick={() => this.props.dispatch(toggleEditing())}
-          >Cancel
-          </button>
+          <div className="buttons">
+            <button
+              type="submit"
+              disabled={this.props.pristine || this.props.submitting}>
+              Save Changes
+            </button>
+            <button
+              type='button'
+              onClick={() => this.props.dispatch(toggleEditing())}
+            >Cancel
+            </button>
+          </div>
         </form>
       </div>
     );

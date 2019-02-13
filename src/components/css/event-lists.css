@@ -4,4 +4,10 @@ ul {
 
 li {
   text-decoration: underline;
+  font-size: 1em;
+  padding-bottom: .5em;
+}
+
+a {
+  color: #08302F;
 }

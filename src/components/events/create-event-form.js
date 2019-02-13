@@ -30,7 +30,6 @@ export class CreateEventForm extends React.Component {
   render() {
     return (
       <div className="create-event-home">
-        <h3>Create an Event</h3>
         <form
           className="create-event-form"
           onSubmit={this.props.handleSubmit(values =>
@@ -82,7 +81,9 @@ export class CreateEventForm extends React.Component {
               disabled={this.props.pristine || this.props.submitting}>
               Create
             </button>
-            <Link className="link" to="/dashboard">Cancel</Link>
+            <button>
+              <Link className="link" to="/dashboard">Cancel</Link>
+            </button>
           </div>
         </form>
       </div>

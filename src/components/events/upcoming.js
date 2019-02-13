@@ -38,15 +38,18 @@ export class UpcomingEvents extends React.Component {
             state: { fromWhere: 'upcoming' }
           }}
         >
-          {event.eventName} on {this.formatDate(event.date)} at {this.formatTime(event.time)}
+          » {event.eventName} on {this.formatDate(event.date)} at {this.formatTime(event.time)}
         </Link>
       </li >
     ));
 
     return (
-      <ul className="upcoming-events" id="upcoming-events">
-        {events}
-      </ul>
+      <div className="upcoming-events-home">
+        <h3>Upcoming Events</h3>
+        <ul className="upcoming-events" id="upcoming-events">
+          {events}
+        </ul>
+      </div>
     );
   }
 

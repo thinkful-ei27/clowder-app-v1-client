@@ -12,6 +12,7 @@ import {
   toggleEditing
 } from '../../actions/events';
 import EditEventForm from './edit-event-form';
+import '../css/event-info.css';
 
 export class CurrentEvent extends React.Component {
 
@@ -58,7 +59,7 @@ export class CurrentEvent extends React.Component {
     const event = {};
     if (fromWhere === 'upcoming') {
       return this.props.dispatch(updateSingleUpcomingEvent(id, event))
-        .then(() => this.props.history.push('/events/upcoming' /* CHANGE THIS TO REFRESH?*/));
+        .then(() => this.props.history.push('/events/upcoming/{id}' /* CHANGE THIS TO REFRESH?*/));
     } else if (fromWhere === 'past') {
       return this.props.dispatch(updateSinglePastEvent(id, event))
         .then(() => this.props.history.push('/events/past/' /* CHANGE THIS TO REFRESH?*/));
@@ -80,22 +81,24 @@ export class CurrentEvent extends React.Component {
           <div className='single-event-home'>
             <div className='event-info'>
               <h3>{event.eventName}</h3>
-              <h4>Date:</h4> {prettyDate}
-              <h4>Time:</h4> {this.formatTime(event.time)}
-              <h4>Location:</h4> {event.location}
-              <h4>Description:</h4> {event.description}
+              <h4>Date:</h4> <p>{prettyDate}</p>
+              <h4>Time:</h4> <p>{this.formatTime(event.time)}</p>
+              <h4>Location:</h4> <p>{event.location}</p>
+              <h4>Description:</h4> <p>{event.description}</p>
               <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
             </div>
-            <button
-              type='button'
-              onClick={id => this.onClickDelete(id)}
-            >Delete Event
-            </button>
-            <button
-              type='button'
-              onClick={() => this.toggleEditing()}
-            >Edit Event
-            </button>
+            <div className="buttons">
+              <button
+                type='button'
+                onClick={id => this.onClickDelete(id)}
+              >Delete Event
+              </button>
+              <button
+                type='button'
+                onClick={() => this.toggleEditing()}
+              >Edit Event
+              </button>
+            </div>
           </div>
         );
       } else {

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import EditUserSettingsForm from './edit-user-settings-form';
 import { toggleEditing } from '../../actions/users';
 import requiresLogin from '../requires-login';
+import '../css/event-info.css';
 
 export class CurrentEvent extends React.Component {
 
@@ -21,24 +22,29 @@ export class CurrentEvent extends React.Component {
         return (
           <div className='user-info-home'>
             <div className='user-info'>
-              <h4>Name</h4> {user.fullName}
-              <h4>Username</h4> {user.username}
+              <h4>Name</h4> <p>{user.fullName}</p>
+              <h4>Username</h4> <p>{user.username}</p>
             </div>
             <div className='buttons'>
               <button
                 type='button'
                 onClick={() => this.toggleEditing()}
-              >Edit Info/Change Password
+              >Edit User Info
               </button>
-              <Link to='/onboarding' >
-                Show Instructions
-              </Link>
+              <button>
+                <Link to='/onboarding' >
+                  Show Instructions
+                </Link>
+              </button>
             </div>
           </div>
         );
       } else {
         return (
-          <EditUserSettingsForm />
+          <div className="edit-user-home">
+            <h3>Change Your Settings</h3>
+            <EditUserSettingsForm />
+          </div>
         );
       }
     }

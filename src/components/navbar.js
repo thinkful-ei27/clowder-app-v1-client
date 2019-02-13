@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import { Link } from 'react-router-dom';
-import './css/header-bar.css';
+import './css/navbar.css';
 
-export class HeaderBar extends React.Component {
+export class NavBar extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
@@ -17,14 +17,14 @@ export class HeaderBar extends React.Component {
     let userSettings;
     if (this.props.loggedIn) {
       logOutLink = (
-        <a className="nav-item" onClick={() => this.logOut()}>log out</a>
+        <a className="nav-item" onClick={() => this.logOut()}>Log Out</a>
       );
       userSettings = (
         <Link className="nav-item" to={`/edit-user-settings/${this.props.currentUser.userId}`}>{this.props.currentUser.username}</Link>
       );
     }
     return (
-      <div className="header-bar">
+      <div className="navbar">
         {userSettings}
         <Link className="nav-item" to="/dashboard">Home</Link>
         {logOutLink}
@@ -38,4 +38,4 @@ const mapStateToProps = state => ({
   currentUser: state.auth.currentUser
 });
 
-export default connect(mapStateToProps)(HeaderBar);
+export default connect(mapStateToProps)(NavBar);

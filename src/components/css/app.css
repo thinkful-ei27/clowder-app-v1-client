@@ -1,14 +1,41 @@
 .app {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  
 }
 
-.header-bar, 
+.main {
+  margin: 0 .5em 0 .5em;
+  color: #08302F;
+}
+
+.navbar, 
 .dashboard, 
 .landingpage, 
 .single-event-home, 
 .upcoming-events, 
-.past-events {
+.past-events,
+.create-event-home
+{
   flex: 1 0 100%;
-  margin: .25em;
+}
+
+.header {
+  background:#6D7993;
+  color: whitesmoke;
+  flex: 1 0 100%;
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  border-radius: 0 0 15px 15px
+}
+
+h3 {
+  margin-block-start: unset;
+  margin-block-end: unset;
+  justify-content: center;
+  text-align: center;
+  margin: .5em 0 .5em 0;
+
 }

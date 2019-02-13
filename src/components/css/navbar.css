@@ -1,17 +1,18 @@
-.header-bar {
+.navbar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid grey;
   flex-direction: row;
   flex: 1;
-  padding-bottom: .5em;
+  padding: .25em 0 .25em 0;
+  margin: 0 .5em 1em .5em;
 }
 
 
 
 .nav-item {
-  color: black;
+  color: #08302F;
   text-decoration: underline;
 }

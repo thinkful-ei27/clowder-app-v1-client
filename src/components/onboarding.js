@@ -27,13 +27,13 @@ export class Onboarding extends React.Component {
           details (e.g. bring an appetizer to share) but you can also leave this blank if you'd like.
           <br /><br />
           Once you create an event you will be redirected to that event's main page which includes all
-          the info you provided as well as a unique shareable link, something like this:
+          the info you provided as well as a unique shareable link, something like this:<br />
           <a target="_blank" rel="noopener noreferrer"
             href="https://clowderv1.herokuapp.com/invites/5c636df2c23b7a00170ef4da">
-            https://clowderv1.herokuapp.com/invites/5c636df2c23b7a00170ef4da</a>.
-        This is your link to share with anyone you want to see the details of the event. They will
-        not however, be able to edit any details or delete this event or see any of your personal info
-        from this public URL.
+            https://clowderv1.herokuapp.com/invites/5c636df2c23b7a00170ef4da</a>.<br /><br />
+          This is your link to share with anyone you want to see the details of the event. They will
+          not however, be able to edit any details or delete this event or see any of your personal info
+          from this public URL.
           <br />
           Lastly, on your event pages you can edit the info of an event or delete it peramently using the
           buttons at the bottom of the page.
@@ -46,7 +46,8 @@ export class Onboarding extends React.Component {
           you want to change any of your info (username, password or heck even your name, Mr. McLovin ;)
           you can do it by clicking on your username in the upperleft of the nav bar at the top of the page.
         </p>
-        <Link to="/dashboard" >Got it!</Link>
+        <br />
+        <Link classname="gotit" to="/dashboard" >Got it!</Link>
       </div>
     );
   }

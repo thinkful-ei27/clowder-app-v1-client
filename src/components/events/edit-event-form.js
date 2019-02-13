@@ -30,7 +30,7 @@ export class EditEventForm extends React.Component {
   render() {
     return (
       <div className="edit-event-home">
-        <h3>edit an Event</h3>
+        <h3>Edit an Event</h3>
         <form
           className="edit-event-form"
           onSubmit={this.props.handleSubmit}>
@@ -79,7 +79,7 @@ export class EditEventForm extends React.Component {
             <button
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
-              edit
+              Edit
             </button>
             <button
               type='button'

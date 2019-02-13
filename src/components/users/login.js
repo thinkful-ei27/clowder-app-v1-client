@@ -11,9 +11,10 @@ export function LogIn(props) {
   }
 
   return (
-    <div className="home">
+    <div className="login">
+      <h3>Signup</h3>
       <RegisterForm />
-      <h3>Or</h3>
+      <h3>Login</h3>
       <LoginForm />
     </div>
   );

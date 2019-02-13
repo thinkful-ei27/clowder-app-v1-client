@@ -20,7 +20,6 @@ export class RegistrationForm extends React.Component {
   render() {
     return (
       <div className="registration-home">
-        <h3>Signup</h3>
         <form
           className="registration-form"
           onSubmit={this.props.handleSubmit(values =>
@@ -59,7 +58,7 @@ export class RegistrationForm extends React.Component {
           <button
             type="submit"
             disabled={this.props.pristine || this.props.submitting}>
-            Sign Up
+            Signup
           </button>
         </form>
       </div>
