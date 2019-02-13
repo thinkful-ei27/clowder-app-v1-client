@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Field, reduxForm, focus, reset } from 'redux-form';
-import { editUser, wasSubmitted, toggleEditing } from '../../actions/users';
+import { Field, reduxForm, focus } from 'redux-form';
+import { editUser, toggleEditing } from '../../actions/users';
 import { login } from '../../actions/auth';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import Input from '../input';
 import '../css/form.css';

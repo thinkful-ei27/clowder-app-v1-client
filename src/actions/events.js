@@ -282,7 +282,6 @@ export const changePastEvent = event => ({
   event
 });
 export const updateSinglePastEvent = (id, event) => (dispatch, getState) => {
-  console.log(API_BASE_URL)
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/events/past/${id}`, {
     method: 'PUT',

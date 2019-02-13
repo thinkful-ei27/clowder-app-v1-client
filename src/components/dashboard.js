@@ -2,23 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import './css/dashboard.css';
-import { Link } from 'react-router-dom';
-import { toggleOnboard } from '../actions/auth';
+import { Link, Redirect } from 'react-router-dom';
 
 export class Dashboard extends React.Component {
 
+  componentWillMount() {
+    this.onboarded = localStorage.getItem('onboarded');
+  }
+
+  componentDidMount() {
+    localStorage.setItem('onboarded', true);
+  }
+
   render() {
-    if (this.props.displayOnboard) {
-      return (
-        <div className="onboard">
-          <p>Onboarding to go here</p>
-          <button
-            type='button'
-            onClick={() => this.props.dispatch(toggleOnboard())}
-          >Hide
-          </button>
-        </div>
-      );
+    if (!this.onboarded) {
+      return <Redirect to="/onboarding" />;
     } else {
       return (
         <div className="dashboard">
@@ -36,7 +34,6 @@ const mapStateToProps = state => {
   return {
     username: state.auth.currentUser.username,
     name: state.auth.currentUser.fullName,
-    displayOnboard: state.auth.displayOnboard
   };
 };
 

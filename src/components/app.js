@@ -15,6 +15,7 @@ import PastEvents from './events/past';
 import CurrentEvent from './events/current';
 import Invite from './events/invite';
 import LandingPage from './landing-page';
+import Onboarding from './onboarding';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -60,6 +61,7 @@ export class App extends React.Component {
         <Route className="current-upcoming-event" exact path="/events/upcoming/:id" component={CurrentEvent} />
         <Route className="current-past-event" exact path="/events/past/:id" component={CurrentEvent} />
         <Route className="invite" exact path="/invites/:id" component={Invite} />
+        <Route className="onboarding" exact path="/onboarding" component={Onboarding} />
       </div>
     );
   }

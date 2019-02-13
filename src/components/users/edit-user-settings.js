@@ -1,17 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import EditUserSettingsForm from './edit-user-settings-form';
-import { toggleEditing, editUserSuccess } from '../../actions/users';
+import { toggleEditing } from '../../actions/users';
 import requiresLogin from '../requires-login';
 
 export class CurrentEvent extends React.Component {
-  // If we are logged in (which happens automatically when registration
-  // is successful) redirect to the user's dashboard
 
-  // componentDidMount() {
-  //   this.props.dispatch(editUserSuccess(this.props.currentUser));
-  // }
 
   toggleEditing() {
     return this.props.dispatch(toggleEditing());
@@ -29,11 +24,16 @@ export class CurrentEvent extends React.Component {
               <h4>Name</h4> {user.fullName}
               <h4>Username</h4> {user.username}
             </div>
-            <button
-              type='button'
-              onClick={() => this.toggleEditing()}
-            >Edit Info/Change Password
-            </button>
+            <div className='buttons'>
+              <button
+                type='button'
+                onClick={() => this.toggleEditing()}
+              >Edit Info/Change Password
+              </button>
+              <Link to='/onboarding' >
+                Show Instructions
+              </Link>
+            </div>
           </div>
         );
       } else {
