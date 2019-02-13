@@ -30,35 +30,32 @@ export class EditEventForm extends React.Component {
   render() {
     return (
       <div className="edit-event-home">
-        <h3>Edit an Event</h3>
+        <h2>Edit an Event</h2>
         <form
           className="edit-event-form"
           onSubmit={this.props.handleSubmit}>
-          <label htmlFor="eventName">Event Name</label>
           <Field component={Input}
             type="text"
             name="eventName"
+            label="eventName"
             validate={[required, nonEmpty, isTrimmed]}
           />
-
-          <label htmlFor="date">Date</label>
           <Field component={Input}
             type="date"
             name="date"
+            label="date"
             validate={[date]}
           />
-
-          <label htmlFor="time">Time</label>
           <Field component={Input}
             type="time"
             name="time"
+            label="time"
             validate={[required, nonEmpty, time]}
           />
-
-          <label htmlFor="location">Location</label>
           <Field component={Input}
             type="text"
             name="location"
+            label="location"
             validate={[required, nonEmpty, isTrimmed]}
           />
 

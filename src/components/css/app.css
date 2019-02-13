@@ -22,7 +22,7 @@
 }
 
 .header {
-  background:#6D7993;
+  background:#6A7590;
   color: whitesmoke;
   flex: 1 0 100%;
   display: inline-flex;
@@ -31,11 +31,11 @@
   border-radius: 0 0 15px 15px
 }
 
-h3 {
+h2 {
   margin-block-start: unset;
   margin-block-end: unset;
   justify-content: center;
   text-align: center;
   margin: .5em 0 .5em 0;
-
+  text-decoration: underline;
 }

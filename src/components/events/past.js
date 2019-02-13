@@ -37,7 +37,7 @@ export class PastEvents extends React.Component {
 
     return (
       <div className="past-events-home">
-        <h3>Past Events</h3>
+        <h2>Past Events</h2>
         <ul className="past-events" id="past-events">
           {events}
         </ul>

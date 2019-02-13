@@ -22,8 +22,8 @@ export class CurrentEvent extends React.Component {
         return (
           <div className='user-info-home'>
             <div className='user-info'>
-              <h4>Name</h4> <p>{user.fullName}</p>
-              <h4>Username</h4> <p>{user.username}</p>
+              <h2>Name</h2> <p>{user.fullName}</p>
+              <h2>Username</h2> <p>{user.username}</p>
             </div>
             <div className='buttons'>
               <button
@@ -44,7 +44,7 @@ export class CurrentEvent extends React.Component {
       } else {
         return (
           <div className="edit-user-home">
-            <h3>Change Your Settings</h3>
+            <h2>Change Your Settings</h2>
             <EditUserSettingsForm />
           </div>
         );

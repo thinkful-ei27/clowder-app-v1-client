@@ -71,12 +71,12 @@ export class CurrentEvent extends React.Component {
       return (
         <div className='single-event-home'>
           <div className='event-info'>
-            <h3>{event.eventName}</h3>
-            <h4>Date:</h4> <p>{prettyDate}</p>
-            <h4>Time:</h4> <p>{prettyTime}</p>
-            <h4>Location:</h4> <p>{event.location}</p>
-            <h4>Description:</h4> <p>{event.description}</p>
-            <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
+            <h2>{event.eventName}</h2>
+            <h3>Date:</h3> <p>{prettyDate}</p>
+            <h3>Time:</h3> <p>{prettyTime}</p>
+            <h3>Location:</h3> <p>{event.location}</p>
+            <h3>Description:</h3> <p>{event.description}</p>
+            <h3>Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
           </div>
           <div className="buttons">
             <button
@@ -99,11 +99,11 @@ export class CurrentEvent extends React.Component {
       return (
         <div className='single-event-home'>
           <div className='event-info'>
-            <h3>{event.eventName}</h3>
-            <h4>Date:</h4> <p>{prettyDate}</p>
-            <h4>Time:</h4> <p>{prettyTime}</p>
-            <h4>Location:</h4> <p>{event.location}</p>
-            <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
+            <h2>{event.eventName}</h2>
+            <h3>Date:</h3> <p>{prettyDate}</p>
+            <h3>Time:</h3> <p>{prettyTime}</p>
+            <h3>Location:</h3> <p>{event.location}</p>
+            <h3>Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
           </div>
           <div className="buttons">
             <button

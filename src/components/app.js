@@ -15,7 +15,7 @@ import LandingPage from './landing-page';
 import Onboarding from './onboarding';
 import Header from './header';
 import './css/app.css';
-import { TimeTest } from './events/timetest';
+
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -47,10 +47,9 @@ export class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header className="header" />
-        <NavBar className="navbar" />
+        <Header className="header" role="banner" />
+        <NavBar className="navbar" role="navigation" />
         <div className="main">
-          <Route className="timetest" exact path="/timetest" component={TimeTest} />
           <Route className="landing-page" exact path="/" component={LandingPage} />
           <Route className="login" exact path="/login" component={LogIn} />
           <Route className="dashboard" exact path="/dashboard" component={Dashboard} />

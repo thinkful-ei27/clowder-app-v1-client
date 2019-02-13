@@ -8,7 +8,7 @@ export function CreateEvent(props) {
 
   return (
     <div className="create-event-home">
-      <h3>Create an Event</h3>
+      <h2>Create an Event</h2>
       <CreateEventForm />
     </div>
   );
