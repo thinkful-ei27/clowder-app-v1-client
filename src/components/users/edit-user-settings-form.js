@@ -4,7 +4,7 @@ import { editUser, toggleEditing } from '../../actions/users';
 import { login } from '../../actions/auth';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import requiresLogin from './requires-login';
+import requiresLogin from '../requires-login';
 import Input from '../input';
 import '../css/form.css';
 import { required, nonEmpty, matchesDirty, length, isTrimmed } from '../../validators';

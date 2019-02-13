@@ -64,39 +64,65 @@ export class CurrentEvent extends React.Component {
     const event = props.currentEvent;
     if (!event) {
       return <div>loading</div>;
-    } if (event) {
+    } if (event && event.description && !this.props.isEditing) {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
       const prettyTime = moment(event.dateAndTime).format('hh:mm a');
-      if (!this.props.isEditing) {
-        return (
-          <div className='single-event-home'>
-            <div className='event-info'>
-              <h3>{event.eventName}</h3>
-              <h4>Date:</h4> <p>{prettyDate}</p>
-              <h4>Time:</h4> <p>{prettyTime}</p>
-              <h4>Location:</h4> <p>{event.location}</p>
-              <h4>Description:</h4> <p>{event.description}</p>
-              <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
-            </div>
-            <div className="buttons">
-              <button
-                type='button'
-                onClick={id => this.onClickDelete(id)}
-              >Delete Event
-              </button>
-              <button
-                type='button'
-                onClick={() => this.toggleEditing()}
-              >Edit Event
-              </button>
-            </div>
+
+      return (
+        <div className='single-event-home'>
+          <div className='event-info'>
+            <h3>{event.eventName}</h3>
+            <h4>Date:</h4> <p>{prettyDate}</p>
+            <h4>Time:</h4> <p>{prettyTime}</p>
+            <h4>Location:</h4> <p>{event.location}</p>
+            <h4>Description:</h4> <p>{event.description}</p>
+            <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
           </div>
-        );
-      } else {
-        return (
-          <EditEventForm />
-        );
-      }
+          <div className="buttons">
+            <button
+              type='button'
+              onClick={id => this.onClickDelete(id)}
+            >Delete Event
+            </button>
+            <button
+              type='button'
+              onClick={() => this.toggleEditing()}
+            >Edit Event
+            </button>
+          </div>
+        </div>
+      );
+    } else if (event && !event.description && !this.props.isEditing) {
+      const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
+      const prettyTime = moment(event.dateAndTime).format('hh:mm a');
+
+      return (
+        <div className='single-event-home'>
+          <div className='event-info'>
+            <h3>{event.eventName}</h3>
+            <h4>Date:</h4> <p>{prettyDate}</p>
+            <h4>Time:</h4> <p>{prettyTime}</p>
+            <h4>Location:</h4> <p>{event.location}</p>
+            <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
+          </div>
+          <div className="buttons">
+            <button
+              type='button'
+              onClick={id => this.onClickDelete(id)}
+            >Delete Event
+            </button>
+            <button
+              type='button'
+              onClick={() => this.toggleEditing()}
+            >Edit Event
+            </button>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <EditEventForm />
+      );
     }
   }
 

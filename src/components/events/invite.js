@@ -29,7 +29,8 @@ export class Invite extends React.Component {
     const event = props.currentEvent;
     if (!event) {
       return <div>loading</div>;
-    } if (event) {
+    }
+    if (event && event.description) {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
       const prettyTime = moment(event.dateAndTime).format('hh:mm a');
       return (
@@ -40,6 +41,21 @@ export class Invite extends React.Component {
             <h4>Time:</h4> <p>{prettyTime}</p>
             <h4>Location:</h4> <p>{event.location}</p>
             <h4>Description:</h4> <p>{event.description}</p>
+          </div>
+          <Link to={'/dashboard'}>Make a Clowder Account!</Link>
+        </div>
+      );
+    }
+    if (event && !event.description) {
+      const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
+      const prettyTime = moment(event.dateAndTime).format('hh:mm a');
+      return (
+        <div className='single-event-home'>
+          <div className='event-info'>
+            <h3>{event.eventName}</h3>
+            <h4>Date:</h4> <p>{prettyDate}</p>
+            <h4>Time:</h4> <p>{prettyTime}</p>
+            <h4>Location:</h4> <p>{event.location}</p>
           </div>
           <Link to={'/dashboard'}>Make a Clowder Account!</Link>
         </div>
