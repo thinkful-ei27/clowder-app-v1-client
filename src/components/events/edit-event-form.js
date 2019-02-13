@@ -5,27 +5,27 @@ import { withRouter } from 'react-router-dom';
 import requiresLogin from '../requires-login';
 import Input from '../input';
 import Textarea from '../textarea';
+import moment from 'moment';
 import { updateSingleUpcomingEvent, updateSinglePastEvent, toggleEditing } from '../../actions/events';
-import '../css/form.css';
 import { required, nonEmpty, isTrimmed, date, time } from '../../validators'; // ++ length
+import '../css/form.css';
 // const viewingCodeLength = length({ min: 8, max: 72 });
 
 function onSubmit(values, dispatch, formProps) {
-  const { eventName, date, time, viewingCode, location, description } = values;
-  const event = { eventName, date, time, viewingCode, location, description };
-  const eventDate = new Date(event.date);
+  const { eventName, date, time, location, description } = values; // ++ viwingCode
+  const dateAndTime = moment(date).add({ hours: time.slice(0, 2), minutes: values.time.slice(3, 5) }).format();
+  const event = { eventName, dateAndTime, location, description }; // ++ viwingCode
+  const currentDate = moment().format();
   const { id } = formProps.match.params;
-  let now = Date.now();
-  if (eventDate > now) {
+  if (dateAndTime > currentDate) {
     return dispatch(updateSingleUpcomingEvent(id, event))
       .then(() => toggleEditing());
-  } else if (eventDate < now) {
+  } else if (dateAndTime < currentDate) {
     return dispatch(updateSinglePastEvent(id, event))
       .then(() => toggleEditing());
   }
 }
 export class EditEventForm extends React.Component {
-
 
   render() {
     return (
@@ -101,7 +101,9 @@ const mapStateToProps = state => {
     currentEvent: state.event.currentEvent,
     isEditing: state.event.isEditing,
     initialValues: Object.assign({}, state.event.currentEvent, {
-      date: new Date(state.event.currentEvent.date).toISOString()
+      date: moment(state.event.currentEvent.dateAndTime).format('YYYY-MM-DD'),
+      time: moment(state.event.currentEvent.dateAndTime).format('hh:mm'),
+
     })
   };
 };

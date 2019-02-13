@@ -13,6 +13,7 @@ import {
 } from '../../actions/events';
 import EditEventForm from './edit-event-form';
 import '../css/event-info.css';
+import moment from 'moment';
 
 export class CurrentEvent extends React.Component {
 
@@ -74,15 +75,15 @@ export class CurrentEvent extends React.Component {
     if (!event) {
       return <div>loading</div>;
     } if (event) {
-      const date = new Date(event.date);
-      const prettyDate = date.toDateString();
+      const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
+      const prettyTime = moment(event.dateAndTime).format('hh:mm a');
       if (!this.props.isEditing) {
         return (
           <div className='single-event-home'>
             <div className='event-info'>
               <h3>{event.eventName}</h3>
               <h4>Date:</h4> <p>{prettyDate}</p>
-              <h4>Time:</h4> <p>{this.formatTime(event.time)}</p>
+              <h4>Time:</h4> <p>{prettyTime}</p>
               <h4>Location:</h4> <p>{event.location}</p>
               <h4>Description:</h4> <p>{event.description}</p>
               <h4>Shareable Link:</h4> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>

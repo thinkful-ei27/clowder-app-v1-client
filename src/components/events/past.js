@@ -4,28 +4,19 @@ import requiresLogin from '../requires-login';
 import { fetchAllPastEvents } from '../../actions/events';
 import '../css/event-lists.css';
 import { Link } from 'react-router-dom';
-
+import moment from 'moment';
 
 export class PastEvents extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchAllPastEvents());
   }
 
-  formatDate(date) {
-    const newDate = new Date(date);
-    return newDate.toDateString().split(' ').slice(1).join(' ');
+  formatDate(dateAndTime) {
+    return moment(dateAndTime).format('ddd MMMM Do YYYY');
   }
 
-  formatTime(time) {
-    // Check correct time format and split into components
-    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-
-    if (time.length > 1) { // If time format correct
-      time = time.slice(1);  // Remove full string match value
-      time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
-      time[0] = +time[0] % 12 || 12; // Adjust hours
-    }
-    return time.join(''); // return adjusted time or original string
+  formatTime(dateAndTime) {
+    return moment(dateAndTime).format('hh:mm A');
   }
 
   EventsList(props) {
@@ -39,7 +30,7 @@ export class PastEvents extends React.Component {
             state: { fromWhere: 'past' }
           }}
         >
-          » {event.eventName} on {this.formatDate(event.date)} at {this.formatTime(event.time)}
+          » {event.eventName} on {this.formatDate(event.dateAndTime)} at {this.formatTime(event.dateAndTime)}
         </Link>
       </li >
     ));

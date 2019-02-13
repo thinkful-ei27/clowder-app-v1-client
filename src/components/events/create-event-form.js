@@ -1,11 +1,12 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { Link, withRouter } from 'react-router-dom';
+import moment from 'moment';
 import Input from '../input';
 import Textarea from '../textarea';
 import { createEvent } from '../../actions/events';
-import '../css/form.css';
 import { required, nonEmpty, isTrimmed, date, time } from '../../validators'; // ++ length
+import '../css/form.css';
 // const viewingCodeLength = length({ min: 8, max: 72 });
 
 export class CreateEventForm extends React.Component {
@@ -13,14 +14,15 @@ export class CreateEventForm extends React.Component {
   onSubmit(values) {
     //TODO Add viewingCode security for shareable links
     const { eventName, date, time, location, description } = values; // ++ viwingCode
-    const event = { eventName, date, time, location, description }; // ++ viwingCode
-    const eventDate = new Date(event.date);
-    if (eventDate > new Date()) {
+    const dateAndTime = moment(date).add({ hours: time.slice(0, 2), minutes: values.time.slice(3, 5) }).format();
+    const event = { eventName, dateAndTime, location, description }; // ++ viwingCode
+    const currentDate = moment().format();
+    if (dateAndTime > currentDate) {
       return this.props
         .dispatch(createEvent(event))
         // TODO return eventID in createEvent and go there
         .then(() => this.props.history.push('/events/upcoming'));
-    } else if (eventDate < new Date()) {
+    } else if (dateAndTime < currentDate) {
       return this.props
         .dispatch(createEvent(event))
         .then(() => this.props.history.push('/events/past'));
