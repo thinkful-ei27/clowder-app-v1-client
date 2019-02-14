@@ -45,9 +45,8 @@ textarea {
   border: none;
 } */
 
-button {
+form button {
   font-size: 1.25em;
-
   color: #F8EEE7;
   background-color: #7F4145;
   transition: all 0.5s;
