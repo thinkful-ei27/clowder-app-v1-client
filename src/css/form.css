@@ -25,8 +25,8 @@ textarea {
 }
 
 .link {
-  color: #08302F;
-  text-decoration: underline;
+  color: #F8EEE7;
+  text-decoration: none;
 }
 
 .single-event-home,
@@ -47,7 +47,7 @@ textarea {
 
 button {
   font-size: 1.25em;
-  text-decoration: underline;
+
   color: #F8EEE7;
   background-color: #7F4145;
   transition: all 0.5s;
