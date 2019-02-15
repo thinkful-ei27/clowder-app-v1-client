@@ -1,12 +1,12 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  
+  justify-items: center;
 }
 
 .dash-item {
   margin: .25em;
-  flex: 1;
+  flex: 0 1;
   font-size: 1.3em; 
   color: #08302F;
 }

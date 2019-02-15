@@ -7,6 +7,7 @@ body {
 
 #root {
   display: flex;
+  
 }
 
 .app {
@@ -15,3 +16,6 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+p, li, a {
+  font-size: 1.2em;
+}

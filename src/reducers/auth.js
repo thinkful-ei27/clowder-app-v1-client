@@ -9,7 +9,8 @@ import {
 
 import {
   EDIT_USER,
-  TOGGLE_EDITING
+  TOGGLE_EDITING,
+  CANCEL_EDITING
 } from '../actions/users';
 
 const initialState = {
@@ -61,6 +62,12 @@ export default function reducer(state = initialState, action) {
   if (action.type === TOGGLE_EDITING) {
     return Object.assign({}, state, {
       isEditing: !state.isEditing
+    });
+  }
+  
+  if (action.type === CANCEL_EDITING) {
+    return Object.assign({}, state, {
+      isEditing: false
     });
   }
 

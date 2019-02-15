@@ -50,7 +50,7 @@ export class RegistrationForm extends React.Component {
             validate={[required, passwordLength, isTrimmed]}
           />
           <Field
-            label="passwordConfirm"
+            label="Confirm Password"
             component={Input}
             type="password"
             name="passwordConfirm"

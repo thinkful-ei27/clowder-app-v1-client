@@ -37,25 +37,25 @@ export class EditEventForm extends React.Component {
           <Field component={Input}
             type="text"
             name="eventName"
-            label="eventName"
+            label="Event Name"
             validate={[required, nonEmpty, isTrimmed]}
           />
           <Field component={Input}
             type="date"
             name="date"
-            label="date"
+            label="Date"
             validate={[date]}
           />
           <Field component={Input}
             type="time"
             name="time"
-            label="time"
+            label="Time"
             validate={[required, nonEmpty, time]}
           />
           <Field component={Input}
             type="text"
             name="location"
-            label="location"
+            label="Location"
             validate={[required, nonEmpty, isTrimmed]}
           />
 
@@ -70,7 +70,7 @@ export class EditEventForm extends React.Component {
           <label htmlFor="description">Description (optional)</label>
           <Field component={Textarea}
             type="text"
-            name="description" />
+            name="Description" />
 
           <div className="buttons">
             <button

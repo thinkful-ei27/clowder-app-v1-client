@@ -61,3 +61,8 @@ export const TOGGLE_EDITING = 'TOGGLE_EDITING';
 export const toggleEditing = () => ({
   type: TOGGLE_EDITING,
 });
+
+export const CANCEL_EDITING = 'CANCEL_EDITING';
+export const cancelEditing = () => ({
+  type: CANCEL_EDITING,
+});

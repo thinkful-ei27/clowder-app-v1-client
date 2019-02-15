@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from '../utils/requires-login';
-
 import CreateEventForm from './create-event-form';
 
 export function CreateEvent(props) {

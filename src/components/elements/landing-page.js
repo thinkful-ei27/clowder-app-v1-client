@@ -19,7 +19,7 @@ export class LandingPage extends React.Component {
       return <Redirect to="/login" />;
     } else {
       return (
-        <div className="home" >
+        <div className="landingpage" >
           <p>
             Welcome to Clowder! Your one stop shop for creating, planning and sharing events.
             Corralling friends and family can sometimes feel like herding
@@ -31,7 +31,7 @@ export class LandingPage extends React.Component {
             <br /><br />
             Signup by clicking below to give it a try!
           </p><br />
-          <Link to="/login" >Signup</Link>
+          <Link className="signup" to="/login" >Signup</Link>
         </div>
       );
     }

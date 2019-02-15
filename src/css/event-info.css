@@ -11,8 +11,11 @@ h3, p {
   text-decoration: underline;
 }
 
-.event-info {
+.event-info,
+.user-info {
   flex: 1 0 100%;
+  justify-content: center;
+  justify-items: center;
   
 }
 

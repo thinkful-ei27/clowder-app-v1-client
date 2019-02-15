@@ -20,6 +20,7 @@ export class EditUserSettingsForm extends React.Component {
   onSubmit(values) {
     const { username, password, fullName } = values;
     const user = { username, password, fullName };
+    user.username = user.username.toLowerCase();
     if (!user.password) {
       delete user.password;
     }

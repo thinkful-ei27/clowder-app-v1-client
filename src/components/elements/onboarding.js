@@ -47,7 +47,7 @@ export class Onboarding extends React.Component {
           you can do it by clicking on your username in the upperleft of the nav bar at the top of the page.
         </p>
         <br />
-        <Link classname="gotit" to="/dashboard" >Got it!</Link>
+        <Link className="gotit" to="/dashboard" >Got it!</Link>
       </div>
     );
   }

@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EditUserSettingsForm from './edit-user-settings-form';
-import { toggleEditing } from '../../actions/users';
+import { toggleEditing, cancelEditing } from '../../actions/users';
 import requiresLogin from '../utils/requires-login';
 import '../../css/event-info.css';
 
 export class CurrentEvent extends React.Component {
 
+
+  componentWillUnmount() {
+    return this.props.dispatch(cancelEditing())
+  }
 
   toggleEditing() {
     return this.props.dispatch(toggleEditing());
@@ -20,6 +24,7 @@ export class CurrentEvent extends React.Component {
       if (!this.props.isEditing) {
         return (
           <div className='user-info-home'>
+          <h2>User Info</h2>
             <div className='user-info'>
               <h2 tabIndex='0' >Name</h2> <p tabIndex='0'>{user.fullName}</p>
               <h2 tabIndex='0'>Username</h2> <p tabIndex='0'>{user.username}</p>
@@ -32,7 +37,7 @@ export class CurrentEvent extends React.Component {
               </button>
 
               <button type="button" onClick={() => this.props.history.push('/onboarding')}>
-                Show Instructions
+                Show App Help
               </button>
 
             </div>

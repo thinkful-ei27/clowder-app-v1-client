@@ -15,15 +15,24 @@
   padding-bottom: 20px;
 } */
 
-.navbar, 
+
 .dashboard, 
 .landingpage, 
 .single-event-home, 
 .upcoming-events, 
 .past-events,
-.create-event-home
+.create-event-home,
+.onboarding,
+.user-info-home,
+.login
 {
-  flex: 1 0 100%;
+  flex: 1 1 100%;
+  padding: 0 3em 0 3em;
+}
+
+.main {
+  width: 920px;
+  margin: 0 auto;
 }
 
 .header {
@@ -43,4 +52,9 @@ h2 {
   text-align: center;
   margin: .5em 0 .5em 0;
   text-decoration: underline;
+}
+
+
+.gotit, .signup {
+  font-size: 1.5em;
 }
