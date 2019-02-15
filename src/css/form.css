@@ -39,6 +39,10 @@ textarea {
   justify-content: center;
 }
 
+.edit-user-form-home,
+.edit-event-home {
+  padding: 0 3em 0 3em;}
+
 /* button {
   font-size: 1.25em;
   text-decoration: underline;
@@ -49,11 +53,16 @@ textarea {
 
 button {
   font-size: 1.25em;
-
   color: #F8EEE7;
   background-color: #7F4145;
   transition: all 0.5s;
   position: relative;
+}
+
+button:disabled {
+  color: grey;
+  background-color: #F8EEE7;
+
 }
 
 button::before {

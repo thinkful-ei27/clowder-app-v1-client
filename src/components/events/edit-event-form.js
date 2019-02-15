@@ -66,17 +66,16 @@ export class EditEventForm extends React.Component {
             name="viewingCode"
             validate={[viewingCodeLength, isTrimmed]}
           />*/}
-
-          <label htmlFor="description">Description (optional)</label>
           <Field component={Textarea}
+            label="Description"
             type="text"
-            name="Description" />
+            name="description" />
 
           <div className="buttons">
             <button
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
-              Edit
+              Save
             </button>
             <button
               type='button'

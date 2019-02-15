@@ -43,8 +43,7 @@ export class EditUserSettingsForm extends React.Component {
   render() {
 
     return (
-      <div className="registration-home">
-
+      <div className="edit-user-form-home">
         <form
           className="registration-form"
           onSubmit={this.props.handleSubmit(values =>
