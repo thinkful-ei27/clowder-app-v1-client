@@ -29,8 +29,8 @@ export class Onboarding extends React.Component {
           Once you create an event you will be redirected to that event's main page which includes all
           the info you provided as well as a unique shareable link, something like this:<br />
           <a target="_blank" rel="noopener noreferrer"
-            href="https://clowderv1.herokuapp.com/invites/5c636df2c23b7a00170ef4da">
-            https://clowderv1.herokuapp.com/invites/5c636df2c23b7a00170ef4da</a>.<br /><br />
+            href="https://clowderv1.herokuapp.com/invites/5c66ef7d0d673f0017c11e4a">
+            https://clowderv1.herokuapp.com/invites/5c66ef7d0d673f0017c11e4a</a>.<br /><br />
           This is your link to share with anyone you want to see the details of the event. They will
           not however, be able to edit any details or delete this event or see any of your personal info
           from this public URL.
