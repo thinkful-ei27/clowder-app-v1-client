@@ -10,25 +10,25 @@ You can find the backend code files [**here**](https://github.com/thinkful-ei27/
 
 Screenshots of the app in the wild:
 
-##Dashboard
+### Dashboard
 ![Dashboard](/images/Dashboard.png)
 
-##Create an Event
+### Create an Event
 ![CreateEvent Page](/images/CreateEvent.png)
 
-##Upcoming Events
+### Upcoming Events
 ![List of Upcoming Events](/images/Upcoming.png)
 
-##Past Events
+### Past Events
 ![List of Past Events](/images/Past.png)
 
-##Event Info
+### Event Info
 ![Event Info Page](/images/Event.png)
 
-##Public Invite
+### Public Invite
 ![Public Invite Page](/images/Invite.png)
 
-##User Info
+### User Info
 ![User Info Page](/images/UserInfo.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
