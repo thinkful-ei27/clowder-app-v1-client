@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from '../utils/input';
 import { login } from '../../actions/auth';
+import { Link } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import '../../css/form.css';
 
@@ -46,9 +47,12 @@ export class LoginForm extends React.Component {
             autocomplete="current-password"
             validate={[required, nonEmpty]}
           />
-          <button disabled={this.props.pristine || this.props.submitting}>
-            Login
-          </button>
+          <div className="buttons">
+            <button disabled={this.props.pristine || this.props.submitting}>
+              Login
+            </button>
+            <Link className="signup-from-login" to="/signup" ><button>Sign Up page</button></Link>
+          </div>
         </form>
       </div>
     );

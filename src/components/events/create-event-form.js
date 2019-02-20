@@ -31,7 +31,8 @@ export class CreateEventForm extends React.Component {
   }
   render() {
     return (
-      <div className="create-event-home">
+      <div className="create-event">
+        <h2>Create an Event</h2>
         <form
           className="create-event-form"
           onSubmit={this.props.handleSubmit(values =>

@@ -22,7 +22,7 @@ export class Dashboard extends React.Component {
         <div className="dashboard">
           <Link className="dash-item upcoming" to='/events/upcoming' >Upcoming Events</Link>
           <Link className="dash-item past" to='/events/past' >Past Events</Link>
-          <Link className="dash-item create-event" to='/events/create-event' >Create New Event</Link>
+          <Link className="dash-item create-event-link" to='/events/create-event' >Create New Event</Link>
         </div>
       );
     }

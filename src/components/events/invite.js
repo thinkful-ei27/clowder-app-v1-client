@@ -36,7 +36,7 @@ export class Invite extends React.Component {
       return (
         <div className='single-event-home'>
           <div className='event-info'>
-            <h2>{event.eventName}</h2>
+            <h2 className="event-name">{event.eventName}</h2>
             <h3>Date:</h3> <p>{prettyDate}</p>
             <h3>Time:</h3> <p>{prettyTime}</p>
             <h3>Location:</h3> <p>{event.location}</p>

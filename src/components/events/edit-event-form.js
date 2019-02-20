@@ -58,14 +58,6 @@ export class EditEventForm extends React.Component {
             label="Location"
             validate={[required, nonEmpty, isTrimmed]}
           />
-
-          {/*<label htmlFor="viewingCode">Viewing Code optional</label>
-          <Field component={Input}
-            defaultValue=''
-            type="text"
-            name="viewingCode"
-            validate={[viewingCodeLength, isTrimmed]}
-          />*/}
           <Field component={Textarea}
             label="Description"
             type="text"

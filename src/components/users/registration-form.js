@@ -3,6 +3,7 @@ import { Field, reduxForm, focus } from 'redux-form';
 import { registerUser } from '../../actions/users';
 import { login } from '../../actions/auth';
 import Input from '../utils/input';
+import { Link } from 'react-router-dom';
 import '../../css/form.css';
 import { required, nonEmpty, matches, length, isTrimmed } from '../utils/validators';
 const passwordLength = length({ min: 8, max: 72 });
@@ -56,11 +57,14 @@ export class RegistrationForm extends React.Component {
             autocomplete="new-password"
             validate={[required, nonEmpty, matchesPassword]}
           />
-          <button
-            type="submit"
-            disabled={this.props.pristine || this.props.submitting}>
-            Signup
-          </button>
+          <div className="buttons">
+            <button
+              type="submit"
+              disabled={this.props.pristine || this.props.submitting}>
+              Signup
+            </button>
+            <Link className="login-from-signup" to="/login" ><button>Log In Page</button></Link>
+          </div>
         </form>
       </div>
     );

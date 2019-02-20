@@ -19,6 +19,9 @@ import '../css/app.css';
 
 export class App extends React.Component {
 
+  componentDidMount() {
+    this.props.hideLoader();
+  }
   
   componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
@@ -75,5 +78,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
 
-// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
 export default withRouter(connect(mapStateToProps)(App));

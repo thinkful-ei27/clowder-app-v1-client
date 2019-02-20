@@ -31,8 +31,8 @@ img.bg {
   text-decoration: none;
   font-size: 2.4em;
   font-weight: bold;
-  margin: .25em 0 .25em 0
-
+  margin: .25em 0 .25em 0;
+  text-align: center;
 }
 
 .subMotto {
@@ -50,13 +50,16 @@ img.bg {
 
 .login-button button{
   color: #158463;
-  background: #F6E8EA;
-  opacity: .3;
+  background: rgba(	246,	232,	234, .6);
   border: 2px solid #158463;
 }
 
 .login-button button:hover {
   opacity: 1;
+}
+
+.signup-button:hover, .login-button:hover  {
+  background: none;
 }
 
 .signup-button button, .login-button button {

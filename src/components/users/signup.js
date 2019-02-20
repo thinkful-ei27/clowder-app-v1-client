@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import RegisterForm from './registration-form';
 
 export function SignUp(props) {
@@ -13,7 +13,6 @@ export function SignUp(props) {
     <div className="login">
       <h2>Sign Up</h2>
       <RegisterForm />
-      <Link className="login-from-signup" to="/login" ><button>Log In Page</button></Link>
     </div>
   );
 }

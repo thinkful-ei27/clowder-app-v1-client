@@ -9,7 +9,8 @@ import {
   deleteSingleUpcomingEvent,
   updateSingleUpcomingEvent,
   updateSinglePastEvent,
-  toggleEditing
+  toggleEditing,
+  toggleDeleting
 } from '../../actions/events';
 import EditEventForm from './edit-event-form';
 import '../../css/event-info.css';
@@ -30,6 +31,11 @@ export class CurrentEvent extends React.Component {
       this.props.dispatch(fetchSinglePastEvent(id));
     }
   }
+
+toggleDeleteConfirm() {
+  return this.props.dispatch(toggleDeleting());
+}
+
   onClickDelete() {
     const { id } = this.props.match.params;
     const { fromWhere } = this.props.location.state;
@@ -64,24 +70,43 @@ export class CurrentEvent extends React.Component {
     const event = props.currentEvent;
     if (!event) {
       return <div>loading</div>;
-    } if (event && event.description && !this.props.isEditing) {
+    }  else if (event && this.props.confirmDelete) {
+      return (
+        <div className="confirm-delete">
+          <h3>Are you sure you want to delete this event?</h3>
+          <div className="buttons">
+            <button
+              className="delete-it"
+              type='button'
+              onClick={id => this.onClickDelete(id)}
+            >Delete It
+            </button>
+            <button
+              className="keep-it"
+              type='button'
+              onClick={() => this.toggleDeleteConfirm()}
+            >Keep It
+            </button>
+          </div>
+        </div>
+      )
+    } else if (event && event.description && !this.props.isEditing) {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
       const prettyTime = moment(event.dateAndTime).format('hh:mm a');
 
       return (
         <div className='single-event-home'>
           <div className='event-info'>
-            <h2>{event.eventName}</h2>
-            <h3>Date:</h3> <p>{prettyDate}</p>
-            <h3>Time:</h3> <p>{prettyTime}</p>
-            <h3>Location:</h3> <p>{event.location}</p>
-            <h3>Description:</h3> <p>{event.description}</p>
-            <h3>Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
-          </div>
-          <div className="buttons">
-            <button
+          <h2 className="event-name">{event.eventName}</h2>
+            <h3 className="info-category">Date:</h3> <p>{prettyDate}</p>
+            <h3 className="info-category">Time:</h3> <p>{prettyTime}</p>
+            <h3 className="info-category">Location:</h3> <p>{event.location}</p>
+            <h3 className="info-category">Description:</h3> <p>{event.description}</p>
+            <h3 className="info-category">Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
+            <div className="buttons">
+            <button className="delete-it"
               type='button'
-              onClick={id => this.onClickDelete(id)}
+              onClick={() => this.toggleDeleteConfirm()}
             >Delete Event
             </button>
             <button
@@ -90,6 +115,8 @@ export class CurrentEvent extends React.Component {
             >Edit Event
             </button>
           </div>
+          </div>
+          
         </div>
       );
     } else if (event && !event.description && !this.props.isEditing) {
@@ -99,16 +126,15 @@ export class CurrentEvent extends React.Component {
       return (
         <div className='single-event-home'>
           <div className='event-info'>
-            <h2>{event.eventName}</h2>
-            <h3>Date:</h3> <p>{prettyDate}</p>
-            <h3>Time:</h3> <p>{prettyTime}</p>
-            <h3>Location:</h3> <p>{event.location}</p>
-            <h3>Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
-          </div>
-          <div className="buttons">
-            <button
+          <h2 className="event-name">{event.eventName}</h2>
+            <h3 className="info-category">Date:</h3> <p>{prettyDate}</p>
+            <h3 className="info-category">Time:</h3> <p>{prettyTime}</p>
+            <h3 className="info-category">Location:</h3> <p>{event.location}</p>
+            <h3 className="info-category">Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
+            <div className="buttons">
+            <button className="delete-it"
               type='button'
-              onClick={id => this.onClickDelete(id)}
+              onClick={() => this.toggleDeleteConfirm()}
             >Delete Event
             </button>
             <button
@@ -117,6 +143,8 @@ export class CurrentEvent extends React.Component {
             >Edit Event
             </button>
           </div>
+          </div>
+          
         </div>
       );
     } else {
@@ -142,7 +170,7 @@ const mapStateToProps = state => {
     name: state.auth.currentUser.fullName,
     currentEvent: state.event.currentEvent,
     isEditing: state.event.isEditing,
-
+    confirmDelete: state.event.confirmDelete
   };
 };
 

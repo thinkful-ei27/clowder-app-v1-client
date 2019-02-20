@@ -311,6 +311,11 @@ export const toggleEditing = () => ({
   type: TOGGLE_EDITING,
 });
 
+export const TOGGLE_DELETING = 'TOGGLE_DELETING';
+export const  toggleDeleting= () => ({
+  type: TOGGLE_DELETING,
+});
+
 export const CLEAR_EVENTS = 'CLEAR_EVENTS';
 export const clearEvents = () => ({
   type: CLEAR_EVENTS,

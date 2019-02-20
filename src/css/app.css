@@ -18,8 +18,6 @@
 
 .dashboard, 
 .single-event-home, 
-.upcoming-events, 
-.past-events,
 .create-event-home,
 .onboarding,
 .user-info-home,
@@ -44,9 +42,8 @@ h2 {
   margin-block-start: unset;
   margin-block-end: unset;
   justify-content: center;
-  text-align: center;
   margin: .5em 0 .5em 0;
-  
+  margin-left: 10%
 }
 
 Link button {
@@ -70,4 +67,31 @@ a {
   background: #F6E8EA;
   opacity: .3;
   border: 2px solid #158463;
+  display: flex;
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - 4em);
+  left: calc(50% - 4em);
+  width: 6em;
+  height: 6em;
+  border: 1.1em solid rgba(246, 232, 234, 0.2);
+  border-left: 1.1em solid #F6E8EA;
+  border-radius: 50%;
+  animation: load8 1.1s infinite linear;
+  transition: opacity 0.3s;
+}
+
+.loader--hide {
+  display: none;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

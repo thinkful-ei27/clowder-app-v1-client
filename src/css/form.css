@@ -24,13 +24,13 @@ textarea {
 .buttons {
   display: flex;
   align-items: center;
+  max-width: 506px;
 }
 
 .link {
   color: #F8EEE7;
   text-decoration: none;
   cursor: pointer;
-  
 }
 
 .single-event-home,
@@ -40,6 +40,27 @@ textarea {
   display: flex;
   flex-wrap: wrap;  
   justify-content: center;
+}
+
+.create-event-form, .edit-event-form, .login-form, .registration-form {
+  background-color: #6F9CEB;
+  width: 80%;
+  margin: auto;
+  padding: 1em 1em 1em 1em;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #F6E8EA;
+  border: solid 2px;
+  max-width: 506px;
+  min-width: 220px;
+  word-wrap: break-word;
+}
+
+.create-event h2 {
+  margin-left: 10%
+}
+
+label {
+  text-shadow: 0 0 5px #0B132B;
 }
 
 .edit-user-form-home,
@@ -66,10 +87,7 @@ button {
   position: relative;
   border-radius: 8px;
   cursor: pointer;
-
 }
-
-
 
 button:disabled {
   color: grey;
@@ -118,6 +136,6 @@ button:hover::after {
 }
 
 .form-error, .form-warning {
-  color: #A4243B;
-
+  color: #ef173e;
+  margin-bottom: .3em;
 }

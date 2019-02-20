@@ -9,6 +9,7 @@ h3, p {
   text-align: left;
   font-size: 1.2em;
   text-decoration: underline;
+  margin-left: 0;
 }
 
 .event-info,
@@ -16,7 +17,6 @@ h3, p {
   flex: 1 0 100%;
   justify-content: center;
   justify-items: center;
-  
 }
 
 p, Link {
@@ -28,4 +28,55 @@ p, Link {
   justify-content: space-evenly;
   font-size: 1em;
   flex: 1 0 100%;
+  min-width: 220px;
+}
+
+.info-category {
+  text-decoration: underline;
+  font-size: 1.4em;
+  margin-bottom: .2em;
+}
+
+.confirm-delete {
+  text-align: center;
+  background-color: #6F9CEB;
+  width: 60%;
+  margin: 10% auto;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+.event-info {
+  background-color: #6F9CEB;
+  width: 60%;
+  margin: 5% auto;
+  padding: 0 1em 1em 1em;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #F6E8EA;
+  border: solid 2px;
+  max-width: 506px;
+  min-width: 220px;
+  word-wrap: break-word;
+}
+
+.user-info {
+  background-color: #6F9CEB;
+  width: 80%;
+  margin: 5% auto;
+  padding: .5em 1em 1em 1em;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #F6E8EA;
+  border: solid 2px;
+  max-width: 506px;
+  min-width: 220px;
+  word-wrap: break-word;
+}
+
+.delete-it {
+  background-color: #A4243B;
+}
+
+.event-name {
+  text-decoration: underline;
+  margin-left: 0;
 }
