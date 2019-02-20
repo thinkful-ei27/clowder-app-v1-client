@@ -5,6 +5,7 @@ import { refreshAuthToken } from '../actions/auth';
 import CreateEvent from './events/create-event';
 import NavBar from './elements/navbar';
 import LogIn from './users/login';
+import SignUp from './users/signup';
 import Dashboard from './elements/dashboard';
 import EditUserSettings from './users/edit-user-settings';
 import UpcomingEvents from './events/upcoming';
@@ -17,6 +18,8 @@ import Header from './elements/header';
 import '../css/app.css';
 
 export class App extends React.Component {
+
+  
   componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
       // When we are logged in, refresh the auth token periodically
@@ -51,6 +54,7 @@ export class App extends React.Component {
         <div className="main">
           <Route className="landing-page" exact path="/" component={LandingPage} />
           <Route className="login" exact path="/login" component={LogIn} />
+          <Route className="signup" exact path="/signup" component={SignUp} />
           <Route className="dashboard" exact path="/dashboard" component={Dashboard} />
           <Route className="editUser" exact path="/edit-user-settings/:id" component={EditUserSettings} />
           <Route className="create-event" exact path="/events/create-event" component={CreateEvent} />

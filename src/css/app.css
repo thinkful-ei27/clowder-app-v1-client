@@ -8,20 +8,15 @@
 
 .main {
   margin: 0 .5em 0 .5em;
-  color: #08302F;
+  color: #F6E8EA;
   padding-bottom: 20px;
   max-width: 100%;
   min-width: 100%;
+  width: 920px;
+  margin: 0 auto;
 }
 
-/* .banner {
-  margin: 0 .5em 0 .5em;
-  padding-bottom: 20px;
-} */
-
-
 .dashboard, 
-.landingpage, 
 .single-event-home, 
 .upcoming-events, 
 .past-events,
@@ -34,13 +29,8 @@
   padding: 0 3em 0 3em;
 }
 
-.main {
-  width: 920px;
-  margin: 0 auto;
-}
-
 .header {
-  background:#6A7590;
+  background:#6F9CEB;
   color: whitesmoke;
   flex: 1 0 100%;
   display: inline-flex;
@@ -56,10 +46,28 @@ h2 {
   justify-content: center;
   text-align: center;
   margin: .5em 0 .5em 0;
-  text-decoration: underline;
+  
 }
 
+Link button {
+  cursor: pointer;
+}
 
-.gotit, .signup {
-  font-size: 1.5em;
+a:hover {
+  background-color: #1A2D66;
+}
+
+a {
+  padding: .1em;
+  border-radius: 8px;
+
+}
+
+.login-from-signup button, .signup-from-login button {
+  margin-top: 1em;
+  font-size: .8em;
+  color: #158463;
+  background: #F6E8EA;
+  opacity: .3;
+  border: 2px solid #158463;
 }

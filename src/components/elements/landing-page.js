@@ -1,37 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import '../../css/landing-page.css'
 
 export class LandingPage extends React.Component {
   // If we are logged in redirect straight to the user's dashboard
-  componentWillMount() {
-    this.visited = localStorage.getItem('alreadyVisited');
-  }
+  // componentWillMount() {
+  //   this.visited = localStorage.getItem('alreadyVisited');
+  // }
 
-  componentDidMount() {
-    localStorage.setItem('alreadyVisited', true);
-  }
+  // componentDidMount() {
+  //   localStorage.setItem('alreadyVisited', true);
+  // }
 
   render() {
     if (this.props.loggedIn) {
       return <Redirect to="/dashboard" />;
-    } else if (this.visited) {
-      return <Redirect to="/login" />;
     } else {
       return (
         <div className="landingpage" >
-          <p>
-            Welcome to Clowder! Your one stop shop for creating, planning and sharing events.
-            Corralling friends and family can sometimes feel like herding
-            cats, this site can help turn that chore into a breeze! <br /><br />
-            This site is designed to help you create and track events
-            without the fuss and muss that other websites clutter your planning with.
-            (I'm looking at you facebook notification and endless evite emails!)
-            Simplify your plans with Clowder.
-            <br /><br />
-            Signup by clicking below to give it a try!
-          </p><br />
-          <Link className="signup" to="/login" >Signup</Link>
+        <img src="landing-page.jpg" className="bg" alt="many hands working on calendar"/>
+          <h2 className="motto">PLAN EVENTS SMARTER. FASTER. EASIER.</h2>
+        
+            <h3 className="subMotto">Event planning can feel like herding cats. Let us help.</h3>
+          <br />
+          <div className="nav">
+            <Link className="signup-button" to="/signup" ><button>Sign Up</button></Link>
+            <span>or</span>
+            <Link className="login-button" to="/login" ><button>Log In</button></Link>
+          </div>
         </div>
       );
     }

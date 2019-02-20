@@ -7,19 +7,35 @@
   flex-direction: row;
   flex: 1;
   padding: .25em 0 .25em 0;
-  margin: 0 .5em 1em .5em;
+  
   max-width: 100%;
 }
 
-button {
+.navbar button {
   border: none;
-  font-size: 1em;
+  font-size: 1.5em;
+  background: none;
+
 }
 
+.nav-item:hover{
+  background-color: #1A2D66;
+
+}
+
+.navbar button::before {
+  border: none;
+  font-size: 1.5em;
+  background: none;
+
+}
+
+.navbar button::after {
+  border: none;
+} 
+
 .nav-item {
-  color: #08302F;
+  color: #F6E8EA;
   text-decoration: underline;
   font-size: 1.5em;
-  background-color: inherit;
-
 }

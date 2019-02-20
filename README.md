@@ -26,23 +26,23 @@ For the backend, Events and Users are segmented into their own folders. Each con
 Screenshots of the app in the wild:
 
 ### Dashboard
-![Dashboard](/images/Dashboard.png)
+![Dashboard](/images/README/Dashboard.png)
 
 ### Create an Event
-![CreateEvent Page](/images/CreateEvent.png)
+![CreateEvent Page](/images/README/CreateEvent.png)
 
 ### Upcoming Events
-![List of Upcoming Events](/images/Upcoming.png)
+![List of Upcoming Events](/images/README/Upcoming.png)
 
 ### Past Events
-![List of Past Events](/images/Past.png)
+![List of Past Events](/images/README/Past.png)
 
 ### Event Info
-![Event Info Page](/images/Event.png)
+![Event Info Page](/images/README/Event.png)
 
 ### Public Invite
-![Public Invite Page](/images/Invite.png)
+![Public Invite Page](/images/README/Invite.png)
 
 ### User Info
-![User Info Page](/images/UserInfo.png)
+![User Info Page](/images/README/UserInfo.png)
 

@@ -83,7 +83,7 @@ export class CreateEventForm extends React.Component {
               disabled={this.props.pristine || this.props.submitting}>
               Create
             </button>
-            <button type="button" onClick={() => this.props.history.push('/dashboard')}>
+            <button type="button" className="cancel" onClick={() => this.props.history.push('/dashboard')}>
               Cancel
             </button>
           </div>

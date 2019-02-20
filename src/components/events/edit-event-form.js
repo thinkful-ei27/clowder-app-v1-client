@@ -78,7 +78,7 @@ export class EditEventForm extends React.Component {
               Save
             </button>
             <button
-              type='button'
+              type='button' className="cancel"
               onClick={() => this.props.dispatch(toggleEditing())}
             >Cancel
             </button>

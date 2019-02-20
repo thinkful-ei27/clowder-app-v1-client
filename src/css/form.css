@@ -9,6 +9,7 @@ input, textarea {
   margin-bottom: 1em;
   background-color:#f5f5f5;
   display: block;
+  
 }
 
 input {
@@ -28,6 +29,8 @@ textarea {
 .link {
   color: #F8EEE7;
   text-decoration: none;
+  cursor: pointer;
+  
 }
 
 .single-event-home,
@@ -51,18 +54,27 @@ textarea {
   border: none;
 } */
 
+button + .cancel {
+  background-color: #A4243B;
+}
+
 button {
   font-size: 1.25em;
-  color: #F8EEE7;
-  background-color: #7F4145;
+  color: #F6E8EA;
+  background-color: #158463;
   transition: all 0.5s;
   position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+
 }
+
+
 
 button:disabled {
   color: grey;
-  background-color: #F8EEE7;
-
+  background: none;
+  border-radius: 8px;
 }
 
 button::before {
@@ -75,10 +87,14 @@ button::before {
   z-index: 1;
   background-color: rgba(255,255,255,0.1);
   transition: all 0.3s;
+  border-radius: 8px;
+
 }
 button:hover::before {
   opacity: 0 ;
   transform: scale(0.5,0.5);
+  border-radius: 8px;
+
 }
 button::after {
   content: '';
@@ -92,8 +108,16 @@ button::after {
   transition: all 0.3s;
   border: 1px solid rgba(255,255,255,0.5);
   transform: scale(1.2,1.2);
+  border-radius: 8px;
+
 }
 button:hover::after {
   opacity: 1;
   transform: scale(1,1);
+  border-radius: 8px;
+}
+
+.form-error, .form-warning {
+  color: #A4243B;
+
 }

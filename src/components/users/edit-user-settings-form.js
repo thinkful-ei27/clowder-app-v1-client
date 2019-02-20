@@ -82,7 +82,7 @@ export class EditUserSettingsForm extends React.Component {
               Save Changes
             </button>
             <button
-              type='button'
+              type='button' className="cancel"
               onClick={() => this.props.dispatch(toggleEditing())}
             >Cancel
             </button>
