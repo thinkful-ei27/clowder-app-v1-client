@@ -23,3 +23,11 @@ a {
   color: #F6E8EA;
 }
 
+.list-title {
+  text-align: center;
+  margin: 1em auto;
+}
+
+.li-event {
+  padding: .3em;
+}

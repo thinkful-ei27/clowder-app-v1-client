@@ -24,7 +24,7 @@ textarea {
 .buttons {
   display: flex;
   align-items: center;
-  max-width: 506px;
+  max-width: 800px;
 }
 
 .link {
@@ -42,30 +42,23 @@ textarea {
   justify-content: center;
 }
 
-.create-event-form, .edit-event-form, .login-form, .registration-form {
+.create-event, .edit-event, .login, .signup, .edit-event-home, .edit-user-form-home {
   background-color: #6F9CEB;
   width: 80%;
-  margin: auto;
+  margin: 3em auto;
   padding: 1em 1em 1em 1em;
   border-radius: 15px;
   box-shadow: 0 0 20px #F6E8EA;
   border: solid 2px;
-  max-width: 506px;
+  max-width: 800px;
   min-width: 220px;
   word-wrap: break-word;
-}
-
-.create-event h2 {
-  margin-left: 10%
 }
 
 label {
   text-shadow: 0 0 5px #0B132B;
 }
 
-.edit-user-form-home,
-.edit-event-home {
-  padding: 0 3em 0 3em;}
 
 /* button {
   font-size: 1.25em;

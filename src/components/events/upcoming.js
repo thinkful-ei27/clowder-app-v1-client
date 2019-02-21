@@ -36,7 +36,7 @@ export class UpcomingEvents extends React.Component {
 
     return (
       <div className="upcoming-events-home">
-        <h2>Upcoming Events</h2>
+        <h2 className="list-title">Upcoming Events</h2>
         <ul className="upcoming-events" id="upcoming-events">
           {events}
         </ul>

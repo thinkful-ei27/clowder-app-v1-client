@@ -30,7 +30,7 @@ export class EditEventForm extends React.Component {
   render() {
     return (
       <div className="edit-event-home">
-        <h2>Edit an Event</h2>
+        <h2>{this.props.currentEvent.eventName}</h2>
         <form
           className="edit-event-form"
           onSubmit={this.props.handleSubmit}>

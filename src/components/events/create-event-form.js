@@ -9,7 +9,6 @@ import requiresLogin from '../utils/requires-login';
 import { required, nonEmpty, isTrimmed, date, time } from '../utils/validators'; // ++ length
 import '../../css/form.css';
 // const viewingCodeLength = length({ min: 8, max: 72 });
-
 export class CreateEventForm extends React.Component {
 
   onSubmit(values) {
@@ -18,6 +17,7 @@ export class CreateEventForm extends React.Component {
     const dateAndTime = moment(date).add({ hours: time.slice(0, 2), minutes: values.time.slice(3, 5) }).format();
     const event = { eventName, dateAndTime, location, description }; // ++ viwingCode
     const currentDate = moment().format();
+    
     if (dateAndTime > currentDate) {
       return this.props
         .dispatch(createEvent(event))

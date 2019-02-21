@@ -10,7 +10,7 @@ export function SignUp(props) {
   }
 
   return (
-    <div className="login">
+    <div className="signup">
       <h2>Sign Up</h2>
       <RegisterForm />
     </div>
