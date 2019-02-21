@@ -5,6 +5,8 @@ import { toggleEditing, cancelEditing } from '../../actions/users';
 import requiresLogin from '../utils/requires-login';
 import '../../css/event-info.css';
 
+const loader = document.querySelector('.loader');
+
 export class CurrentEvent extends React.Component {
 
 
@@ -16,10 +18,13 @@ export class CurrentEvent extends React.Component {
     return this.props.dispatch(toggleEditing());
   }
 
+  showLoader = () => loader.classList.remove('loader--hide');
+  hideLoader = () => loader.classList.add('loader--hide');
+
   UserDetails(props) {
     const user = props.currentUser;
     if (!user) {
-      return <div>loading</div>;
+      return () => this.props.showLoader();
     } if (user) {
       if (!this.props.isEditing) {
         return (

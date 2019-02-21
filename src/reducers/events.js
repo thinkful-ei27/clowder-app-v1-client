@@ -35,7 +35,7 @@ export default function eventReducer(state = initialState, action) {
         } if (dateA > dateB) {
           return 1;
         } return 0;
-      });
+      })
     } else if (event.date < new Date()) {
       return state.upcoming.slice().sort((a, b) => {
         let dateA = a.date;

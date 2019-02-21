@@ -22,8 +22,11 @@ export class App extends React.Component {
   componentDidMount() {
     this.props.hideLoader();
   }
-  
+  componentWillUpdate() {
+    this.props.showLoader();
+  }
   componentDidUpdate(prevProps) {
+    this.props.hideLoader();
     if (!prevProps.loggedIn && this.props.loggedIn) {
       // When we are logged in, refresh the auth token periodically
       this.startPeriodicRefresh();
@@ -45,7 +48,6 @@ export class App extends React.Component {
     if (!this.refreshInterval) {
       return;
     }
-
     clearInterval(this.refreshInterval);
   }
 

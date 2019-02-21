@@ -48,7 +48,7 @@ textarea {
   margin: 3em auto;
   padding: 1em 1em 1em 1em;
   border-radius: 15px;
-  box-shadow: 0 0 20px #F6E8EA;
+  /* box-shadow: 0 0 20px #F6E8EA; */
   border: solid 2px;
   max-width: 800px;
   min-width: 220px;

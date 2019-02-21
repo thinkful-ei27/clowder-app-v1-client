@@ -1,0 +1,212 @@
+.accordion {
+  background-color: #6F9CEB;
+  width: 80%;
+  margin: 0 auto;
+  padding: .5em 1em 1em 1em;
+  border-radius: 15px;
+  /* box-shadow: 0 0 20px #F6E8EA; */
+  border: solid 2px;
+  max-width: 800px;
+  min-width: 220px;
+  word-wrap: break-word;  
+}
+
+.accordion__item:nth-child(2) {
+  border-radius: 15px 15px 0 0;
+}
+
+.accordion__item:nth-child(3) {
+  border-radius: 0 0 15px 15px;
+}
+
+.past[aria-expanded='false'] {
+  border-radius: 0 0 15px 15px;
+}
+
+.past[aria-expanded='true']  {
+  border-radius: 0;
+}
+
+.create-event-link {
+  font-size: 1em;
+  margin: 0;
+  right: 0;
+}
+
+.accordion button {
+  margin: .5em 0;
+}
+
+.accordion__item {
+  /* box-shadow: 0 0 5px #F6E8EA; */
+  border: solid 2px;
+}
+
+.upcoming {
+  border-radius: 15px 15px 0 0;
+}
+
+.accordion-title {
+  padding: .5em 0 .5em 1em;
+  background-color: #0B132B;
+  cursor: pointer;
+}
+
+.accordion-title h2 {
+  margin: 0;
+}
+
+.u-position-absolute {
+  position: absolute;
+}
+
+.u-position-relative {
+  position: relative;
+}
+
+
+.accordion__item + .accordion__item {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accordion__item--has-icon {
+  position: relative;
+}
+
+.accordion__title {
+  background-color: #f4f4f4;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  margin-left: 1.4em;
+}
+
+.accordion__title:hover {
+  background-color: #ddd;
+}
+
+.accordion__body {
+  padding: 0 1em 0 2em;
+  display: block;
+  animation: fadein 0.35s ease-in;
+}
+
+.accordion__body--hidden {
+  display: none;
+  opacity: 0;
+  animation: fadein 0.35s ease-in;
+}
+
+.accordion__title > *:last-child,
+.accordion__body > *:last-child {
+  margin-bottom: 0;
+}
+
+.accordion__arrow {
+  display: block;
+  float: right;
+  position: relative;
+  width: 24px;
+  height: 12px;
+  margin-right: 10%;
+  margin-top: 7.5px;
+}
+
+.accordion__arrow::after,
+.accordion__arrow::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background-color: currentColor;
+  content: '';
+}
+
+.accordion__arrow::before {
+  left: 4px;
+  transform: rotate(45deg);
+}
+
+[aria-expanded='true'] .accordion__arrow::before,
+[aria-selected='true'] .accordion__arrow::before {
+  transform: rotate(-45deg);
+}
+
+.accordion__arrow::after {
+  right: 4px;
+  transform: rotate(-45deg);
+}
+
+[aria-expanded='true'] .accordion__arrow::after,
+[aria-selected='true'] .accordion__arrow::after {
+  transform: rotate(45deg);
+}
+
+.accordion__arrow::before,
+.accordion__arrow::after {
+  transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes move-down {
+  0% {
+      transform: translateY(0);
+  }
+  10% {
+      transform: translateY(0);
+  }
+  20% {
+      transform: translateY(5px);
+  }
+  30% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+@keyframes move-up {
+  0% {
+      transform: translateY(0);
+  }
+  10% {
+      transform: translateY(0);
+  }
+  20% {
+      transform: translateY(-5px);
+  }
+  30% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+.accordion__title--animated:hover .accordion__arrow {
+  animation-name: move-down;
+  animation-duration: 1.5s;
+}
+
+.accordion__title--animated[aria-expanded='true']:hover .accordion__arrow {
+  animation-name: move-up;
+  animation-duration: 1.5s;
+}

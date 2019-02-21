@@ -7,6 +7,8 @@ import {
 import { Link } from 'react-router-dom';
 import '../../css/event-info.css';
 
+const loader = document.querySelector('.loader');
+
 export class Invite extends React.Component {
 
   componentDidMount() {
@@ -25,10 +27,13 @@ export class Invite extends React.Component {
     return time.join(''); // return adjusted time or original string
   }
 
+  showLoader = () => loader.classList.remove('loader--hide');
+  hideLoader = () => loader.classList.add('loader--hide');
+
   EventDetails(props) {
     const event = props.currentEvent;
     if (!event) {
-      return <div>loading</div>;
+      return () => this.props.showLoader();
     }
     if (event && event.description) {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');

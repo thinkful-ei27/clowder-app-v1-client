@@ -10,6 +10,8 @@ const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
+
+
   onSubmit(values) {
     const { username, password, fullName } = values;
     const user = { username, password, fullName };

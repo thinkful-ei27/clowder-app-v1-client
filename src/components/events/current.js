@@ -16,6 +16,9 @@ import EditEventForm from './edit-event-form';
 import '../../css/event-info.css';
 import moment from 'moment';
 
+
+const loader = document.querySelector('.loader');
+
 export class CurrentEvent extends React.Component {
 
 
@@ -32,9 +35,9 @@ export class CurrentEvent extends React.Component {
     }
   }
 
-toggleDeleteConfirm() {
-  return this.props.dispatch(toggleDeleting());
-}
+  toggleDeleteConfirm() {
+    return this.props.dispatch(toggleDeleting());
+  }
 
   onClickDelete() {
     const { id } = this.props.match.params;
@@ -65,12 +68,15 @@ toggleDeleteConfirm() {
   toggleEditing() {
     return this.props.dispatch(toggleEditing());
   }
+  
+  showLoader = () => loader.classList.remove('loader--hide');
+  hideLoader = () => loader.classList.add('loader--hide');
 
   EventDetails(props) {
     const event = props.currentEvent;
     if (!event) {
-      return <div>loading</div>;
-    }  else if (event && this.props.confirmDelete) {
+      return () => this.props.showLoader();
+    } else if (event && this.props.confirmDelete) {
       return (
         <div className="confirm-delete">
           <h3>Are you sure you want to delete this event?</h3>
@@ -97,26 +103,26 @@ toggleDeleteConfirm() {
       return (
         <div className='single-event-home'>
           <div className='event-info'>
-          <h2 className="event-name">{event.eventName}</h2>
+            <h2 className="event-name">{event.eventName}</h2>
             <h3 className="info-category">Date:</h3> <p>{prettyDate}</p>
             <h3 className="info-category">Time:</h3> <p>{prettyTime}</p>
             <h3 className="info-category">Location:</h3> <p>{event.location}</p>
             <h3 className="info-category">Description:</h3> <p>{event.description}</p>
             <h3 className="info-category">Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
             <div className="buttons">
-            <button className="delete-it"
-              type='button'
-              onClick={() => this.toggleDeleteConfirm()}
-            >Delete Event
+              <button className="delete-it"
+                type='button'
+                onClick={() => this.toggleDeleteConfirm()}
+              >Delete Event
             </button>
-            <button
-              type='button'
-              onClick={() => this.toggleEditing()}
-            >Edit Event
+              <button
+                type='button'
+                onClick={() => this.toggleEditing()}
+              >Edit Event
             </button>
+            </div>
           </div>
-          </div>
-          
+
         </div>
       );
     } else if (event && !event.description && !this.props.isEditing) {
@@ -126,25 +132,25 @@ toggleDeleteConfirm() {
       return (
         <div className='single-event-home'>
           <div className='event-info'>
-          <h2 className="event-name">{event.eventName}</h2>
+            <h2 className="event-name">{event.eventName}</h2>
             <h3 className="info-category">Date:</h3> <p>{prettyDate}</p>
             <h3 className="info-category">Time:</h3> <p>{prettyTime}</p>
             <h3 className="info-category">Location:</h3> <p>{event.location}</p>
             <h3 className="info-category">Shareable Link:</h3> <Link to={`/invites/${event.id}`}>{window.location.origin}/invites/{event.id}</Link>
             <div className="buttons">
-            <button className="delete-it"
-              type='button'
-              onClick={() => this.toggleDeleteConfirm()}
-            >Delete Event
+              <button className="delete-it"
+                type='button'
+                onClick={() => this.toggleDeleteConfirm()}
+              >Delete Event
             </button>
-            <button
-              type='button'
-              onClick={() => this.toggleEditing()}
-            >Edit Event
+              <button
+                type='button'
+                onClick={() => this.toggleEditing()}
+              >Edit Event
             </button>
+            </div>
           </div>
-          </div>
-          
+
         </div>
       );
     } else {

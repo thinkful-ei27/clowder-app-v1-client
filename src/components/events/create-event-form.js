@@ -22,11 +22,11 @@ export class CreateEventForm extends React.Component {
       return this.props
         .dispatch(createEvent(event))
         // TODO return eventID in createEvent and go there
-        .then(() => this.props.history.push('/events/upcoming'));
+        .then(() => this.props.history.push('/dashboard'));
     } else if (dateAndTime < currentDate) {
       return this.props
         .dispatch(createEvent(event))
-        .then(() => this.props.history.push('/events/past'));
+        .then(() => this.props.history.push('/dashboard'));
     }
   }
   render() {

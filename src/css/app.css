@@ -16,7 +16,6 @@
   margin: 0 auto;
 }
 
-.dashboard, 
 .single-event-home, 
 .create-event-home,
 .onboarding,
@@ -26,6 +25,11 @@
 {
   flex: 1 1 100%;
   padding: 0 3em 0 3em;
+}
+
+.dashboard {
+  flex: 1 1 100%;
+  padding: 1em;
 }
 
 .login,
@@ -51,11 +55,14 @@ h2 {
   margin: .5em 0 .5em 0;
 }
 
-Link button {
+Link button, .accordian-title {
   cursor: pointer;
 }
 
 a:hover {
+  background-color: #1A2D66;
+}
+a:focus {
   background-color: #1A2D66;
 }
 
