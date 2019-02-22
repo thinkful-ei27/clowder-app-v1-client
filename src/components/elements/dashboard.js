@@ -18,14 +18,14 @@ import PastEvents from '../events/past'
 
 export class Dashboard extends React.Component {
 
-  // componentWillMount() {
-  //   this.onboarded = localStorage.getItem('onboarded');
-  // }
+  componentWillMount() {
+    this.onboarded = localStorage.getItem('onboarded');
+  }
 
-  // componentDidMount() {
-  //   localStorage.setItem('onboarded', true);
-  //   this.props.hideLoader();
-  // }
+  componentDidMount() {
+    localStorage.setItem('onboarded', true);
+    // this.props.hideLoader();
+  }
 
   // showLoader = () => loader.classList.remove('loader--hide');
   // hideLoader = () => loader.classList.add('loader--hide');
@@ -38,8 +38,8 @@ export class Dashboard extends React.Component {
         <div className="dashboard">
           <Accordion accordion={false}>
           <Link className="dash-item create-event-link" to='/events/create-event' ><button> + Create New Event</button></Link>
-            <AccordionItem>
-              <AccordionItemTitle className="accordion-title .accordion__title--animated upcoming">
+            <AccordionItem expanded="true">
+              <AccordionItemTitle className="accordion-title .accordion__title--animated upcoming" >
                 <h2>Upcoming Events
                 <div className="accordion__arrow" role="presentation" />
                 </h2>
@@ -48,7 +48,7 @@ export class Dashboard extends React.Component {
                 <UpcomingEvents />
               </AccordionItemBody>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem >
               <AccordionItemTitle className="accordion-title .accordion__title--animated past">
                 <h2>Past Events
                 <div className="accordion__arrow" role="presentation" />
