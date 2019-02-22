@@ -1,3 +1,5 @@
+import moment from "moment";
+
 /*eslint no-useless-escape: "error"*/
 export const required = value => (value ? undefined : 'Required');
 export const nonEmpty = value =>
@@ -40,6 +42,9 @@ export const matchesDirty = field => (value, allValues) => {
 export const date = value => {
   if (!/\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])*/.test(value)) {
     return 'please format your date correctly, e.g. 02/03/1989';
+  }
+  if (moment(value) < moment()) {
+    return `please don't pick a date in the past`;
   }
 };
 export const time = value => {

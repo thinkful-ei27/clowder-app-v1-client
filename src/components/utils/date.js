@@ -35,7 +35,6 @@ export default class Date extends React.Component {
           type="date"
           ref={input => (this.input = input)}
           min={moment().format('YYYY-MM-DD')}
-          value={moment().format('YYYY-MM-DD')}
         />
       </div>
     );

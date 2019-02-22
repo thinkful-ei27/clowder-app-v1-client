@@ -55,8 +55,8 @@ textarea {
   word-wrap: break-word;
 }
 
-label {
-  text-shadow: 0 0 5px #0B132B;
+label, h2, h3 {
+  text-shadow: 0 0 2px #0B132B;
 }
 
 
@@ -131,4 +131,5 @@ button:hover::after {
 .form-error, .form-warning {
   color: #ef173e;
   margin-bottom: .3em;
+  text-shadow: 0 0 2px #0B132B;;
 }
