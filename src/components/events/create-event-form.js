@@ -7,17 +7,12 @@ import Date from '../utils/date';
 import Textarea from '../utils/textarea';
 import { createEvent } from '../../actions/events';
 import requiresLogin from '../utils/requires-login';
-import { required, nonEmpty, isTrimmed, date, time } from '../utils/validators'; // ++ length
+import { required, nonEmpty, isTrimmed, date, time, length } from '../utils/validators'; // ++ length
 import '../../css/form.css';
-
-const upcoming = document.querySelector('#accordion__title-2');
-const past = document.querySelector('#accordion__title-3');
+const descpriptionLength = length({ min: 0, max: 1000 });
+const nameLength = length({ min: 1, max: 72 });
 
 export class CreateEventForm extends React.Component {
-
-  // componentDidMount() {
-  //   document.querySelector(".date").valueAsDate = new Date();
-  // }
 
   onSubmit(values) {
     //TODO Add viewingCode security for shareable links
@@ -25,8 +20,6 @@ export class CreateEventForm extends React.Component {
     const dateAndTime = moment(date).add({ hours: time.slice(0, 2), minutes: values.time.slice(3, 5) }).format();
     const event = { eventName, dateAndTime, location, description }; // ++ viwingCode
     const currentDate = moment().format();
-    const today = new Date().toISOString().substr(0, 10)
-    console.log(today)
     
     if (dateAndTime > currentDate) {
       return this.props
@@ -57,7 +50,8 @@ export class CreateEventForm extends React.Component {
           <Field component={Input}
             type="text"
             name="eventName"
-            validate={[required, nonEmpty, isTrimmed]}
+            maxlength="72"
+            validate={[required, nonEmpty, isTrimmed, nameLength]}
           />
 
           <label htmlFor="date">Date</label>
@@ -77,7 +71,8 @@ export class CreateEventForm extends React.Component {
           <Field component={Input}
             type="text"
             name="location"
-            validate={[required, nonEmpty, isTrimmed]}
+            maxlength="72"
+            validate={[required, nonEmpty, isTrimmed, nameLength]}
           />
 
           {/*<label htmlFor="viewingCode">Viewing Code optional</label>
@@ -91,7 +86,10 @@ export class CreateEventForm extends React.Component {
           <label htmlFor="description">Description (optional)</label>
           <Field component={Textarea}
             type="text"
-            name="description" />
+            name="description" 
+            maxlength="1000"
+            validate={[descpriptionLength]}
+            />
 
           <div className="buttons">
             <button

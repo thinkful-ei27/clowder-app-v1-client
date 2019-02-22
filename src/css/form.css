@@ -9,7 +9,6 @@ input, textarea {
   margin-bottom: 1em;
   background-color:#f5f5f5;
   display: block;
-  
 }
 
 input {
@@ -19,6 +18,10 @@ input {
 textarea {
   min-height: 8em;
   font-size: .8em;
+}
+
+#date, #time {
+  max-width: 150px;
 }
 
 .buttons {
@@ -129,7 +132,8 @@ button:hover::after {
 }
 
 .form-error, .form-warning {
-  color: #ef173e;
+  color: #e5143a;
   margin-bottom: .3em;
-  text-shadow: 0 0 2px #0B132B;;
+  text-shadow: 0 0 2px #0B132B;
+  font-weight: bold;
 }
