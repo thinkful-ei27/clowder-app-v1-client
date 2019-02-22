@@ -1,9 +1,11 @@
-## DEPLOYED AT: http://www.clowderevents.com/
+## DEPLOYED AT: https://clowderv1.herokuapp.com/
 
 Welcome to **Clowder**, an event planning webapp that is straight forward and helps simplify event planning. You can use this app to create events and share the info with potential attendees. This is a rough v0.1 and there is much more in store foe Cloweder down the line including Google Calendar and Maps integration, image galleries, RSVPs, and sharing events between user accounts so you can see what all your friends are up to.
 
-Feel free to use this test account to give it a whirl:
+Feel free to use this test account to give it a whirl:  
+
 Username: testuser1
+
 password: herdingCats
 
 
