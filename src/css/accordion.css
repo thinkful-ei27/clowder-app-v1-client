@@ -9,6 +9,7 @@
   max-width: 800px;
   min-width: 220px;
   word-wrap: break-word;  
+  
 }
 
 .accordion__item:nth-child(2) {
@@ -40,6 +41,7 @@
 .accordion__item {
   /* box-shadow: 0 0 5px #F6E8EA; */
   border: solid 2px;
+  box-shadow: 5px 5px 10px black;
 }
 
 .upcoming {
