@@ -107,11 +107,11 @@
 
 .accordion__arrow {
   display: block;
-  float: right;
+  float: left;
   position: relative;
   width: 24px;
   height: 12px;
-  margin-right: 10%;
+  margin-right: 5px;
   margin-top: 7.5px;
 }
 
