@@ -1,15 +1,15 @@
 .accordion {
-  background-color: #6F9CEB;
-  width: 80%;
+  background-color: #F8EEE7;
+  width: 90%;
   margin: 0 auto;
   padding: .5em 1em 1em 1em;
   border-radius: 15px;
-  /* box-shadow: 0 0 20px #F6E8EA; */
-  border: solid 2px;
+  border: solid 2px #0B132B;
+  box-shadow: 5px 5px 10px black;
   max-width: 800px;
   min-width: 220px;
-  word-wrap: break-word;  
-  
+  word-wrap: break-word;
+  min-height: 400px;
 }
 
 .accordion__item:nth-child(2) {
@@ -21,7 +21,7 @@
 }
 
 .past[aria-expanded='false'] {
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 12px 12px;
 }
 
 .past[aria-expanded='true']  {
@@ -36,22 +36,24 @@
 
 .accordion button {
   margin: .5em 0;
+  padding: .1em 1em;
 }
 
 .accordion__item {
   /* box-shadow: 0 0 5px #F6E8EA; */
-  border: solid 2px;
+  border: solid 2px #0B132B;
   box-shadow: 5px 5px 10px black;
 }
 
 .upcoming {
-  border-radius: 15px 15px 0 0;
+  border-radius: 12px 12px 0 0;
 }
 
 .accordion-title {
   padding: .5em 0 .5em 1em;
-  background-color: #0B132B;
+  background-color: #5941A9;
   cursor: pointer;
+  color: #F8EEE7;
 }
 
 .accordion-title h2 {
@@ -76,8 +78,6 @@
 }
 
 .accordion__title {
-  background-color: #f4f4f4;
-  color: #444;
   cursor: pointer;
   padding: 18px;
   width: 100%;

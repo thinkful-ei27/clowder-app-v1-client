@@ -7,7 +7,7 @@
   padding: 1em 3em 1em 3em;
   margin: 0 auto;
   font-size: 1em;
-  color: whitesmoke;
+  color: #F8EEE7;
 }
 
 img.bg {
@@ -24,7 +24,7 @@ img.bg {
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: .3;
+  
 }
 
 .motto {
@@ -49,13 +49,21 @@ img.bg {
 }
 
 .login-button button{
-  color: #158463;
+  color: #1db789;
   background: rgba(	246,	232,	234, .6);
-  border: 2px solid #158463;
+  border: 2px solid #1db789;
 }
 
 .login-button button:hover {
   opacity: 1;
+}
+
+.login-button, .signup-button {
+  padding: 0; 
+}
+
+.shrink-link {
+  display: inline-block;
 }
 
 .signup-button:hover, .login-button:hover  {
@@ -64,7 +72,7 @@ img.bg {
 
 .signup-button button, .login-button button {
   flex: 0 1;
-  margin: .5em;
+  margin: .5em 0;
 }
 
 .landingpage span {

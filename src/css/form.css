@@ -31,7 +31,7 @@ textarea {
 }
 
 .link {
-  color: #F8EEE7;
+  color: #0B132B;
   text-decoration: none;
   cursor: pointer;
 }
@@ -45,21 +45,34 @@ textarea {
   justify-content: center;
 }
 
-.create-event, .edit-event, .login, .signup, .edit-event-home, .edit-user-form-home {
-  background-color: #6F9CEB;
+.create-event, .edit-event, .edit-event-home, .edit-user-form-home {
+  background-color: #F8EEE7;
   width: 80%;
   margin: 3em auto;
   padding: 1em 1em 1em 1em;
   border-radius: 15px;
-  /* box-shadow: 0 0 20px #F6E8EA; */
-  border: solid 2px;
   max-width: 800px;
   min-width: 220px;
   word-wrap: break-word;
+  border: solid 2px #0B132B;
+  box-shadow: 5px 5px 10px black;
+}
+
+.login, .signup {
+  max-width: 400px;
+  background-color: #F8EEE7;
+  width: 80%;
+  margin: 3em auto;
+  padding: 1em 1em 1em 1em;
+  border-radius: 15px;
+  min-width: 220px;
+  word-wrap: break-word;
+  border: solid 2px #0B132B;
+  box-shadow: 5px 5px 10px black;
 }
 
 label, h2, h3 {
-  text-shadow: 0 0 2px #0B132B;
+  /* text-shadow: 0 0 2px #0B132B; */
 }
 
 
@@ -78,12 +91,13 @@ button + .cancel {
 button {
   font-size: 1.25em;
   color: #F6E8EA;
-  background-color: #158463;
+  background-color: #1db789;
   transition: all 0.5s;
   position: relative;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 3px 3px 5px black;
+  padding: .1em 1em;
 }
 
 button:disabled {
@@ -135,6 +149,6 @@ button:hover::after {
 .form-error, .form-warning {
   color: #e5143a;
   margin-bottom: .3em;
-  text-shadow: 0 0 2px #0B132B;
+  /* text-shadow: 0 0 2px #0B132B; */
   font-weight: bold;
 }

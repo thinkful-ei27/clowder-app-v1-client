@@ -6,9 +6,10 @@
   min-width: 100%;
 }
 
+
 .main {
   margin: 0 .5em 0 .5em;
-  color: #F6E8EA;
+  color: black;
   padding-bottom: 20px;
   max-width: 100%;
   min-width: 100%;
@@ -24,7 +25,7 @@
 .signup
 {
   flex: 1 1 100%;
-  padding: 0 3em 0 3em;
+  
 }
 
 .dashboard {
@@ -37,13 +38,13 @@
   padding-bottom: 1em;
 }
 
-.header {
-  background:#6F9CEB;
-  color: whitesmoke;
+.navbar {
+  background:#5941A9;
+  color: black;
+  /* text-shadow: 0 0 2px #0B132B; */
   flex: 1 0 100%;
   display: inline-flex;
   width: 100%;
-  justify-content: center;
   border-radius: 0 0 15px 15px;
   max-width: 100%;
 }
@@ -60,24 +61,23 @@ Link button, .accordian-title {
 }
 
 a:hover {
-  background-color: #1A2D66;
+  background-color: #8F84E0;
 }
 a:focus {
-  background-color: #1A2D66;
+  background-color: #8F84E0;
 }
 
 a {
   padding: .1em;
   border-radius: 8px;
-
 }
 
 .login-from-signup button, .signup-from-login button {
   font-size: .8em;
-  color: #158463;
+  color: #1db789;
   background: #F6E8EA;
   opacity: .3;
-  border: 2px solid #158463;
+  border: 2px solid #1db789;
   text-align: center;
 }
 

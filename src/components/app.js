@@ -14,7 +14,7 @@ import CurrentEvent from './events/current';
 import Invite from './events/invite';
 import LandingPage from './elements/landing-page';
 import Onboarding from './elements/onboarding';
-import Header from './elements/header';
+// import Header from './elements/header';
 import '../css/app.css';
 
 export class App extends React.Component {
@@ -54,7 +54,7 @@ export class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header className="header" role="banner" />
+        {/*<Header className="header" role="banner" />*/}
         <NavBar className="navbar" role="navigation" />
         <div className="main">
           <Route className="landing-page" exact path="/" component={LandingPage} />

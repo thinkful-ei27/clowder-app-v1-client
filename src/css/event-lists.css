@@ -9,7 +9,9 @@ li {
 }
 
 a {
-  color: #F6E8EA;
+  color: black;
+  /* text-shadow: 0 0 3px #0B132B;  */
+  transition: all 0.3s;
 }
 
 

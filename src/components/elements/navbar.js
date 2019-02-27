@@ -19,21 +19,25 @@ export class NavBar extends React.Component {
     let userSettings;
     if (this.props.loggedIn) {
       logOutOrInLink = (
-        <button type="button" className="nav-item" onClick={() => this.logOut()}>Log Out</button>
+        <button type="button" className="nav-item" onClick={() => this.logOut()}><span>Log Out</span></button>
       );
       userSettings = (
-        <Link className="nav-item" to={`/edit-user-settings/${this.props.currentUser.userId}`}>{this.props.currentUser.username}</Link>
+        <Link className="nav-item" to={`/edit-user-settings/${this.props.currentUser.userId}`}><span>{this.props.currentUser.username}</span></Link>
       );
-    
-    return (
-      <div className="navbar">
-        {userSettings}
-        <Link className="nav-item" to="/dashboard">Home</Link>
-        {logOutOrInLink}
-      </div>
-    );
+
+      return (
+        <div className="navbar">
+          {userSettings}
+          <Link className="nav-item" to="/dashboard"><h1>Clowder</h1></Link>
+          {logOutOrInLink}
+        </div>
+      );
     } else {
-      return null;
+      return (
+        <div className="navbar">
+          <Link className="nav-item" to="/dashboard"><h1>Clowder</h1></Link>
+        </div>
+      );
     }
   }
 }

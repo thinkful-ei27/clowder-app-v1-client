@@ -14,12 +14,12 @@ const hideLoader = () => loader.classList.add('loader--hide');
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App 
-      class="app"
-      hideLoader={hideLoader}
-      showLoader={showLoader} 
+      <App
+        class="app"
+        hideLoader={hideLoader}
+        showLoader={showLoader}
       />
     </Router>
   </Provider>,
   document.getElementById('app')
-)
+);

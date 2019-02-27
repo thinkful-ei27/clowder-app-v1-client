@@ -37,11 +37,11 @@ export class Dashboard extends React.Component {
       return (
         <div className="dashboard">
           <Accordion accordion={false}>
-          <Link className="dash-item create-event-link" to='/events/create-event' ><button> + Create New Event</button></Link>
+            <Link className="dash-item create-event-link" to='/events/create-event' ><button> + Create New Event</button></Link>
             <AccordionItem expanded="true">
               <AccordionItemTitle className="accordion-title accordion__title--animated upcoming" >
                 <h2>Upcoming Events
-                <div className="accordion__arrow" role="presentation" />
+                  <div className="accordion__arrow" role="presentation" />
                 </h2>
               </AccordionItemTitle>
               <AccordionItemBody>
@@ -51,7 +51,7 @@ export class Dashboard extends React.Component {
             <AccordionItem >
               <AccordionItemTitle className="accordion-title accordion__title--animated past">
                 <h2>Past Events
-                <div className="accordion__arrow" role="presentation" />
+                  <div className="accordion__arrow" role="presentation" />
                 </h2>
               </AccordionItemTitle>
               <AccordionItemBody>
@@ -59,7 +59,7 @@ export class Dashboard extends React.Component {
               </AccordionItemBody>
             </AccordionItem>
           </Accordion>
-          
+
         </div>
       );
     }

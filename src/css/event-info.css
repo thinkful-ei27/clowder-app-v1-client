@@ -31,7 +31,9 @@ p, Link {
 
 .confirm-delete {
   text-align: center;
-  background-color: #6F9CEB;
+  background-color: #F8EEE7;
+  border: solid 2px #0B132B;
+  box-shadow: 5px 5px 10px black;
   width: 60%;
   margin: 10% auto;
   padding: 1em;
@@ -39,13 +41,14 @@ p, Link {
 }
 
 .event-info, .user-info  {
-  background-color: #6F9CEB;
+  background-color: #F8EEE7;
   width: 80%;
   margin: 5% auto;
   padding: 0 1em 1em 1em;
   border-radius: 15px;
-  /* box-shadow: 0 0 20px #F6E8EA; */
-  border: solid 2px;
+  border: solid 2px #0B132B;
+  box-shadow: 5px 5px 10px black;
+
   max-width: 800px;
   min-width: 220px;
   word-wrap: break-word;
