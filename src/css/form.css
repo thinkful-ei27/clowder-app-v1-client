@@ -69,6 +69,17 @@ textarea {
   word-wrap: break-word;
   border: solid 2px #0B132B;
   box-shadow: 5px 5px 10px black;
+  text-align: center;
+}
+
+.login input, .signup input {
+  font-size: 1.8em;
+  padding: 5px;
+  margin-right: 0;
+}
+
+.login h2, .signup h2 {
+  margin-bottom: 40px;
 }
 
 label, h2, h3 {

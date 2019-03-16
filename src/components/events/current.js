@@ -44,10 +44,10 @@ export class CurrentEvent extends React.Component {
     const { fromWhere } = this.props.location.state;
     if (fromWhere === 'upcoming') {
       return this.props.dispatch(deleteSingleUpcomingEvent(id))
-        .then(() => this.props.history.push('/events/upcoming'));
+        .then(() => this.props.history.push('/dashboard'));
     } else if (fromWhere === 'past') {
       return this.props.dispatch(deleteSinglePastEvent(id))
-        .then(() => this.props.history.push('/events/past'));
+        .then(() => this.props.history.push('/dashboard'));
     }
   }
 
@@ -68,7 +68,7 @@ export class CurrentEvent extends React.Component {
   toggleEditing() {
     return this.props.dispatch(toggleEditing());
   }
-  
+
   showLoader = () => loader.classList.remove('loader--hide');
   hideLoader = () => loader.classList.add('loader--hide');
 
