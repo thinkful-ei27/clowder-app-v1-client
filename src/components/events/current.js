@@ -68,7 +68,7 @@ export class CurrentEvent extends React.Component {
   toggleEditing() {
     return this.props.dispatch(toggleEditing());
   }
-  
+
   showLoader = () => loader.classList.remove('loader--hide');
   hideLoader = () => loader.classList.add('loader--hide');
 
@@ -78,7 +78,7 @@ export class CurrentEvent extends React.Component {
       return () => this.props.showLoader();
     } else if (event && this.props.confirmDelete) {
       return (
-        <div className="confirm-delete">
+        <section className="confirm-delete">
           <h3>Are you sure you want to delete this event?</h3>
           <div className="buttons">
             <button
@@ -94,14 +94,14 @@ export class CurrentEvent extends React.Component {
             >Keep It
             </button>
           </div>
-        </div>
-      )
+        </section>
+      );
     } else if (event && event.description && !this.props.isEditing) {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
       const prettyTime = moment(event.dateAndTime).format('hh:mm a');
 
       return (
-        <div className='single-event-home'>
+        <section className='single-event-home'>
           <div className='event-info'>
             <h2 className="event-name">{event.eventName}</h2>
             <h3 className="info-category">Date:</h3> <p>{prettyDate}</p>
@@ -114,23 +114,23 @@ export class CurrentEvent extends React.Component {
                 type='button'
                 onClick={() => this.toggleDeleteConfirm()}
               >Delete Event
-            </button>
+              </button>
               <button
                 type='button'
                 onClick={() => this.toggleEditing()}
               >Edit Event
-            </button>
+              </button>
             </div>
           </div>
 
-        </div>
+        </section>
       );
     } else if (event && !event.description && !this.props.isEditing) {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
       const prettyTime = moment(event.dateAndTime).format('hh:mm a');
 
       return (
-        <div className='single-event-home'>
+        <section className='single-event-home'>
           <div className='event-info'>
             <h2 className="event-name">{event.eventName}</h2>
             <h3 className="info-category">Date:</h3> <p>{prettyDate}</p>
@@ -142,16 +142,16 @@ export class CurrentEvent extends React.Component {
                 type='button'
                 onClick={() => this.toggleDeleteConfirm()}
               >Delete Event
-            </button>
+              </button>
               <button
                 type='button'
                 onClick={() => this.toggleEditing()}
               >Edit Event
-            </button>
+              </button>
             </div>
           </div>
 
-        </div>
+        </section>
       );
     } else {
       return (

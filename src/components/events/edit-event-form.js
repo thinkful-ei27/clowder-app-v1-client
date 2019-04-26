@@ -29,7 +29,7 @@ export class EditEventForm extends React.Component {
 
   render() {
     return (
-      <div className="edit-event-home">
+      <section className="edit-event-home">
         <h2>{this.props.currentEvent.eventName}</h2>
         <form
           className="edit-event-form"
@@ -76,7 +76,7 @@ export class EditEventForm extends React.Component {
             </button>
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }

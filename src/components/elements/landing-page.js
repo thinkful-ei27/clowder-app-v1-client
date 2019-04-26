@@ -18,17 +18,17 @@ export class LandingPage extends React.Component {
       return <Redirect to="/dashboard" />;
     } else {
       return (
-        <div className="landingpage" >
+        <section className="landingpage" >
           <img src="landing-page.jpg" className="bg" alt="many hands working on calendar" />
           <h2 className="motto">PLAN EVENTS SMARTER. FASTER. EASIER.</h2>
           <h3 className="subMotto">Event planning can feel like herding cats. Let us help.</h3>
           <br />
-          <div className="nav">
+          <nav className="nav">
             <span className="shrink-link"><Link className="signup-button" to="/signup" ><button>Sign Up</button></Link></span>
             <span>or</span>
             <span className="shrink-link"><Link className="login-button" to="/login" ><button>Log In</button></Link></span>
-          </div>
-        </div>
+          </nav>
+        </section>
       );
     }
   }

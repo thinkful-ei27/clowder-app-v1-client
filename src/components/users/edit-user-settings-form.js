@@ -42,7 +42,7 @@ export class EditUserSettingsForm extends React.Component {
   render() {
 
     return (
-      <div className="edit-user-form-home">
+      <section className="edit-user-form-home">
         <form
           className="registration-form"
           onSubmit={this.props.handleSubmit(values =>
@@ -88,7 +88,7 @@ export class EditUserSettingsForm extends React.Component {
             </button>
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }

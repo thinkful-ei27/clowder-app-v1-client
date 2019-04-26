@@ -14,9 +14,9 @@ export class Header extends React.Component {
     // Only render the log out button if we are logged in
 
     return (
-      <div className="header">
+      <header className="header">
         <h1>Clowder</h1>
-      </div>
+      </header>
     );
   }
 }

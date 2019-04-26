@@ -36,11 +36,11 @@ export class PastEvents extends React.Component {
     ));
 
     return (
-      <div className="past-events-home">
+      <section className="past-events-home">
         <ul className="past-events" id="past-events">
           {events}
         </ul>
-      </div>
+      </section>
     );
   }
 

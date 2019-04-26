@@ -22,7 +22,7 @@ export class RegistrationForm extends React.Component {
 
   render() {
     return (
-      <div className="registration-home">
+      <section className="registration-home">
         <form
           className="registration-form"
           onSubmit={this.props.handleSubmit(values =>
@@ -68,7 +68,7 @@ export class RegistrationForm extends React.Component {
             <Link className="login-from-signup" to="/login" ><button>Log In Page</button></Link>
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }

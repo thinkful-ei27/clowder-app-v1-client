@@ -56,7 +56,7 @@ export class App extends React.Component {
       <div className="app">
         {/*<Header className="header" role="banner" />*/}
         <NavBar className="navbar" role="navigation" />
-        <div className="main">
+        <main className="main">
           <Route className="landing-page" exact path="/" component={LandingPage} />
           <Route className="login" exact path="/login" component={LogIn} />
           <Route className="signup" exact path="/signup" component={SignUp} />
@@ -69,7 +69,7 @@ export class App extends React.Component {
           <Route className="current-past-event" exact path="/events/past/:id" component={CurrentEvent} />
           <Route className="invite" exact path="/invites/:id" component={Invite} />
           <Route className="onboarding" exact path="/onboarding" component={Onboarding} />
-        </div>
+        </main>
       </div>
     );
   }

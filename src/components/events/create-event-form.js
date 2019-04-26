@@ -20,7 +20,7 @@ export class CreateEventForm extends React.Component {
     const dateAndTime = moment(date).add({ hours: time.slice(0, 2), minutes: values.time.slice(3, 5) }).format();
     const event = { eventName, dateAndTime, location, description }; // ++ viwingCode
     const currentDate = moment().format();
-    
+
     if (dateAndTime > currentDate) {
       return this.props
         .dispatch(createEvent(event))
@@ -28,19 +28,21 @@ export class CreateEventForm extends React.Component {
         .then(() => this.props.history.push('/dashboard'))
         .then(() => {
           const upcoming = document.querySelector('.upcoming')
-          return upcoming.setAttribute("expanded", "")});
+          return upcoming.setAttribute("expanded", "")
+        });
     } else if (dateAndTime < currentDate) {
       return this.props
         .dispatch(createEvent(event))
         .then(() => this.props.history.push('/dashboard'))
         .then(() => {
           const past = document.querySelector('.past')
-          return past.setAttribute("expanded", "")});
+          return past.setAttribute("expanded", "")
+        });
     }
   }
   render() {
     return (
-      <div className="create-event">
+      <section className="create-event">
         <h2>Create an Event</h2>
         <form
           className="create-event-form"
@@ -86,10 +88,10 @@ export class CreateEventForm extends React.Component {
           <label htmlFor="description">Description (optional)</label>
           <Field component={Textarea}
             type="text"
-            name="description" 
+            name="description"
             maxlength="1000"
             validate={[descpriptionLength]}
-            />
+          />
 
           <div className="buttons">
             <button
@@ -102,7 +104,7 @@ export class CreateEventForm extends React.Component {
             </button>
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }

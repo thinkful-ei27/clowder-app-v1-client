@@ -41,13 +41,13 @@ export class TimeTest extends React.Component {
 
     if (!this.props.isEditing) {
       return (
-        <div className='single-event-home'>
+        <section className='single-event-home'>
           <div className='event-info'>
             <h4>Date:</h4> <p>{prettyDate}</p>
             <h4>Time:</h4> <p>{prettyTime}</p>
           </div>
 
-        </div>
+        </section>
       );
     }
   }

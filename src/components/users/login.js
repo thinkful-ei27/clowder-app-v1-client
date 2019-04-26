@@ -10,10 +10,10 @@ export function LogIn(props) {
   }
 
   return (
-    <div className="login">
+    <section className="login">
       <h2>Log In</h2>
       <LoginForm />
-    </div>
+    </section>
   );
 }
 

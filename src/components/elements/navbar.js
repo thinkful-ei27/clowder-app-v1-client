@@ -26,17 +26,17 @@ export class NavBar extends React.Component {
       );
 
       return (
-        <div className="navbar">
+        <nav className="navbar">
           {userSettings}
           <Link className="nav-item" to="/dashboard"><h1>Clowder</h1></Link>
           {logOutOrInLink}
-        </div>
+        </nav>
       );
     } else {
       return (
-        <div className="navbar">
+        <nav className="navbar">
           <Link className="nav-item" to="/dashboard"><h1>Clowder</h1></Link>
-        </div>
+        </nav>
       );
     }
   }

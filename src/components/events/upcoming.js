@@ -35,11 +35,11 @@ export class UpcomingEvents extends React.Component {
     ));
 
     return (
-      <div className="upcoming-events-home">
+      <section className="upcoming-events-home">
         <ul className="upcoming-events" id="upcoming-events">
           {events}
         </ul>
-      </div>
+      </section>
     );
   }
 

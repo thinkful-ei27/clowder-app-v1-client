@@ -9,7 +9,7 @@ import '../../css/form.css';
 
 export class LoginForm extends React.Component {
 
- 
+
 
   onSubmit(values) {
     return this.props.dispatch(login(values['login-username'], values['login-password']));
@@ -25,7 +25,7 @@ export class LoginForm extends React.Component {
       );
     }
     return (
-      <div className="login-home">
+      <section className="login-home">
         <form
           className="login-form"
           onSubmit={this.props.handleSubmit(values =>
@@ -57,7 +57,7 @@ export class LoginForm extends React.Component {
             <Link className="signup-from-login" to="/signup" ><button>Sign Up page</button></Link>
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }

@@ -39,7 +39,7 @@ export class Invite extends React.Component {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
       const prettyTime = moment(event.dateAndTime).format('hh:mm a');
       return (
-        <div className='single-event-home'>
+        <section className='single-event-home'>
           <div className='event-info'>
             <h2 className="event-name">{event.eventName}</h2>
             <h3>Date:</h3> <p>{prettyDate}</p>
@@ -48,14 +48,14 @@ export class Invite extends React.Component {
             <h3>Description:</h3> <p>{event.description}</p>
           </div>
           <Link to={'/dashboard'}>Make a Clowder Account!</Link>
-        </div>
+        </section>
       );
     }
     if (event && !event.description) {
       const prettyDate = moment(event.dateAndTime).format('ddd MMMM Do YYYY');
       const prettyTime = moment(event.dateAndTime).format('hh:mm a');
       return (
-        <div className='single-event-home'>
+        <section className='single-event-home'>
           <div className='event-info'>
             <h2>{event.eventName}</h2>
             <h3>Date:</h3> <p>{prettyDate}</p>
@@ -63,7 +63,7 @@ export class Invite extends React.Component {
             <h3>Location:</h3> <p>{event.location}</p>
           </div>
           <Link to={'/dashboard'}>Make a Clowder Account!</Link>
-        </div>
+        </section>
       );
     }
   }

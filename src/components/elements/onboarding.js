@@ -7,7 +7,7 @@ export class Onboarding extends React.Component {
   // If we are logged in redirect straight to the user's dashboard
   render() {
     return (
-      <div className="onboarding" >
+      <section className="onboarding" >
         <p>
           Hello and thank you for choosing to use Clowder! We hope you enjoy
           using our app as much as we enjoyed making it. This is a brief guide
@@ -48,7 +48,7 @@ export class Onboarding extends React.Component {
         </p>
         <br />
         <Link className="gotit" to="/dashboard" >Got it!</Link>
-      </div>
+      </section>
     );
   }
 }
