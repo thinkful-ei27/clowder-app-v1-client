@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "jwt-decode": "^2.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.2.0",
     "react-accessible-accordion": "^2.4.5",
     "react-date-picker": "^7.2.0",
